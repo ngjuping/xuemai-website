@@ -20,6 +20,15 @@
         <admin></admin>
     </div>
 
+    <script>
+        window.Laravel = <?php echo json_encode(['api_token' => (Auth::user())->api_token]); ?>
+    </script>
     <!-- Mounting code -->
     <script src="{{ mix('js/app.js') }}"></script>
+
+{{--    <!-- Markdown UI -->--}}
+{{--    <script src="https://unpkg.com/vue"></script>--}}
+{{--    <script src="https://unpkg.com/marked@0.3.6"></script>--}}
+{{--    <script src="https://unpkg.com/lodash@4.16.0"></script>--}}
+
 </x-app-layout>

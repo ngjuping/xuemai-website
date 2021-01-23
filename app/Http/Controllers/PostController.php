@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -38,13 +39,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $newPost = new Post;
-        $newPost->postTitle = $request->postTitle;
-        $newPost->postContent = $request->postContent;
-        $newPost->save();
-        return response()->json([
-            'message' => '200 Create post OK',
-        ]);
+        if (Auth::check()) {
+
+            $userId = Auth::id();
+            $newPost = new Post;
+            $newPost->user_id = $userId;
+            $newPost->postTitle = $request->postTitle;
+            $newPost->postContent = $request->postContent;
+            $newPost->save();
+            return response()->json([
+                'message' => '200 Create post OK',
+            ]);
+        }
+        else{
+            return response()->json([
+                'message' => '401 Create post failed',
+            ]);
+        }
     }
 
     /**

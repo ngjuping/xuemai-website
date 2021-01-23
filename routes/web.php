@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::prefix('/api')->middleware('web')->group(function() {
+    Route::get('/posts', [PostController::class, 'index']);
+    Route::prefix('/post')->group(function () {
+        Route::post('/create', [PostController::class, 'store']);
+        Route::put('/{id}', [PostController::class, 'update']);
+        Route::delete('/{id}', [PostController::class, 'store']);
+    });
+});
+
+
 require __DIR__.'/auth.php';
 
 // Uncomment for customized 404
 //Route::fallback(function () {
-//    return view('welcome');
+//    return view('notfound');
 //});

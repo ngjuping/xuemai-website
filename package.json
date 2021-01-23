@@ -30,7 +30,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "dompurify": "^2.2.6",
         "font-awesome": "^4.7.0",
+        "marked": "^1.2.7",
         "miragejs": "^0.1.41",
         "moment": "^2.29.1",
         "smoothscroll": "^0.4.0",
