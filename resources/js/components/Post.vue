@@ -3,7 +3,7 @@
         <h3>{{ post.postTitle.slice(0,30) }}</h3>
         <div>{{ relativeTime(post.created_at) }}</div>
         <div v-if="!readonly">
-            <div class="btn btn-primary">
+            <div class="btn btn-primary" @click="$emit('update-post',post)">
                 修改
             </div>
             <div class="btn btn-danger" @click="$emit('delete-post',post.id)">
