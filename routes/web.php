@@ -27,6 +27,7 @@ Route::get('/dashboard', function () {
 Route::prefix('/api')->middleware('web')->group(function() {
     Route::get('/posts', [PostController::class, 'index']);
     Route::prefix('/post')->group(function () {
+        Route::get('/{id}', [PostController::class, 'show']);
         Route::post('/create', [PostController::class, 'store']);
         Route::put('/{id}', [PostController::class, 'update']);
         Route::delete('/{id}', [PostController::class, 'destroy']);
