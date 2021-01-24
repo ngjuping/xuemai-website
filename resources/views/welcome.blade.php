@@ -23,7 +23,6 @@
 <body class="antialiased">
 <!-- Mount point for vue -->
 <div id="app" class="p-4">
-    <blog></blog>
     <app></app>
 </div>
 

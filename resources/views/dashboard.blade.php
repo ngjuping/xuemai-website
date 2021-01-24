@@ -16,7 +16,6 @@
     </div>
     <!-- Mount point for vue -->
     <div id="app">
-        <app></app>
         <admin></admin>
     </div>
 

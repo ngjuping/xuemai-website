@@ -15,9 +15,7 @@ use App\Http\Controllers\PostController;
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,8 +32,12 @@ Route::prefix('/api')->middleware('web')->group(function() {
     });
 });
 
-
 require __DIR__.'/auth.php';
+
+Route::fallback(function () {
+    return view('welcome');
+});
+
 
 // Uncomment for customized 404
 //Route::fallback(function () {

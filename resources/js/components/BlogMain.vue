@@ -7,11 +7,10 @@
                 </div>
 
                 <div class="col text-right">
-                    <a href="/login" class="bg-blue-500 font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
-                        点击登录
-                    </a>
-                    <div class="btn">
-                        <a href="/login"></a>
+                    <div class=" btn btn-primary ">
+                        <a href="/login" class="text-white">
+                            点击登录
+                        </a>
                     </div>
                 </div>
             </div>

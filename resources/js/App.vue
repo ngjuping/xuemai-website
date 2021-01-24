@@ -1,6 +1,6 @@
 <template>
     <div ref="app_top">
-<!--        <router-view/>-->
+        <router-view/>
         <slot></slot>
         <div id="gotoTop" class="shadow d-flex justify-content-center align-items-center" @click="scrollToTop()">
             <i class="fa fa-angle-up"></i>

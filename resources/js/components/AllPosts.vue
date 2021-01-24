@@ -1,6 +1,6 @@
 <template>
     <div class="bg-light p-3">
-        <Post v-for="post in posts" :key="post.id" :post="post" :readonly="true"></Post>
+        <Post v-for="post in posts" :key="post.id" :post="post" :readonly="true" @post-clicked="goToPostDetails"></Post>
     </div>
 
 </template>
@@ -32,6 +32,11 @@ export default {
                 .catch((err) => {
                     console.log(err);
                 })
+        },
+        goToPostDetails(){
+            this.$router.push({name:'PostDetail',params:{
+                    id:this.post.id
+                }});
         }
     },
     mounted(){

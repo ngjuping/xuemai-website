@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 bg-white">
+    <div class="p-4">
         <h1>管理员界面</h1>
         <div class="container-fluid p-0 mx-0">
             <div class="row">
@@ -16,10 +16,12 @@
             <Post v-for="post in posts" :key="post.id" :post="post"
                   :readonly="false"
                   @delete-post="deletePost"
-                  @update-post="updatePost"></Post>
+                  @update-post="updatePost"
+                  @post-clicked="showPostDetails(post)"></Post>
         </div>
         <CreatePostModal @post-created="getAllPosts"></CreatePostModal>
         <UpdatePostModal :post="postToUpdate" @post-updated="getAllPosts"></UpdatePostModal>
+        <ShowPostDetailModal :post="postToShowDetail"></ShowPostDetailModal>
     </div>
 </template>
 
@@ -27,16 +29,18 @@
 import AllPosts from './components/AllPosts.vue';
 import CreatePostModal from './components/CreatePostModal.vue';
 import UpdatePostModal from "./components/UpdatePostModal";
+import ShowPostDetailModal from "./components/ShowPostDetailModal";
 import Post from './components/Post.vue';
 import Swal from 'sweetalert2';
 
 export default {
     name: "Admin",
-    components:{AllPosts,CreatePostModal,Post,UpdatePostModal},
+    components:{AllPosts,CreatePostModal,Post,UpdatePostModal,ShowPostDetailModal},
     data(){
         return{
             posts:[],
-            postToUpdate: null // post to be updated
+            postToUpdate: null, // post to be updated
+            postToShowDetail: null
         }
     },
     methods:{
@@ -48,6 +52,11 @@ export default {
                 .catch((err) => {
                     console.log(err);
                 })
+        },
+        showPostDetails(post){
+            this.postToShowDetail = post;
+            // Might be bad design here, #show_post_detail_modal lies inside ShowPostDetailModal component
+            $('#show_post_detail_modal').modal('show');
         },
         deletePost(post_id){
             Swal.fire({
@@ -93,6 +102,7 @@ export default {
         },
         updatePost(post){
             this.postToUpdate = post;
+            // Might be bad design here, #update_post_modal lies inside UpdatePostModal component
             $('#update_post_modal').modal('show');
         }
     },
