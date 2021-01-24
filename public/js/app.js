@@ -3994,11 +3994,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(err);
       });
     },
-    goToPostDetails: function goToPostDetails() {
+    goToPostDetails: function goToPostDetails(id) {
       this.$router.push({
         name: 'PostDetail',
         params: {
-          id: this.post.id
+          id: id
         }
       });
     }
@@ -4169,6 +4169,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Post",
@@ -4180,6 +4181,11 @@ __webpack_require__.r(__webpack_exports__);
       var first_half = time.split("T")[0];
       var second_half_time = time.split("T")[1].split(".")[0];
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(first_half + " " + second_half_time, "YYYY-MM-DD hh:mm:ss").fromNow();
+    },
+    chineseTime: function chineseTime(fulltime) {
+      var date = fulltime.split("T")[0].split("-");
+      var time = fulltime.split("T")[1].split(".")[0].split(":");
+      return "".concat(date[0], "\u5E74 ").concat(date[1], "\u6708 ").concat(date[2], "\u65E5   ").concat(time[0], "\u70B9").concat(time[1], "\u5206");
     }
   }
 });
@@ -4210,6 +4216,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4218,6 +4227,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       post: null
     };
+  },
+  methods: {
+    chineseTime: function chineseTime(fulltime) {
+      var date = fulltime.split("T")[0].split("-");
+      var time = fulltime.split("T")[1].split(".")[0].split(":");
+      return "".concat(date[0], "\u5E74 ").concat(date[1], "\u6708 ").concat(date[2], "\u65E5   ").concat(time[0], "\u70B9").concat(time[1], "\u5206");
+    }
   },
   computed: {
     compiledMarkdown: function compiledMarkdown() {
@@ -70554,7 +70570,11 @@ var render = function() {
       return _c("Post", {
         key: post.id,
         attrs: { post: post, readonly: true },
-        on: { "post-clicked": _vm.goToPostDetails }
+        on: {
+          "post-clicked": function($event) {
+            return _vm.goToPostDetails(post.id)
+          }
+        }
       })
     }),
     1
@@ -70776,7 +70796,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "jumbotron bg-light p-3 post",
+      staticClass: "jumbotron bg-light p-3 post shadow",
       on: {
         click: function($event) {
           return _vm.$emit("post-clicked")
@@ -70786,16 +70806,21 @@ var render = function() {
     [
       _c("h3", [_vm._v(_vm._s(_vm.post.postTitle.slice(0, 30)))]),
       _vm._v(" "),
-      _c("div", [_vm._v(_vm._s(_vm.relativeTime(_vm.post.created_at)))]),
+      _c("p", [
+        _vm._v(" 发布于" + _vm._s(_vm.chineseTime(_vm.post.created_at)))
+      ]),
+      _vm._v(" "),
+      _c("small", [_vm._v(_vm._s(_vm.relativeTime(_vm.post.created_at)))]),
       _vm._v(" "),
       !_vm.readonly
-        ? _c("div", [
+        ? _c("div", { staticClass: "my-2" }, [
             _c(
               "div",
               {
                 staticClass: "btn btn-primary",
                 on: {
                   click: function($event) {
+                    $event.stopPropagation()
                     return _vm.$emit("update-post", _vm.post)
                   }
                 }
@@ -70809,6 +70834,7 @@ var render = function() {
                 staticClass: "btn btn-danger",
                 on: {
                   click: function($event) {
+                    $event.stopPropagation()
                     return _vm.$emit("delete-post", _vm.post.id)
                   }
                 }
@@ -70844,24 +70870,36 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "btn btn-danger",
-        on: {
-          click: function($event) {
-            return _vm.$router.go(-1)
-          }
-        }
-      },
-      [_vm._v("返回")]
-    ),
-    _vm._v(" "),
     _vm.post
-      ? _c("h1", [_vm._v(" " + _vm._s(this.post.postTitle) + " ")])
+      ? _c("div", [
+          _c("h1", [
+            _c(
+              "span",
+              {
+                staticClass: "btn btn-danger",
+                on: {
+                  click: function($event) {
+                    return _vm.$router.go(-1)
+                  }
+                }
+              },
+              [_vm._v("返回")]
+            ),
+            _vm._v(" " + _vm._s(this.post.postTitle) + " ")
+          ]),
+          _vm._v(" "),
+          _c("small", [
+            _vm._v("发布于 " + _vm._s(_vm.chineseTime(this.post.created_at)))
+          ])
+        ])
       : _c("h2", [_vm._v(" Loading... ")]),
     _vm._v(" "),
-    _c("div", { domProps: { innerHTML: _vm._s(_vm.compiledMarkdown) } })
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "bg-white p-3 shadow",
+      domProps: { innerHTML: _vm._s(_vm.compiledMarkdown) }
+    })
   ])
 }
 var staticRenderFns = []

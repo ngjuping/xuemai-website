@@ -1,9 +1,12 @@
 <template>
     <div>
-        <div class="btn btn-danger" @click="$router.go(-1)">返回</div>
-        <h1 v-if="post"> {{ this.post.postTitle }} </h1>
+        <div v-if="post">
+            <h1 ><span class="btn btn-danger" @click="$router.go(-1)">返回</span> {{ this.post.postTitle }} </h1>
+            <small>发布于 {{ chineseTime(this.post.created_at) }}</small>
+        </div>
         <h2 v-else> Loading... </h2>
-        <div v-html="compiledMarkdown"></div>
+        <hr>
+        <div class="bg-white p-3 shadow" v-html="compiledMarkdown"></div>
     </div>
 </template>
 
@@ -16,6 +19,13 @@ export default {
     data(){
         return{
             post: null
+        }
+    },
+    methods:{
+        chineseTime(fulltime){
+            let date = fulltime.split("T")[0].split("-");
+            let time = fulltime.split("T")[1].split(".")[0].split(":")
+            return `${date[0]}年 ${date[1]}月 ${date[2]}日   ${time[0]}点${time[1]}分`
         }
     },
     computed:{
