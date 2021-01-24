@@ -1,72 +1,76 @@
 <template>
     <!-- Modal -->
-    <div class="modal fade" id="create_post_modal">
+    <div class="modal fade" id="update_post_modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">创建帖子</h5>
+                    <h5 class="modal-title">修改帖子</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div id="editor">
-                        <input v-model="postTitle" type="text" class="form-control">
+                        <input v-model="postNewTitle" type="text" class="form-control">
                         <br/>
-                        <textarea v-model="input"></textarea>
+                        <textarea v-model="postNewContent"></textarea>
                         <div v-html="compiledMarkdown"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_create_post_modal">Close</button>
-                    <button type="button" class="btn btn-primary" @click="createPost">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_update_post_modal">Close</button>
+                    <button type="button" class="btn btn-primary" @click="updatePost">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
 <script>
-import marked from 'marked';
-import DOMPurify from 'dompurify';
-
+import DOMPurify from "dompurify";
+import marked from "marked";
 
 export default {
-    name: "CreatePost",
-    data() {
+    name: "updatePostModal",
+    props:["post"],
+    data(){
         return {
-            input: "# 默认内容",
-            postTitle: "默认标题"
+            postNewTitle:"",
+            postNewContent:""
         }
     },
     computed: {
         compiledMarkdown: function() {
 
-            let clean_md = DOMPurify.sanitize(this.input); // cleaned data to prevent xss
+            let clean_md = DOMPurify.sanitize(this.postNewContent); // cleaned data to prevent xss
             return marked(clean_md);
         }
     },
     methods:{
-        createPost(){
+        updatePost(){
+            let clean_content_md = DOMPurify.sanitize(this.postNewContent);
 
-            let clean_md = DOMPurify.sanitize(this.input);
-
-            axios.post('/api/post/create',{
-                postTitle:this.postTitle,
-                postContent:clean_md
+            axios.put(`/api/post/${this.post.id}`,{
+                postTitle:this.postNewTitle,
+                postContent:clean_content_md
             })
-            .then((res) => {
-                console.log(res.data);
-                this.$emit("post-created");
-                $("#close_create_post_modal").click();
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-            .finally(() => {
-                this.postTitle = "默认标题";
-                this.input = "# 默认内容";
-            })
+                .then((res) => {
+                    console.log(res.data);
+                    this.$emit("post-updated");
+                    $("#close_update_post_modal").click();
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    this.postNewTitle = "";
+                    this.postNewContent = "";
+                })
+        }
+    },
+    watch:{
+        post(newpost){
+            this.postNewTitle = newpost.postTitle;
+            this.postNewContent = newpost.postContent;
         }
     }
 }
@@ -105,5 +109,4 @@ export default {
     code {
         color: #ff6666;
     }
-
 </style>

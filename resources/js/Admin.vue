@@ -13,28 +13,33 @@
             </div>
         </div>
         <div class="bg-light p-3">
-            <Post v-for="post in posts" :key="post.id" :post="post" :readonly="false" @delete-post="deletePost"></Post>
+            <Post v-for="post in posts" :key="post.id" :post="post"
+                  :readonly="false"
+                  @delete-post="deletePost"
+                  @update-post="updatePost"></Post>
         </div>
         <CreatePostModal @post-created="getAllPosts"></CreatePostModal>
+        <UpdatePostModal :post="postToUpdate" @post-updated="getAllPosts"></UpdatePostModal>
     </div>
 </template>
 
 <script>
 import AllPosts from './components/AllPosts.vue';
 import CreatePostModal from './components/CreatePostModal.vue';
+import UpdatePostModal from "./components/UpdatePostModal";
 import Post from './components/Post.vue';
 import Swal from 'sweetalert2';
 
 export default {
     name: "Admin",
-    components:{AllPosts,CreatePostModal,Post},
+    components:{AllPosts,CreatePostModal,Post,UpdatePostModal},
     data(){
         return{
-            posts:[]
+            posts:[],
+            postToUpdate: null // post to be updated
         }
     },
     methods:{
-
         getAllPosts(){
             axios.get("/api/posts")
                 .then((res) => {
@@ -85,6 +90,10 @@ export default {
 
                 }
             })
+        },
+        updatePost(post){
+            this.postToUpdate = post;
+            $('#update_post_modal').modal('show');
         }
     },
     mounted(){

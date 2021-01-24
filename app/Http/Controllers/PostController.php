@@ -18,7 +18,7 @@ class PostController extends Controller
         return response()->json([
             'message' => '200 Get all posts OK',
             'posts' => Post::orderBy('created_at','DESC')->get(),
-        ]);
+        ],200);
     }
 
     /**
@@ -49,12 +49,12 @@ class PostController extends Controller
             $newPost->save();
             return response()->json([
                 'message' => '200 Create post OK',
-            ]);
+            ],200);
         }
         else{
             return response()->json([
                 'message' => '401 Create post failed',
-            ]);
+            ],401);
         }
     }
 
@@ -89,7 +89,32 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // if user is logged in
+        if (Auth::check()) {
+
+            $existingPost = Post::find( $id );
+
+            // if post is found
+            if($existingPost){
+                $existingPost->postTitle = $request->postTitle;
+                $existingPost->postContent = $request->postContent;
+                $existingPost->save();
+                dd($request->postTitle);
+                return response()->json([
+                    'message' => '200 Update post OK',
+                ],200);
+            }
+
+            return response()->json([
+                'message' => '404 Post ' + $id + ' not found',
+            ], 404);
+        }
+        else{
+            // unauthorized action
+            return response()->json([
+                'message' => '401 Update post failed',
+            ],401);
+        }
     }
 
     /**
