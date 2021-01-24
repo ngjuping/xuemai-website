@@ -1,15 +1,13 @@
 <template>
     <div class="bg-light p-3">
-        <div v-for="post in posts" :key="post.id" class="jumbptron bg-light p-3">
-            <h3>{{ post.postTitle.slice(0,30) }}</h3>
-            <div>{{ relativeTime(post.created_at) }}</div>
-        </div>
+        <Post v-for="post in posts" :key="post.id" :post="post" :readonly="true"></Post>
     </div>
 
 </template>
 
 <script>
 import moment from 'moment';
+import Post from './Post.vue';
 
 export default {
     data(){
@@ -17,6 +15,7 @@ export default {
             posts:[]
         }
     },
+    components:{Post},
     methods:{
         relativeTime(time){
             let first_half = time.split("T")[0];

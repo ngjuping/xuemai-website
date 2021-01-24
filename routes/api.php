@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// auth:api middleware requires oauth token? all api routes now moved to web.
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

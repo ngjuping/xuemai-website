@@ -1,14 +1,28 @@
 <template>
-    <div>
-        <div id="editor">
-            <input v-model="postTitle" type="text" class="form-control">
-            <br/>
-            <textarea v-model="input"></textarea>
-            <div v-html="compiledMarkdown"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="create_post_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">创建帖子</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="editor">
+                        <input v-model="postTitle" type="text" class="form-control">
+                        <br/>
+                        <textarea v-model="input"></textarea>
+                        <div v-html="compiledMarkdown"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_create_post_modal">Close</button>
+                    <button type="button" class="btn btn-primary" @click="createPost">Save changes</button>
+                </div>
+            </div>
         </div>
-        <a @click="createPost" class="bg-blue-500 font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
-            发布
-        </a>
     </div>
 </template>
 
@@ -43,6 +57,8 @@ export default {
             })
             .then((res) => {
                 console.log(res.data);
+                this.$emit("post-created");
+                $("#close_create_post_modal").click();
             })
             .catch((err) => {
                 console.log(err);

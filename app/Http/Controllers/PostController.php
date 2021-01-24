@@ -100,6 +100,27 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // if user is logged in
+        if (Auth::check()) {
+
+            $existingPost = Post::find( $id );
+
+            // if post is found
+            if($existingPost){
+                $existingPost->delete();
+                return response()->json([
+                    'message' => '200 Delete post OK',
+                ]);
+            }
+            return response()->json([
+                'message' => '404 Post ' + $id + ' not found',
+            ]);
+        }
+        else{
+            // unauthorized action
+            return response()->json([
+                'message' => '401 Delete post failed',
+            ]);
+        }
     }
 }

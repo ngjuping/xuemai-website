@@ -23,12 +23,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// XueMai's api lies here
 Route::prefix('/api')->middleware('web')->group(function() {
     Route::get('/posts', [PostController::class, 'index']);
     Route::prefix('/post')->group(function () {
         Route::post('/create', [PostController::class, 'store']);
         Route::put('/{id}', [PostController::class, 'update']);
-        Route::delete('/{id}', [PostController::class, 'store']);
+        Route::delete('/{id}', [PostController::class, 'destroy']);
     });
 });
 
