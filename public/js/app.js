@@ -70730,7 +70730,7 @@ var render = function() {
                   id: "close_create_post_modal"
                 }
               },
-              [_vm._v("Close")]
+              [_vm._v("取消")]
             ),
             _vm._v(" "),
             _c(
@@ -70740,7 +70740,7 @@ var render = function() {
                 attrs: { type: "button" },
                 on: { click: _vm.createPost }
               },
-              [_vm._v("Save changes")]
+              [_vm._v("发布")]
             )
           ])
         ])
@@ -70941,7 +70941,10 @@ var render = function() {
               ? _c("h1", [_vm._v(" " + _vm._s(this.post.postTitle) + " ")])
               : _c("h2", [_vm._v(" Loading... ")]),
             _vm._v(" "),
-            _c("div", { domProps: { innerHTML: _vm._s(_vm.compiledMarkdown) } })
+            _c("div", {
+              staticClass: "bg-light rounded p-3",
+              domProps: { innerHTML: _vm._s(_vm.compiledMarkdown) }
+            })
           ])
         ])
       ])
@@ -71068,7 +71071,7 @@ var render = function() {
                   id: "close_update_post_modal"
                 }
               },
-              [_vm._v("Close")]
+              [_vm._v("取消")]
             ),
             _vm._v(" "),
             _c(
@@ -71078,7 +71081,7 @@ var render = function() {
                 attrs: { type: "button" },
                 on: { click: _vm.updatePost }
               },
-              [_vm._v("Save changes")]
+              [_vm._v("发布")]
             )
           ])
         ])

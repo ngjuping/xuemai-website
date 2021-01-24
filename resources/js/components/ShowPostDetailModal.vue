@@ -11,7 +11,7 @@
                 <div class="modal-body">
                     <h1 v-if="post"> {{ this.post.postTitle }} </h1>
                     <h2 v-else> Loading... </h2>
-                    <div v-html="compiledMarkdown"></div>
+                    <div class="bg-light rounded p-3" v-html="compiledMarkdown"></div>
                 </div>
             </div>
         </div>

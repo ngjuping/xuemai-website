@@ -18,8 +18,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_create_post_modal">Close</button>
-                    <button type="button" class="btn btn-primary" @click="createPost">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_create_post_modal">取消</button>
+                    <button type="button" class="btn btn-primary" @click="createPost">发布</button>
                 </div>
             </div>
         </div>
