@@ -4038,13 +4038,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "BlogMain",
@@ -70624,14 +70617,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col left pl-0" }, [
           _c("h1", [_vm._v("欢迎来到学脉部落格")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col text-right" }, [
-          _c("div", { staticClass: " btn btn-primary " }, [
-            _c("a", { staticClass: "text-white", attrs: { href: "/login" } }, [
-              _vm._v("\n                        点击登录\n                    ")
-            ])
-          ])
         ])
       ])
     ])
