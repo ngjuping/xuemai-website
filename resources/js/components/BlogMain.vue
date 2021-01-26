@@ -1,5 +1,6 @@
 <template>
     <div>
+        <VisitorHeader></VisitorHeader>
         <div class="container-fluid">
             <div class="row">
                 <div class="col left pl-0">
@@ -16,9 +17,10 @@
 
 <script>
 import AllPosts from "./AllPosts";
+import VisitorHeader from "./VisitorHeader";
 export default {
     name: "BlogMain",
-    components:{AllPosts},
+    components:{AllPosts,VisitorHeader},
 }
 </script>
 

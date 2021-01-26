@@ -3,7 +3,6 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
-
 // vue router, independent from laravel routing
  import router from './router';
 
@@ -16,11 +15,16 @@ window.Vue = require('vue').default;
 // import top level vue app components
 import App from './App.vue';
 import Admin from './Admin.vue';
-import BlogMain from './components/BlogMain.vue';
+import 'v-markdown-editor/dist/v-markdown-editor.css';
+import Editor from 'v-markdown-editor';
+
+// global register markdown editor
+Vue.use(Editor);
 
 // register global components
 Vue.component('app',App);
 Vue.component('admin',Admin);
+
 
 var app = new Vue({
     router,

@@ -9,7 +9,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+
     <!-- Bootstrap, tailwind, font awesome -->
+
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app2.css') }}">
 

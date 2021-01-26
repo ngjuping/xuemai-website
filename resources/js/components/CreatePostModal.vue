@@ -1,7 +1,7 @@
 <template>
     <!-- Modal -->
     <div class="modal fade" id="create_post_modal">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">创建帖子</h5>
@@ -11,10 +11,16 @@
                 </div>
                 <div class="modal-body">
                     <div id="editor">
+
                         <input v-model="postTitle" type="text" class="form-control">
                         <br/>
-                        <textarea v-model="input"></textarea>
-                        <div v-html="compiledMarkdown"></div>
+
+                        <h3>内容</h3>
+                        <markdown-editor v-model="postContent" toolbar="bold italic strikethrough heading numlist bullist code quote uploadimage newlink redo undo"
+                                         @command:uploadimage="uploadimage"
+                                         @command:newlink="newlink"
+                                         :extend="custom" autofocus></markdown-editor>
+                        <div v-html="compiledMarkdown" id="preview"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -30,26 +36,50 @@
 import marked from 'marked';
 import DOMPurify from 'dompurify';
 
+import 'v-markdown-editor/dist/v-markdown-editor.css';
+import Editor from 'v-markdown-editor';
 
 export default {
     name: "CreatePost",
+    components:{Editor},
     data() {
         return {
-            input: "# 默认内容",
-            postTitle: "默认标题"
+            postContent: "# 默认内容",
+            postTitle: "默认标题",
+            custom: {
+                // Names should be all small letter
+                'uploadimage': {
+                    cmd: 'uploadimage',
+                    ico: 'fas far fa-image mdi mdi-image',
+                    title: 'Upload Image'
+                },
+                'newlink': {
+                    cmd: 'newlink',
+                    ico: 'fas far fa-link mdi mdi-link',
+                    title: 'Upload Link'
+                }
+            }
         }
     },
     computed: {
         compiledMarkdown: function() {
 
-            let clean_md = DOMPurify.sanitize(this.input); // cleaned data to prevent xss
+            let clean_md = DOMPurify.sanitize(this.postContent); // cleaned data to prevent xss
             return marked(clean_md);
         }
     },
     methods:{
+        uploadimage(md){
+            let url = prompt("Enter image link");
+            md.drawImage({url:`${url}`, title:'Failed to load'});
+        },
+        newlink(md){
+            let url = prompt("Insert link");
+            md.drawLink({url:`${url}`, title:`${url}`});
+        },
         createPost(){
 
-            let clean_md = DOMPurify.sanitize(this.input);
+            let clean_md = DOMPurify.sanitize(this.postContent);
 
             axios.post('/api/post/create',{
                 postTitle:this.postTitle,
@@ -65,7 +95,7 @@ export default {
             })
             .finally(() => {
                 this.postTitle = "默认标题";
-                this.input = "# 默认内容";
+                this.postContent = "# 默认内容";
             })
         }
     }
@@ -92,8 +122,7 @@ export default {
     }
 
     textarea {
-        border: none;
-        border-right: 1px solid #ccc;
+        border: 1px solid #ccc;
         resize: none;
         outline: none;
         background-color: #f6f6f6;
@@ -105,5 +134,34 @@ export default {
     code {
         color: #ff6666;
     }
+
+    #preview{
+        border: 3px solid black;
+        position:relative;
+    }
+    #preview::after{
+        content:"预览";
+        position:absolute;
+        top:-20px;
+        right:-3px;
+        padding:5px;
+        background:black;
+        color:white;
+    }
+
+    #preview >>> blockquote{
+        border-left: 3px solid grey;
+        padding-left: 5px;
+    }
+
+    #preview >>> img{
+
+        max-width:100%;
+    }
+
+    .v-md-toolbar{
+        overflow-x:scroll !important;
+    }
+
 
 </style>

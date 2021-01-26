@@ -21,16 +21,22 @@ export default {
     name: "Post",
     props:["post","readonly"],
     methods:{
-        relativeTime(time){
-            // Input: 2021-01-24T09:26:20.000000Z
-            // Output: 4 minutes ago
-            let first_half = time.split("T")[0];
-            let second_half_time = time.split("T")[1].split(".")[0];
-            return moment(first_half + " " + second_half_time,"YYYY-MM-DD hh:mm:ss").fromNow();
+        localTime(utc){
+            return moment.utc(utc).local();
         },
-        chineseTime(fulltime){
-            let date = fulltime.split("T")[0].split("-");
-            let time = fulltime.split("T")[1].split(".")[0].split(":")
+        relativeTime(time){
+            // Input: 2021-01-24 09:26:20
+            // Output: 4 minutes ago
+            // moment.utc(String) parses your string as UTC, moment(date).utc() converts your moment instance to UTC mode
+            return this.localTime(time).fromNow();
+        },
+        chineseTime(input){
+            // Input: 2021-01-25 02:18:06
+            // Output: 2021年 01月 25日 02点18分
+            let localtime = this.localTime(input).format("YYYY-MM-DD hh:mm");
+            console.log(localtime);
+            let date = localtime.split(" ")[0].split("-");
+            let time = localtime.split(" ")[1].split(":")
             return `${date[0]}年 ${date[1]}月 ${date[2]}日   ${time[0]}点${time[1]}分`
         },
     }

@@ -23,10 +23,12 @@ export default {
     },
     methods:{
         chineseTime(fulltime){
-            let date = fulltime.split("T")[0].split("-");
-            let time = fulltime.split("T")[1].split(".")[0].split(":")
+            // Input: 2021-01-25 02:18:06
+            // Output: 2021年 01月 25日 02点18分
+            let date = fulltime.split(" ")[0].split("-");
+            let time = fulltime.split(" ")[1].split(":")
             return `${date[0]}年 ${date[1]}月 ${date[2]}日   ${time[0]}点${time[1]}分`
-        }
+        },
     },
     computed:{
         compiledMarkdown: function() {

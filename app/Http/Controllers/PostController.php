@@ -124,17 +124,17 @@ class PostController extends Controller
                 $existingPost->delete();
                 return response()->json([
                     'message' => '200 Delete post OK',
-                ]);
+                ],200);
             }
             return response()->json([
                 'message' => '404 Post ' . $id . ' not found',
-            ]);
+            ],404);
         }
         else{
             // unauthorized action
             return response()->json([
                 'message' => '401 Delete post failed',
-            ]);
+            ],401);
         }
     }
 }

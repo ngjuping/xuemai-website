@@ -1,7 +1,7 @@
 <template>
     <!-- Modal -->
     <div class="modal fade" id="update_post_modal">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">修改帖子</h5>
@@ -11,10 +11,15 @@
                 </div>
                 <div class="modal-body">
                     <div id="editor">
+
                         <input v-model="postNewTitle" type="text" class="form-control">
                         <br/>
-                        <textarea v-model="postNewContent"></textarea>
-                        <div v-html="compiledMarkdown"></div>
+                        <h3>内容</h3>
+                        <markdown-editor class="p-0" v-model="postNewContent" toolbar="bold italic strikethrough heading numlist bullist code quote uploadimage newlink redo undo"
+                                         @command:uploadimage="uploadimage"
+                                         @command:newlink="newlink"
+                                         :extend="custom" autofocus></markdown-editor>
+                        <div v-html="compiledMarkdown" id="preview"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -35,7 +40,20 @@ export default {
     data(){
         return {
             postNewTitle:"",
-            postNewContent:""
+            postNewContent:"",
+            custom: {
+                // Names should be all small letter
+                'uploadimage': {
+                    cmd: 'uploadimage',
+                    ico: 'fas far fa-image mdi mdi-image',
+                    title: 'Upload Image'
+                },
+                'newlink': {
+                    cmd: 'newlink',
+                    ico: 'fas far fa-link mdi mdi-link',
+                    title: 'Upload Link'
+                }
+            }
         }
     },
     computed: {
@@ -46,6 +64,14 @@ export default {
         }
     },
     methods:{
+        uploadimage(md){
+            let url = prompt("Enter image link");
+            md.drawImage({url:`${url}`, title:'Failed to load'});
+        },
+        newlink(md){
+            let url = prompt("Insert link");
+            md.drawLink({url:`${url}`, title:`${url}`});
+        },
         updatePost(){
             let clean_content_md = DOMPurify.sanitize(this.postNewContent);
 
@@ -108,5 +134,33 @@ export default {
 
     code {
         color: #ff6666;
+    }
+
+    #preview{
+        border: 3px solid black;
+        position:relative;
+    }
+    #preview::after{
+        content:"预览";
+        position:absolute;
+        top:-20px;
+        right:-3px;
+        padding:5px;
+        background:black;
+        color:white;
+    }
+
+    #preview >>> blockquote{
+        border-left: 3px solid grey;
+        padding-left: 5px;
+    }
+
+    #preview >>> img{
+
+        max-width:100%;
+    }
+
+    .v-md-toolbar{
+        overflow:scroll !important;
     }
 </style>

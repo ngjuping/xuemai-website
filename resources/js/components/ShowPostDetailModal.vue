@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" id="show_post_detail_modal" tabindex="-1" >
-        <div class="modal-dialog" role="document">
+        <div class="modal-lg modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">帖子内容</h5>
@@ -11,7 +11,7 @@
                 <div class="modal-body">
                     <h1 v-if="post"> {{ this.post.postTitle }} </h1>
                     <h2 v-else> Loading... </h2>
-                    <div class="bg-light rounded p-3" v-html="compiledMarkdown"></div>
+                    <div class="bg-light rounded p-3" id="preview" v-html="compiledMarkdown"></div>
                 </div>
             </div>
         </div>
@@ -37,4 +37,7 @@ export default {
 
 <style scoped>
 
+#preview >>> img{
+    max-width:100%;
+}
 </style>
