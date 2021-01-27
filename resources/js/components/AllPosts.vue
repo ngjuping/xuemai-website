@@ -1,5 +1,10 @@
 <template>
-    <div class="bg-light p-3">
+    <div class="bg-light p-3 mt-4">
+        <h3>最新动态</h3>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="搜索帖子..." v-model="filterString">
+        </form>
+        <br/>
         <Post v-for="post in posts" :key="post.id" :post="post" :readonly="true" @post-clicked="goToPostDetails(post.id)"></Post>
     </div>
 
@@ -12,22 +17,22 @@ import Post from './Post.vue';
 export default {
     data(){
         return {
-            posts:[]
+            allPosts:[],
+            filterString:""
         }
     },
     components:{Post},
+    computed:{
+        posts(){
+            return this.allPosts.filter((post) => {return post.postTitle.includes(this.filterString) || post.postContent.includes(this.filterString)});
+        }
+    },
     methods:{
-        relativeTime(time){
-            let first_half = time.split("T")[0];
-            let second_half_time = time.split("T")[1].split("+")[0];
-            return moment(first_half + " " + second_half_time,"YYYY-MM-DD hh:mm:ss").fromNow();
-        },
 
         getAllPosts(){
-            console.log("GET")
             axios.get("/api/posts")
                 .then((res) => {
-                    this.posts = res.data.posts;
+                    this.allPosts = res.data.posts;
                 })
                 .catch((err) => {
                     console.log(err);

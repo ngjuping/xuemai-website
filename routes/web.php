@@ -17,7 +17,7 @@ use App\Http\Controllers\PostController;
 
 
 
-Route::get('/dashboard', function () {
+Route::get('/admin', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 

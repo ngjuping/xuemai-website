@@ -1,8 +1,10 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import BlogMain from '../components/BlogMain.vue'
-import PostDetail from '../components/PostDetail.vue'
+import BlogMain from '../pages/BlogMain.vue';
+import PostDetail from '../components/PostDetail.vue';
+import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 // without this line vue is not reactive??? experimented
 Vue.use(VueRouter);
@@ -17,7 +19,17 @@ const routes = [
         path: '/post/:id',
         name: 'PostDetail',
         component: PostDetail
-    }]
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
+    },
+    {
+        path: '/contact',
+        name: 'Contact',
+        component: Contact
+    },]
 
 const router = new VueRouter({
     mode: 'history',

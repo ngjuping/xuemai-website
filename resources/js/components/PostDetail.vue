@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="p-3">
         <div v-if="post">
             <h1 ><span class="btn btn-danger" @click="$router.go(-1)">返回</span> {{ this.post.postTitle }} </h1>
             <small>发布于 {{ chineseTime(this.post.created_at) }}</small>

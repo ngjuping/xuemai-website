@@ -34,7 +34,6 @@ export default {
             // Input: 2021-01-25 02:18:06
             // Output: 2021年 01月 25日 02点18分
             let localtime = this.localTime(input).format("YYYY-MM-DD hh:mm");
-            console.log(localtime);
             let date = localtime.split(" ")[0].split("-");
             let time = localtime.split(" ")[1].split(":")
             return `${date[0]}年 ${date[1]}月 ${date[2]}日   ${time[0]}点${time[1]}分`

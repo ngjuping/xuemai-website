@@ -24,7 +24,7 @@
 </head>
 <body class="antialiased">
 <!-- Mount point for vue -->
-<div id="app" class="p-4">
+<div id="app">
     <app></app>
 </div>
 

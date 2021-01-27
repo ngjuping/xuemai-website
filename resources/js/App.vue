@@ -1,18 +1,19 @@
 <template>
     <div ref="app_top">
+
+        <VisitorHeader></VisitorHeader>
         <router-view/>
-        <slot></slot>
         <div id="gotoTop" class="shadow d-flex justify-content-center align-items-center" @click="scrollToTop()">
             <i class="fa fa-angle-up"></i>
         </div>
     </div>
 </template>
 <script>
-
+import VisitorHeader from "./components/VisitorHeader";
 let smoothScroll = require('smoothscroll');
 
 export default {
-
+    components:{VisitorHeader},
     methods:{
         scrollToTop(){
             smoothScroll(this.$refs["app_top"]);
@@ -29,5 +30,10 @@ export default {
     position:fixed;
     bottom:30px;
     right: 30px;
+}
+
+#gotoTop:hover{
+    background-color:white;
+    cursor:pointer;
 }
 </style>
