@@ -6,7 +6,7 @@
         </div>
         <h2 v-else> Loading... </h2>
         <hr>
-        <div class="bg-white p-3 shadow" v-html="compiledMarkdown"></div>
+        <div class="bg-white p-3 shadow" v-html="compiledMarkdown" id="display"></div>
     </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
     computed:{
         compiledMarkdown: function() {
             if( !this.post ) return;
-            let clean_md = DOMPurify.sanitize(this.post.postContent); // cleaned data to prevent xss
+            let clean_md = this.post.postContent; // cleaned data to prevent xss
             return marked(clean_md);
         }
     },
@@ -50,5 +50,13 @@ export default {
 </script>
 
 <style scoped>
+#display >>> blockquote{
+    border-left: 3px solid grey;
+    padding-left: 5px;
+}
 
+#display >>> img{
+
+    max-width:100%;
+}
 </style>
