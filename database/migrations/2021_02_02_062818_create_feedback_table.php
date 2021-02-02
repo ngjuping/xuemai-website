@@ -15,7 +15,6 @@ class CreateFeedbackTable extends Migration
     {
         Schema::connection('mysql2')->create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('author')->nullable();
             $table->string('authorEmail')->nullable();
             $table->string('reviewer')->nullable();
@@ -23,6 +22,7 @@ class CreateFeedbackTable extends Migration
             $table->integer('importance')->nullable();
             $table->enum('type', array('Suggestion','Report'))->nullable();
             $table->enum('status', array('Unviewed','In progress.','Completed'))->nullable();
+            $table->timestamps();
 
         });
     }
