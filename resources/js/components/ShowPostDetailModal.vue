@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" id="show_post_detail_modal" tabindex="-1" >
-        <div class="modal-lg modal-dialog" role="document">
+        <div class="modal-xl modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">帖子内容</h5>
@@ -40,4 +40,11 @@ export default {
 #preview >>> img{
     max-width:100%;
 }
+
+#preview >>> td, #preview >>> th{
+    border: 1px solid grey !important;
+}
+
+
+
 </style>

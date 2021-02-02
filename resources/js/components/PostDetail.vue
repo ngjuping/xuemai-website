@@ -50,6 +50,7 @@ export default {
 </script>
 
 <style scoped>
+
 #display >>> blockquote{
     border-left: 3px solid grey;
     padding-left: 5px;
@@ -59,4 +60,9 @@ export default {
 
     max-width:100%;
 }
+
+#display >>> td, #display >>> th{
+    border: 1px solid grey !important;
+}
+
 </style>

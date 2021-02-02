@@ -9533,7 +9533,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#editor[data-v-4c482c36] {\n    margin: 0;\n    height: 100%;\n    font-family: \"Helvetica Neue\", Arial, sans-serif;\n    color: #333;\n}\ntextarea[data-v-4c482c36],\n#editor div[data-v-4c482c36] {\n    display: inline-block;\n    width: 49%;\n    height: 100%;\n    vertical-align: top;\n    box-sizing: border-box;\n    padding: 0 20px;\n    min-height: 400px;\n}\ntextarea[data-v-4c482c36] {\n    border: 1px solid #ccc;\n    resize: none;\n    outline: none;\n    background-color: #f6f6f6;\n    font-size: 14px;\n    font-family: \"Monaco\", courier, monospace;\n    padding: 20px;\n}\ncode[data-v-4c482c36] {\n    color: #ff6666;\n}\n#preview[data-v-4c482c36]{\n    border: 3px solid black;\n    position:relative;\n}\n#preview[data-v-4c482c36]::after{\n    content:\"预览\";\n    position:absolute;\n    top:-20px;\n    right:-3px;\n    padding:5px;\n    background:black;\n    color:white;\n}\n#preview[data-v-4c482c36] blockquote{\n    border-left: 3px solid grey;\n    padding-left: 5px;\n}\n#preview[data-v-4c482c36] img{\n\n    max-width:100%;\n}\n.v-md-toolbar[data-v-4c482c36]{\n    overflow-x:scroll !important;\n}\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#editor[data-v-4c482c36] {\n    margin: 0;\n    height: 100%;\n    font-family: \"Helvetica Neue\", Arial, sans-serif;\n    color: #333;\n}\ntextarea[data-v-4c482c36],\n#editor div[data-v-4c482c36] {\n    display: inline-block;\n    width: 49%;\n    height: 100%;\n    vertical-align: top;\n    box-sizing: border-box;\n    padding: 0 20px;\n    min-height: 400px;\n}\ntextarea[data-v-4c482c36] {\n    border: 1px solid #ccc;\n    resize: none;\n    outline: none;\n    background-color: #f6f6f6;\n    font-size: 14px;\n    font-family: \"Monaco\", courier, monospace;\n    padding: 20px;\n}\ncode[data-v-4c482c36] {\n    color: #ff6666;\n}\n#preview[data-v-4c482c36]{\n    border: 3px solid black;\n    position:relative;\n}\n#preview[data-v-4c482c36]::after{\n    content:\"预览\";\n    position:absolute;\n    top:-20px;\n    right:-3px;\n    padding:5px;\n    background:black;\n    color:white;\n}\n#preview[data-v-4c482c36] blockquote{\n    border-left: 3px solid grey;\n    padding-left: 5px;\n}\n#preview[data-v-4c482c36] img{\n\n    max-width:100%;\n}\n.v-md-toolbar[data-v-4c482c36]{\n    overflow-x:scroll !important;\n}\n#preview[data-v-4c482c36] td, #preview[data-v-4c482c36] th{\n    border: 1px solid grey !important;\n}\n\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9605,7 +9605,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#display[data-v-26153d88] blockquote{\n    border-left: 3px solid grey;\n    padding-left: 5px;\n}\n#display[data-v-26153d88] img{\n\n    max-width:100%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#display[data-v-26153d88] blockquote{\n    border-left: 3px solid grey;\n    padding-left: 5px;\n}\n#display[data-v-26153d88] img{\n\n    max-width:100%;\n}\n#display[data-v-26153d88] td, #display[data-v-26153d88] th{\n    border: 1px solid grey !important;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9653,7 +9653,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#preview[data-v-787f61c4] img{\n    max-width:100%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#preview[data-v-787f61c4] img{\n    max-width:100%;\n}\n#preview[data-v-787f61c4] td, #preview[data-v-787f61c4] th{\n    border: 1px solid grey !important;\n}\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9677,7 +9677,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#editor[data-v-2f152cee] {\n    margin: 0;\n    height: 100%;\n    font-family: \"Helvetica Neue\", Arial, sans-serif;\n    color: #333;\n}\ntextarea[data-v-2f152cee],\n#editor div[data-v-2f152cee] {\n    display: inline-block;\n    width: 49%;\n    height: 100%;\n    vertical-align: top;\n    box-sizing: border-box;\n    padding: 0 20px;\n    min-height: 400px;\n}\ntextarea[data-v-2f152cee] {\n    border: none;\n    border-right: 1px solid #ccc;\n    resize: none;\n    outline: none;\n    background-color: #f6f6f6;\n    font-size: 14px;\n    font-family: \"Monaco\", courier, monospace;\n    padding: 20px;\n}\ncode[data-v-2f152cee] {\n    color: #ff6666;\n}\n#preview[data-v-2f152cee]{\n    border: 3px solid black;\n    position:relative;\n}\n#preview[data-v-2f152cee]::after{\n    content:\"预览\";\n    position:absolute;\n    top:-20px;\n    right:-3px;\n    padding:5px;\n    background:black;\n    color:white;\n}\n#preview[data-v-2f152cee] blockquote{\n    border-left: 3px solid grey;\n    padding-left: 5px;\n}\n#preview[data-v-2f152cee] img{\n\n    max-width:100%;\n}\n.v-md-toolbar[data-v-2f152cee]{\n    overflow:scroll !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#editor[data-v-2f152cee] {\n    margin: 0;\n    height: 100%;\n    font-family: \"Helvetica Neue\", Arial, sans-serif;\n    color: #333;\n}\ntextarea[data-v-2f152cee],\n#editor div[data-v-2f152cee] {\n    display: inline-block;\n    width: 49%;\n    height: 100%;\n    vertical-align: top;\n    box-sizing: border-box;\n    padding: 0 20px;\n    min-height: 400px;\n}\ntextarea[data-v-2f152cee] {\n    border: none;\n    border-right: 1px solid #ccc;\n    resize: none;\n    outline: none;\n    background-color: #f6f6f6;\n    font-size: 14px;\n    font-family: \"Monaco\", courier, monospace;\n    padding: 20px;\n}\ncode[data-v-2f152cee] {\n    color: #ff6666;\n}\n#preview[data-v-2f152cee]{\n    border: 3px solid black;\n    position:relative;\n}\n#preview[data-v-2f152cee]::after{\n    content:\"预览\";\n    position:absolute;\n    top:-20px;\n    right:-3px;\n    padding:5px;\n    background:black;\n    color:white;\n}\n#preview[data-v-2f152cee] blockquote{\n    border-left: 3px solid grey;\n    padding-left: 5px;\n}\n#preview[data-v-2f152cee] img{\n\n    max-width:100%;\n}\n#preview[data-v-2f152cee] td, #preview[data-v-2f152cee] th{\n    border: 1px solid grey !important;\n}\n.v-md-toolbar[data-v-2f152cee]{\n    overflow:scroll !important;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -93449,7 +93449,7 @@ var render = function() {
     "nav",
     { staticClass: "navbar navbar-expand-md navbar-dark bg-dark shadow" },
     [
-      _c("a", { staticClass: "navbar-brand", attrs: { href: "/dashboard" } }, [
+      _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
         _vm._v("学脉后台")
       ]),
       _vm._v(" "),
@@ -93507,14 +93507,10 @@ var staticRenderFns = [
       [
         _c("ul", { staticClass: "navbar-nav mr-auto" }, [
           _c("li", { staticClass: "nav-item active" }, [
-            _c(
-              "a",
-              { staticClass: "nav-link", attrs: { href: "/dashboard" } },
-              [
-                _vm._v("主页 "),
-                _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
-              ]
-            )
+            _c("a", { staticClass: "nav-link", attrs: { href: "/" } }, [
+              _vm._v("主页 "),
+              _c("span", { staticClass: "sr-only" }, [_vm._v("(current)")])
+            ])
           ]),
           _vm._v(" "),
           _c("li", { staticClass: "text-white nav-item" }, [
@@ -94161,7 +94157,7 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "modal-lg modal-dialog", attrs: { role: "document" } },
+        { staticClass: "modal-xl modal-dialog", attrs: { role: "document" } },
         [
           _c("div", { staticClass: "modal-content" }, [
             _vm._m(0),

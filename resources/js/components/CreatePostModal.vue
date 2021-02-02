@@ -103,6 +103,7 @@ export default {
 </script>
 
 <style scoped>
+
     #editor {
         margin: 0;
         height: 100%;
@@ -162,6 +163,11 @@ export default {
     .v-md-toolbar{
         overflow-x:scroll !important;
     }
+    #preview >>> td, #preview >>> th{
+        border: 1px solid grey !important;
+    }
+
+
 
 
 </style>

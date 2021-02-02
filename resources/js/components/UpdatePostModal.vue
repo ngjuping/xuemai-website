@@ -160,6 +160,10 @@ export default {
         max-width:100%;
     }
 
+    #preview >>> td, #preview >>> th{
+        border: 1px solid grey !important;
+    }
+
     .v-md-toolbar{
         overflow:scroll !important;
     }
