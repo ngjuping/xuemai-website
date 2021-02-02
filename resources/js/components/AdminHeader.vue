@@ -18,13 +18,21 @@
                 </li>
             </ul>
         </div>
-        <div class="btn btn-danger" @click="logout">登出</div>
+        <div>
+            <span v-if="logged_in_user" class="text-white mr-3"> 欢迎你！ {{ logged_in_user.name }} </span>
+            <span class="btn btn-danger" @click="logout">登出</span>
+        </div>
     </nav>
 </template>
 
 <script>
 export default {
     name: "AdminHeader",
+    data(){
+      return {
+          logged_in_user: null,
+      }
+    },
     methods:{
         logout(){
             axios.post('/logout')
@@ -36,6 +44,12 @@ export default {
                 console.log(err);
             })
         }
+    },
+    mounted(){
+        axios.get("/api/user")
+        .then((res) => {
+            this.logged_in_user = res.data;
+        })
     }
 }
 </script>

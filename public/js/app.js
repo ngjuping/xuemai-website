@@ -4009,8 +4009,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AdminHeader",
+  data: function data() {
+    return {
+      logged_in_user: null
+    };
+  },
   methods: {
     logout: function logout() {
       axios.post('/logout').then(function () {
@@ -4020,6 +4028,13 @@ __webpack_require__.r(__webpack_exports__);
         console.log(err);
       });
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/user").then(function (res) {
+      _this.logged_in_user = res.data;
+    });
   }
 });
 
@@ -93442,8 +93457,18 @@ var render = function() {
       _vm._v(" "),
       _vm._m(1),
       _vm._v(" "),
-      _c("div", { staticClass: "btn btn-danger", on: { click: _vm.logout } }, [
-        _vm._v("登出")
+      _c("div", [
+        _vm.logged_in_user
+          ? _c("span", { staticClass: "text-white mr-3" }, [
+              _vm._v(" 欢迎你！ " + _vm._s(_vm.logged_in_user.name) + " ")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "span",
+          { staticClass: "btn btn-danger", on: { click: _vm.logout } },
+          [_vm._v("登出")]
+        )
       ])
     ]
   )
