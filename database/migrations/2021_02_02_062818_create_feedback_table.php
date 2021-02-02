@@ -22,6 +22,7 @@ class CreateFeedbackTable extends Migration
             $table->integer('importance')->nullable();
             $table->enum('type', array('Suggestion','Report'))->nullable();
             $table->enum('status', array('Unviewed','In progress.','Completed'))->nullable();
+            $table->string('remark')->nullable();
             $table->timestamps();
 
         });
