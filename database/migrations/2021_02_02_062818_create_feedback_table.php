@@ -18,7 +18,7 @@ class CreateFeedbackTable extends Migration
             $table->string('author')->nullable();
             $table->string('authorEmail')->nullable();
             $table->string('reviewer')->nullable();
-            $table->string('issue')->nullable();
+            $table->text('issue')->nullable(); # text is longer than string
             $table->integer('importance')->nullable();
             $table->enum('type', array('Suggestion','Report'))->nullable();
             $table->enum('status', array('Unviewed','In progress.','Completed'))->nullable();
