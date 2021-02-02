@@ -21,7 +21,7 @@ class FeedbackController extends Controller
             $newFeedback->issue = $request->issue;
             $newFeedback->importance = $request->importance;
             $newFeedback->type = $request->type;
-            $newFeedback->status = 1;
+            $newFeedback->status = 2;
             $newFeedback->remark = $request->remark;
             $newFeedback->save();
 
