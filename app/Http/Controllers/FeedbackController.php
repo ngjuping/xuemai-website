@@ -16,7 +16,7 @@ class FeedbackController extends Controller
     {
             $newFeedback = new Feedback;
             $newFeedback->author = $request->author;
-            $newFeedback->authorEmail = $request->authorEmail;
+            $newFeedback->author_email = $request->author_email;
             $newFeedback->reviewer = $request->reviewer;
             $newFeedback->issue = $request->issue;
             $newFeedback->importance = $request->importance;
