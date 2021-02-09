@@ -15,6 +15,8 @@ class UpdateColumnFeedbackTable extends Migration
     {
         Schema::connection('mysql2')->table('feedback', function (Blueprint $table) {
             $table->renameColumn('authorEmail', 'author_email');
+            $table->dateTime('created_at')->change();
+            $table->dateTime('updated_at')->change();
         });
     }
 
