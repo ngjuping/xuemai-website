@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateColumnFeedbackTable extends Migration
+class UpdateTimeFeedbackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,10 @@ class UpdateColumnFeedbackTable extends Migration
     public function up()
     {
         Schema::connection('mysql2')->table('feedback', function (Blueprint $table) {
-            $table->renameColumn('authorEmail', 'author_email');
+            $table->dateTime('created_at')->change();
+            $table->dateTime('updated_at')->change();
         });
+
     }
 
     /**
@@ -25,8 +27,6 @@ class UpdateColumnFeedbackTable extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql2')->table('feedback', function (Blueprint $table) {
-            $table->renameColumn('author_email', 'authorEmail');
-        });
+        //
     }
 }
