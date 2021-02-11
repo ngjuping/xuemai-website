@@ -4699,8 +4699,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "VisitorFooter"
+  name: "VisitorFooter",
+  data: function data() {
+    return {
+      subscriber_email: "",
+      subscribing: false,
+      subscribe_success: false,
+      tried_subscribe: false,
+      err_msg: ""
+    };
+  },
+  methods: {
+    subscribe: function subscribe() {
+      var _this = this;
+
+      // prevent spam
+      if (this.success) {
+        return;
+      }
+
+      this.subscribing = true;
+      this.tried_subscribe = true;
+      this.err_msg = "";
+      axios.post('/api/subscribe', {
+        'email': this.subscriber_email
+      }).then(function (res) {
+        _this.subscribe_success = true;
+        _this.err_msg = "Thanks for joining us!";
+      })["catch"](function (err) {
+        _this.subscribe_success = false;
+        _this.err_msg = err.response.data.errors.email[0];
+      })["finally"](function () {
+        _this.subscribing = false;
+      });
+    }
+  },
+  computed: {
+    success: function success() {
+      return this.tried_subscribe && this.subscribe_success && !this.subscribing;
+    },
+    failed: function failed() {
+      return this.tried_subscribe && !this.subscribe_success && !this.subscribing;
+    },
+    buttonText: function buttonText() {
+      if (this.success) {
+        return 'Thanks';
+      } else if (this.failed) {
+        return 'Try again';
+      } else {
+        return 'Sign up';
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -9757,7 +9822,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.btn[data-v-280e6ace]{\n    border-radius:0px;\n    height:80px;\n    width:20%;\n}\ninput[data-v-280e6ace]{\n    height:80px;\n    width:60%;\n}\ni[data-v-280e6ace]{\n    color:white;\n    font-size:30px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.btn[data-v-280e6ace]{\n    border-radius:0px;\n    border-color:transparent;\n    height:80px;\n    width:20%;\n}\ninput[data-v-280e6ace]{\n    height:80px;\n    width:70%;\n}\ni[data-v-280e6ace]{\n    color:white;\n    font-size:30px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -94574,78 +94639,137 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "container-fluid " }, [
+      _c("div", { staticClass: "row jumbotron mb-0" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col d-flex align-items-center" }, [
+          _c("div", { staticClass: "row w-100" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.subscriber_email,
+                    expression: "subscriber_email"
+                  }
+                ],
+                attrs: { type: "email", placeholder: "Email" },
+                domProps: { value: _vm.subscriber_email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.subscriber_email = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "btn d-inline-flex justify-content-center align-items-center",
+                  class: {
+                    "btn-success": _vm.success,
+                    "btn-danger": _vm.failed,
+                    "btn-dark": !(_vm.success || _vm.failed)
+                  },
+                  on: { click: _vm.subscribe }
+                },
+                [
+                  _vm.subscribing
+                    ? _c(
+                        "div",
+                        {
+                          staticClass: "spinner-border ",
+                          attrs: { role: "status" }
+                        },
+                        [
+                          _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("Loading...")
+                          ])
+                        ]
+                      )
+                    : _c(
+                        "div",
+                        {
+                          staticClass:
+                            "w-100 h-100 d-flex justify-content-center align-items-center"
+                        },
+                        [_vm._v(_vm._s(_vm.buttonText))]
+                      )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12" }, [
+              _c(
+                "small",
+                {
+                  class: {
+                    "text-success": _vm.success,
+                    "text-danger": _vm.failed
+                  }
+                },
+                [_vm._v(_vm._s(_vm.err_msg))]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "container-fluid " }, [
-        _c("div", { staticClass: "row jumbotron mb-0" }, [
-          _c("div", { staticClass: "col" }, [
-            _c("div", { staticClass: "display-3" }, [
-              _c("div", [_vm._v("Community Vibes")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-primary" }, [
-                _vm._v("discord.gg/xuemai")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "col d-flex justify-content-center align-items-center"
-            },
-            [
-              _c("input", { attrs: { type: "email", placeholder: "Email" } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "btn btn-dark d-inline-block" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-100 h-100 d-flex justify-content-center align-items-center"
-                  },
-                  [_vm._v("Sign up")]
-                )
-              ])
-            ]
-          )
-        ]),
+    return _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "display-3" }, [
+        _c("div", [_vm._v("Community Vibes")]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row bg-secondary jumbotron mb-0 rounded-0" },
-          [
-            _c("div", { staticClass: "col text-white" }, [
-              _vm._v("\n                Designed by Xuemai\n            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c("i", { staticClass: "fab fa-discord mx-3" }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fab fa-youtube mx-3" }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fab fa-weixin mx-3" }),
-              _vm._v(" "),
-              _c("i", { staticClass: "fab fa-github mx-3" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col text-center" }, [
-              _c(
-                "a",
-                { staticClass: "text-white", attrs: { href: "/contact" } },
-                [_vm._v("Contact us")]
-              )
-            ])
-          ]
-        )
+        _c("div", { staticClass: "text-primary" }, [
+          _vm._v("discord.gg/xuemai")
+        ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "row bg-secondary jumbotron mb-0 rounded-0" },
+      [
+        _c("div", { staticClass: "col text-white" }, [
+          _vm._v("\n                Designed by Xuemai\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col" }, [
+          _c("i", { staticClass: "fab fa-discord mx-3" }),
+          _vm._v(" "),
+          _c("i", { staticClass: "fab fa-youtube mx-3" }),
+          _vm._v(" "),
+          _c("i", { staticClass: "fab fa-weixin mx-3" }),
+          _vm._v(" "),
+          _c("i", { staticClass: "fab fa-github mx-3" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col text-center" }, [
+          _c("a", { staticClass: "text-white", attrs: { href: "/contact" } }, [
+            _vm._v("Contact us")
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
