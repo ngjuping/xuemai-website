@@ -11,4 +11,5 @@ class Feedback extends Model
 
     protected $connection = 'mysql2';
 
+    protected $table = 'feedbacks';
 }
