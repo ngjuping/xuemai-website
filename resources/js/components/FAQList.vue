@@ -1,15 +1,14 @@
 <template>
     <div id="accordion">
-        <div class="card w-100" v-for="faq in faqs" :key="faq.id">
-            <div class="card-header">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" :data-target="`#ans${faq.id}`">
-                        {{ faq.question }}
-                    </button>
-                </h5>
+        <div class="w-75" v-for="faq in faqs" :key="faq.id">
+            <div class="card-header d-flex justify-content-between" data-toggle="collapse" :data-target="`#ans${faq.id}`">
+                <div class="mb-0">
+                    {{ faq.question }}
+                </div>
+                <div><i class="fa fa-angle-down"></i></div>
             </div>
 
-            <div :id="`ans${faq.id}`" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div :id="`ans${faq.id}`" class="collapse" aria-labelledby="headingOne">
                 <div class="card-body">
                     {{ faq.answer }}
                 </div>
@@ -26,5 +25,8 @@ export default {
 </script>
 
 <style scoped>
+    .card-header:hover{
+        cursor:pointer;
+    }
 
 </style>
