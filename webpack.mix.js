@@ -17,5 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
     require('tailwindcss'),
     require('autoprefixer'),
 ])
+    .postCss('resources/css/bootstrap_extra.css','public/css')
     .vue() //to compile vue components
     .sass('resources/sass/app2.scss', 'public/css'); //for bootstrap and font awesome

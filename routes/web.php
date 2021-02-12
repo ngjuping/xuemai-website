@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\FaqController;
 use Illuminate\Http\Request;
 
 /*
@@ -30,13 +31,15 @@ Route::get('/admin', function () {
 
     Route::post('/feedback', [FeedbackController::class, 'store']); // submit feedback
     Route::post('/subscribe', [EmailController::class, 'store']); // subscribe with email
-    Route::get('/posts', [PostController::class, 'index']); // show all posts
+    Route::get('/posts', [PostController::class, 'index']); // get all posts
+    Route::get('/faqs', [FaqController::class, 'index']); // get all FAQs
 
     Route::prefix('/post')->group(function () {
 
         Route::get('/{id}', [PostController::class, 'show']); // get detail of post with id X
 
     });
+
 
 });
 

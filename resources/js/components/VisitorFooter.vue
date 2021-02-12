@@ -3,7 +3,7 @@
     <div class="container-fluid ">
         <div class="row jumbotron mb-0">
             <div class="col">
-                <div class="display-3">
+                <div id="discord">
                     <div>Community Vibes</div>
                     <div class="text-primary">discord.gg/xuemai</div>
                 </div>
@@ -109,6 +109,9 @@ export default {
 </script>
 
 <style scoped>
+    #discord{
+        font-size:30px;
+    }
     .btn{
         border-radius:0px;
         border-color:transparent;

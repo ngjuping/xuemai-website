@@ -16,6 +16,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/contact">联络我们</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/faq">FAQ</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">敬请期待</a>
                 </li>

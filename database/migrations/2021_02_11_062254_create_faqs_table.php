@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateColumnFeedbackTable extends Migration
+class CreateFaqsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class UpdateColumnFeedbackTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql2')->table('feedbacks', function (Blueprint $table) {
-            $table->renameColumn('authorEmail', 'author_email');
+        Schema::create('faqs', function (Blueprint $table) {
+            $table->id();
+            $table->text('question');
+            $table->text('answer');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class UpdateColumnFeedbackTable extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql2')->table('feedbacks', function (Blueprint $table) {
-            $table->renameColumn('author_email', 'authorEmail');
-        });
+        Schema::dropIfExists('faqs');
     }
 }

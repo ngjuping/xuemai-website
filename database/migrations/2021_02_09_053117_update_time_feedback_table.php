@@ -13,7 +13,7 @@ class UpdateTimeFeedbackTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql2')->table('feedback', function (Blueprint $table) {
+        Schema::connection('mysql2')->table('feedbacks', function (Blueprint $table) {
             $table->dateTime('created_at')->change();
             $table->dateTime('updated_at')->change();
         });
