@@ -12,7 +12,6 @@
 
     <!-- Bootstrap, tailwind, font awesome -->
     <script src="https://kit.fontawesome.com/400d636952.js" crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app2.css') }}">
     <link rel="stylesheet" href="{{ mix('css/bootstrap_extra.css') }}">
 

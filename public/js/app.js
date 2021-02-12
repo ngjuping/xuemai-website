@@ -5065,6 +5065,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var smoothScroll = __webpack_require__(/*! smoothscroll */ "./node_modules/smoothscroll/smoothscroll.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -9983,7 +10051,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#main_jumbo[data-v-01b3a6b2]\n{\n    position:relative;\n    min-height:50vh;\n    text-align:center;\n    z-index:0;\n}\n#main_jumbo[data-v-01b3a6b2]::after\n{\n    content:\"\";\n    width:100%;\n    height:100%;\n    top:0px;\n    left:0px;\n    position:absolute;\n    z-index:-1;\n    opacity:0.5;\n    background:url(\"https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80\");\n    background-repeat:no-repeat;\n    background-size:cover;\n}\n.main_jumbo_title[data-v-01b3a6b2]\n{\n    font-size:3em;\n    font-family: \"Avenir Light\";\n    z-index:2;\n}\n.main_jumbo_content[data-v-01b3a6b2]\n{\n    margin-left:5em;\n    margin-right:5em;\n    font-size:1.5em;\n    font-family: \"Helvetica\";\n    z-index:2;\n}\n.main_jumbo_btn[data-v-01b3a6b2]\n{\n    text-align:center;\n    border:3px solid black;\n    padding:1em;\n    font-family: \"Avenir Medium\";\n    z-index:2;\n    font-size:1.4em;\n    color:black;\n    background-color:transparent;\n    cursor:pointer;\n    max-width:70%;\n    transition:background-color 0.5s;\n}\n.main_jumbo_btn[data-v-01b3a6b2]:hover\n{\n    background-color:white;\n}\n#contact_form[data-v-01b3a6b2]\n{\n    font-family: \"Avenir Medium\";\n    background-color:white;\n}\n#sendMessageButton[data-v-01b3a6b2]\n{\n    font-family: \"Avenir Medium\";\n    margin-top:1em;\n}\n@media (max-width: 768px)\n{\n#main_jumbo[data-v-01b3a6b2]::after\n    {\n        background-size:cover;\n}\n.main_jumbo_content[data-v-01b3a6b2]\n    {\n        margin-left:4em;\n        margin-right:4em;\n}\n}\n@media (max-width: 576px)\n{\n#email_container[data-v-01b3a6b2]\n    {\n        margin-bottom:auto;\n}\n.main_jumbo_btn[data-v-01b3a6b2]\n    {\n        font-size:1em;\n}\n.main_jumbo_title[data-v-01b3a6b2]\n    {\n        font-size:2em;\n        font-family: \"Avenir Light\";\n        z-index:2;\n}\n.main_jumbo_content[data-v-01b3a6b2]\n    {\n        font-size:1em;\n        margin-left:3em;\n        margin-right:3em;\n}\n#sendMessageButton[data-v-01b3a6b2]\n    {\n        width:100%;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#main_jumbo[data-v-01b3a6b2]\n{\n    position:relative;\n    min-height:50vh;\n    text-align:center;\n    z-index:0;\n}\n#main_jumbo[data-v-01b3a6b2]::after\n{\n    content:\"\";\n    width:100%;\n    height:100%;\n    top:0px;\n    left:0px;\n    position:absolute;\n    z-index:-1;\n    opacity:0.5;\n    background:url(\"https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80\");\n    background-repeat:no-repeat;\n    background-size:cover;\n}\n.main_jumbo_title[data-v-01b3a6b2]\n{\n    font-size:3em;\n    z-index:2;\n}\n.main_jumbo_content[data-v-01b3a6b2]\n{\n    margin-left:5em;\n    margin-right:5em;\n    font-size:1.5em;\n    z-index:2;\n}\n.main_jumbo_btn[data-v-01b3a6b2]\n{\n    text-align:center;\n    border:3px solid black;\n    padding:1em;\n    z-index:2;\n    font-size:1.4em;\n    color:black;\n    background-color:transparent;\n    cursor:pointer;\n    max-width:70%;\n    transition:background-color 0.5s;\n}\n.main_jumbo_btn[data-v-01b3a6b2]:hover\n{\n    background-color:white;\n}\n@media (max-width: 768px)\n{\n#main_jumbo[data-v-01b3a6b2]::after\n    {\n        background-size:cover;\n}\n.main_jumbo_content[data-v-01b3a6b2]\n    {\n        margin-left:4em;\n        margin-right:4em;\n}\n}\n@media (max-width: 576px)\n{\n#email_container[data-v-01b3a6b2]\n    {\n        margin-bottom:auto;\n}\n.main_jumbo_btn[data-v-01b3a6b2]\n    {\n        font-size:1em;\n}\n.main_jumbo_title[data-v-01b3a6b2]\n    {\n        font-size:2em;\n        z-index:2;\n}\n.main_jumbo_content[data-v-01b3a6b2]\n    {\n        font-size:1em;\n        margin-left:3em;\n        margin-right:3em;\n}\n#sendMessageButton[data-v-01b3a6b2]\n    {\n        width:100%;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -95500,7 +95568,9 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(6)
   ])
 }
 var staticRenderFns = [
@@ -95567,46 +95637,19 @@ var staticRenderFns = [
         _c("div", { staticClass: "form-group" }, [
           _c("input", {
             staticClass: "form-control",
-            attrs: {
-              id: "name",
-              type: "text",
-              placeholder: "Name",
-              required: "required",
-              "data-validation-required-message": "Please enter your name."
-            }
-          }),
-          _vm._v(" "),
-          _c("p", { staticClass: "help-block text-danger" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "phone",
-              type: "tel",
-              placeholder: "Phone Number",
-              required: "required",
-              "data-validation-required-message":
-                "Please enter your phone number."
-            }
-          }),
-          _vm._v(" "),
-          _c("p", { staticClass: "help-block text-danger" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "email",
-              type: "email",
-              placeholder: "Email",
-              required: "required",
-              "data-validation-required-message":
-                "Please enter your email address."
-            }
+            attrs: { id: "name", type: "text", placeholder: "名字/Name" }
           })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { id: "email", type: "email", placeholder: "邮箱/Email" }
+          }),
+          _vm._v(" "),
+          _c("small", { staticClass: "text-danger" }, [
+            _vm._v("我们要怎么感谢您呀")
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -95618,11 +95661,10 @@ var staticRenderFns = [
         },
         [
           _c("textarea", {
-            staticClass: "form-control",
-            staticStyle: { "min-height": "100%" },
+            staticClass: "form-control h-100",
             attrs: {
               id: "message",
-              placeholder: "Message",
+              placeholder: "您的信息/Message",
               required: "required",
               "data-validation-required-message": "Please enter a message."
             }
@@ -95637,14 +95679,226 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-right" }, [
+    return _c(
+      "div",
+      { staticClass: "text-right d-flex justify-content-end w-100" },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "btn btn-danger btn-xl text-uppercase mx-2",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("吐槽")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "btn btn-primary btn-xl text-uppercase",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("提议")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("form", [
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "col-md-4 mb-3" }, [
+          _c("label", { attrs: { for: "validationServer01" } }, [
+            _vm._v("First name")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control is-valid",
+            attrs: {
+              type: "text",
+              id: "validationServer01",
+              placeholder: "First name",
+              value: "Mark",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "valid-feedback" }, [
+            _vm._v("\n                    Looks good!\n                ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-4 mb-3" }, [
+          _c("label", { attrs: { for: "validationServer02" } }, [
+            _vm._v("Last name")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control is-valid",
+            attrs: {
+              type: "text",
+              id: "validationServer02",
+              placeholder: "Last name",
+              value: "Otto",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "valid-feedback" }, [
+            _vm._v("\n                    Looks good!\n                ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-4 mb-3" }, [
+          _c("label", { attrs: { for: "validationServerUsername" } }, [
+            _vm._v("Username")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group" }, [
+            _c("div", { staticClass: "input-group-prepend" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "input-group-text",
+                  attrs: { id: "inputGroupPrepend3" }
+                },
+                [_vm._v("@")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control is-invalid",
+              attrs: {
+                type: "text",
+                id: "validationServerUsername",
+                placeholder: "Username",
+                "aria-describedby": "inputGroupPrepend3",
+                required: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "invalid-feedback" }, [
+              _vm._v(
+                "\n                        Please choose a username.\n                    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "valid-feedback" }, [
+              _vm._v(
+                "\n                        Looks fucking good bro.\n                    "
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "col-md-6 mb-3" }, [
+          _c("label", { attrs: { for: "validationServer03" } }, [
+            _vm._v("City")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control is-invalid",
+            attrs: {
+              type: "text",
+              id: "validationServer03",
+              placeholder: "City",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v(
+              "\n                    Please provide a valid city.\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "validationServer04" } }, [
+            _vm._v("State")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control is-invalid",
+            attrs: {
+              type: "text",
+              id: "validationServer04",
+              placeholder: "State",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v(
+              "\n                    Please provide a valid state.\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 mb-3" }, [
+          _c("label", { attrs: { for: "validationServer05" } }, [
+            _vm._v("Zip")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control is-invalid",
+            attrs: {
+              type: "text",
+              id: "validationServer05",
+              placeholder: "Zip",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v(
+              "\n                    Please provide a valid zip.\n                "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input is-invalid",
+            attrs: {
+              type: "checkbox",
+              value: "",
+              id: "invalidCheck3",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "invalidCheck3" }
+            },
+            [
+              _vm._v(
+                "\n                    Agree to terms and conditions\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v(
+              "\n                    You must agree before submitting.\n                "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
       _c(
         "button",
-        {
-          staticClass: "btn btn-secondary btn-xl text-uppercase mb-5",
-          attrs: { id: "sendMessageButton", type: "submit" }
-        },
-        [_vm._v("发送消息")]
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Submit form")]
       )
     ])
   }

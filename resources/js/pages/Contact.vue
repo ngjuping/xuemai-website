@@ -45,32 +45,100 @@
                             <div class="row">
                                 <div class="col-md-6" id="form_first_part">
                                     <div class="form-group">
-                                        <input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
-                                        <p class="help-block text-danger"></p>
+                                        <input class="form-control" id="name" type="text" placeholder="名字/Name">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number.">
-                                        <p class="help-block text-danger"></p>
+                                        <input class="form-control" id="email" type="email" placeholder="邮箱/Email">
+                                        <small class="text-danger">我们要怎么感谢您呀</small>
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-control" id="email" type="email" placeholder="Email" required="required" data-validation-required-message="Please enter your email address.">
-                                    </div>
+
                                 </div>
                                 <div class="col-md-6 form-group" id="message_container">
-                                    <textarea style="min-height:100%" class="form-control" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                    <textarea class="form-control h-100" id="message" placeholder="您的信息/Message" required="required" data-validation-required-message="Please enter a message."></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
+
                             </div>
                         </form>
 
-                        <div class="text-right">
-                            <button id="sendMessageButton" class="btn btn-secondary btn-xl text-uppercase mb-5" type="submit">发送消息</button>
+                        <div class="text-right d-flex justify-content-end w-100">
+
+                            <div class="btn btn-danger btn-xl text-uppercase mx-2" type="submit">吐槽</div>
+                            <div class="btn btn-primary btn-xl text-uppercase" type="submit">提议</div>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
+        <form>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer01">First name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Last name</label>
+                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServerUsername">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                        </div>
+                        <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+                        <div class="invalid-feedback">
+                            Please choose a username.
+                        </div>
+                        <div class="valid-feedback">
+                            Looks fucking good bro.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationServer03">City</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid city.
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationServer04">State</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid state.
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationServer05">Zip</label>
+                    <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid zip.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                    <label class="form-check-label" for="invalidCheck3">
+                        Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </form>
     </div>
 </template>
 
@@ -114,7 +182,6 @@ export default {
 .main_jumbo_title
 {
     font-size:3em;
-    font-family: "Avenir Light";
     z-index:2;
 }
 
@@ -123,7 +190,6 @@ export default {
     margin-left:5em;
     margin-right:5em;
     font-size:1.5em;
-    font-family: "Helvetica";
     z-index:2;
 }
 
@@ -132,7 +198,6 @@ export default {
     text-align:center;
     border:3px solid black;
     padding:1em;
-    font-family: "Avenir Medium";
     z-index:2;
     font-size:1.4em;
     color:black;
@@ -145,18 +210,6 @@ export default {
 .main_jumbo_btn:hover
 {
     background-color:white;
-}
-
-#contact_form
-{
-    font-family: "Avenir Medium";
-    background-color:white;
-}
-
-#sendMessageButton
-{
-    font-family: "Avenir Medium";
-    margin-top:1em;
 }
 
 
@@ -189,7 +242,6 @@ export default {
     .main_jumbo_title
     {
         font-size:2em;
-        font-family: "Avenir Light";
         z-index:2;
     }
 
