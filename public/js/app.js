@@ -4273,7 +4273,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FAQList",
   props: ["faqs"]
@@ -4989,6 +4988,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -5065,81 +5066,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 var smoothScroll = __webpack_require__(/*! smoothscroll */ "./node_modules/smoothscroll/smoothscroll.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Contact",
+  data: function data() {
+    return {
+      name: "",
+      email: "",
+      message: "",
+      disableSubmit: false,
+      failedSubmit: false,
+      err_msg: "无法提交，请重试"
+    };
+  },
   methods: {
     scrollToContact: function scrollToContact() {
       smoothScroll(this.$refs["contact"]);
+    },
+    checkInputOK: function checkInputOK() {
+      if (this.name.length === 0 || this.name.length > 30) {
+        this.err_msg = "名字不能为空或太长！";
+      } else if (this.email.length === 0 || this.email.length > 50) {
+        this.err_msg = "邮箱不能为空或太长！";
+      } else if (this.message.length === 0 || this.message.length > 200) {
+        this.err_msg = "信息不能为空或太长！";
+      } else return true;
+
+      this.failedSubmit = true;
+      return false;
+    },
+    submitWithType: function submitWithType(type) {
+      var _this = this;
+
+      if (this.disableSubmit) return;
+
+      if (this.checkInputOK()) {
+        this.failedSubmit = false;
+        axios.post('api/feedback', {
+          "author": this.name,
+          "author_email": this.email,
+          "issue": this.message,
+          "importance": 3,
+          "type": type,
+          "status": 1
+        }).then(function (res) {
+          _this.disableSubmit = true;
+          sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+            title: "\u6210\u529F",
+            text: "\u53D7\u5230\u4E86\u60A8\u7684\u4FE1\u606F\uFF0C\u6211\u4EEC\u4F1A\u5C3D\u5FEB\u56DE\u590D~",
+            icon: "success",
+            showCloseButton: true,
+            showConfirmButton: true,
+            confirmButtonText: "继续浏览",
+            timer: 1500
+          });
+        })["catch"](function (err) {
+          console.log(err);
+          _this.failedSubmit = true;
+        });
+      }
+    },
+    report: function report() {
+      this.submitWithType(1);
+    },
+    suggest: function suggest() {
+      this.submitWithType(2);
     }
   }
 });
@@ -94418,7 +94412,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "accordion" } },
+    { staticStyle: { height: "50vh" }, attrs: { id: "accordion" } },
     _vm._l(_vm.faqs, function(faq) {
       return _c("div", { key: faq.id, staticClass: "w-75" }, [
         _c(
@@ -94445,11 +94439,10 @@ var render = function() {
             attrs: { id: "ans" + faq.id, "aria-labelledby": "headingOne" }
           },
           [
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                " + _vm._s(faq.answer) + "\n            "
-              )
-            ])
+            _c("div", {
+              staticClass: "card-body",
+              domProps: { innerHTML: _vm._s(faq.answer) }
+            })
           ]
         )
       ])
@@ -95557,20 +95550,155 @@ var render = function() {
                 attrs: {
                   id: "contact_form",
                   name: "sentMessage",
-                  novalidate: "novalidate",
-                  action: "mail_php.php"
+                  novalidate: "novalidate"
                 }
               },
-              [_vm._m(4)]
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-6",
+                      attrs: { id: "form_first_part" }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.name,
+                              expression: "name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "name",
+                            type: "text",
+                            placeholder: "名字/Name"
+                          },
+                          domProps: { value: _vm.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.name = $event.target.value
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.email,
+                              expression: "email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "email",
+                            type: "email",
+                            placeholder: "邮箱/Email"
+                          },
+                          domProps: { value: _vm.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.email = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-6 form-group",
+                      attrs: { id: "message_container" }
+                    },
+                    [
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.message,
+                            expression: "message"
+                          }
+                        ],
+                        staticClass: "form-control h-100",
+                        attrs: {
+                          id: "message",
+                          placeholder: "您的信息/Message"
+                        },
+                        domProps: { value: _vm.message },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.message = $event.target.value
+                          }
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]
             ),
             _vm._v(" "),
-            _vm._m(5)
+            _c(
+              "div",
+              { staticClass: "text-right d-flex justify-content-end w-100" },
+              [
+                !_vm.disableSubmit
+                  ? _c("div", [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "btn btn-danger btn-xl text-uppercase mx-2",
+                          attrs: { type: "submit" },
+                          on: { click: _vm.report }
+                        },
+                        [_vm._v("吐槽")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "btn btn-primary btn-xl text-uppercase",
+                          attrs: { type: "submit" },
+                          on: { click: _vm.suggest }
+                        },
+                        [_vm._v("提议")]
+                      ),
+                      _vm._v(" "),
+                      _vm.failedSubmit
+                        ? _c("small", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.err_msg))
+                          ])
+                        : _vm._e()
+                    ])
+                  : _c("h3", { staticClass: "text-success" }, [
+                      _vm._v("谢谢您的反馈!")
+                    ])
+              ]
+            )
           ])
         ])
       ])
-    ]),
-    _vm._v(" "),
-    _vm._m(6)
+    ])
   ])
 }
 var staticRenderFns = [
@@ -95626,280 +95754,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "border-top my-3 w-50" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6", attrs: { id: "form_first_part" } }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { id: "name", type: "text", placeholder: "名字/Name" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: { id: "email", type: "email", placeholder: "邮箱/Email" }
-          }),
-          _vm._v(" "),
-          _c("small", { staticClass: "text-danger" }, [
-            _vm._v("我们要怎么感谢您呀")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "col-md-6 form-group",
-          attrs: { id: "message_container" }
-        },
-        [
-          _c("textarea", {
-            staticClass: "form-control h-100",
-            attrs: {
-              id: "message",
-              placeholder: "您的信息/Message",
-              required: "required",
-              "data-validation-required-message": "Please enter a message."
-            }
-          }),
-          _vm._v(" "),
-          _c("p", { staticClass: "help-block text-danger" })
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-right d-flex justify-content-end w-100" },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "btn btn-danger btn-xl text-uppercase mx-2",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("吐槽")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "btn btn-primary btn-xl text-uppercase",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("提议")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form-row" }, [
-        _c("div", { staticClass: "col-md-4 mb-3" }, [
-          _c("label", { attrs: { for: "validationServer01" } }, [
-            _vm._v("First name")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control is-valid",
-            attrs: {
-              type: "text",
-              id: "validationServer01",
-              placeholder: "First name",
-              value: "Mark",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "valid-feedback" }, [
-            _vm._v("\n                    Looks good!\n                ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 mb-3" }, [
-          _c("label", { attrs: { for: "validationServer02" } }, [
-            _vm._v("Last name")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control is-valid",
-            attrs: {
-              type: "text",
-              id: "validationServer02",
-              placeholder: "Last name",
-              value: "Otto",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "valid-feedback" }, [
-            _vm._v("\n                    Looks good!\n                ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4 mb-3" }, [
-          _c("label", { attrs: { for: "validationServerUsername" } }, [
-            _vm._v("Username")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-group" }, [
-            _c("div", { staticClass: "input-group-prepend" }, [
-              _c(
-                "span",
-                {
-                  staticClass: "input-group-text",
-                  attrs: { id: "inputGroupPrepend3" }
-                },
-                [_vm._v("@")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control is-invalid",
-              attrs: {
-                type: "text",
-                id: "validationServerUsername",
-                placeholder: "Username",
-                "aria-describedby": "inputGroupPrepend3",
-                required: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                        Please choose a username.\n                    "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "valid-feedback" }, [
-              _vm._v(
-                "\n                        Looks fucking good bro.\n                    "
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-row" }, [
-        _c("div", { staticClass: "col-md-6 mb-3" }, [
-          _c("label", { attrs: { for: "validationServer03" } }, [
-            _vm._v("City")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control is-invalid",
-            attrs: {
-              type: "text",
-              id: "validationServer03",
-              placeholder: "City",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "invalid-feedback" }, [
-            _vm._v(
-              "\n                    Please provide a valid city.\n                "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3 mb-3" }, [
-          _c("label", { attrs: { for: "validationServer04" } }, [
-            _vm._v("State")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control is-invalid",
-            attrs: {
-              type: "text",
-              id: "validationServer04",
-              placeholder: "State",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "invalid-feedback" }, [
-            _vm._v(
-              "\n                    Please provide a valid state.\n                "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3 mb-3" }, [
-          _c("label", { attrs: { for: "validationServer05" } }, [
-            _vm._v("Zip")
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control is-invalid",
-            attrs: {
-              type: "text",
-              id: "validationServer05",
-              placeholder: "Zip",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "invalid-feedback" }, [
-            _vm._v(
-              "\n                    Please provide a valid zip.\n                "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input is-invalid",
-            attrs: {
-              type: "checkbox",
-              value: "",
-              id: "invalidCheck3",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "invalidCheck3" }
-            },
-            [
-              _vm._v(
-                "\n                    Agree to terms and conditions\n                "
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "invalid-feedback" }, [
-            _vm._v(
-              "\n                    You must agree before submitting.\n                "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Submit form")]
-      )
     ])
   }
 ]

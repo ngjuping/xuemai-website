@@ -1,5 +1,5 @@
 <template>
-    <div id="accordion">
+    <div id="accordion" style="height:50vh;">
         <div class="w-75" v-for="faq in faqs" :key="faq.id">
             <div class="card-header d-flex justify-content-between" data-toggle="collapse" :data-target="`#ans${faq.id}`">
                 <div class="mb-0">
@@ -9,8 +9,7 @@
             </div>
 
             <div :id="`ans${faq.id}`" class="collapse" aria-labelledby="headingOne">
-                <div class="card-body">
-                    {{ faq.answer }}
+                <div class="card-body" v-html="faq.answer">
                 </div>
             </div>
         </div>

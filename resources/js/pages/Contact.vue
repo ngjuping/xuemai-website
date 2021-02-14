@@ -41,115 +41,112 @@
                         <div class="border-top my-3 w-50"></div>
                     </div>
                     <div class="col-12 col-sm-9">
-                        <form id="contact_form" name="sentMessage" novalidate="novalidate" action="mail_php.php" ref="contact">
+                        <form id="contact_form" name="sentMessage" novalidate="novalidate" ref="contact">
                             <div class="row">
                                 <div class="col-md-6" id="form_first_part">
                                     <div class="form-group">
-                                        <input class="form-control" id="name" type="text" placeholder="名字/Name">
+                                        <input class="form-control" id="name" type="text" placeholder="名字/Name" v-model="name">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" id="email" type="email" placeholder="邮箱/Email">
-                                        <small class="text-danger">我们要怎么感谢您呀</small>
+                                        <input class="form-control" id="email" type="email" placeholder="邮箱/Email" v-model="email">
                                     </div>
 
                                 </div>
                                 <div class="col-md-6 form-group" id="message_container">
-                                    <textarea class="form-control h-100" id="message" placeholder="您的信息/Message" required="required" data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block text-danger"></p>
+                                    <textarea class="form-control h-100" id="message" placeholder="您的信息/Message" v-model="message"></textarea>
                                 </div>
 
                             </div>
                         </form>
 
                         <div class="text-right d-flex justify-content-end w-100">
-
-                            <div class="btn btn-danger btn-xl text-uppercase mx-2" type="submit">吐槽</div>
-                            <div class="btn btn-primary btn-xl text-uppercase" type="submit">提议</div>
+                            <div v-if="!disableSubmit">
+                                <div class="btn btn-danger btn-xl text-uppercase mx-2" type="submit" @click="report">吐槽</div>
+                                <div class="btn btn-primary btn-xl text-uppercase" type="submit" @click="suggest">提议</div>
+                                <small class="text-danger" v-if="failedSubmit">{{ err_msg }}</small>
+                            </div>
+                            <h3 v-else class="text-success">谢谢您的反馈!</h3>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <form>
-            <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer01">First name</label>
-                    <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationServer02">Last name</label>
-                    <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="validationServerUsername">Username</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupPrepend3">@</span>
-                        </div>
-                        <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
-                        <div class="invalid-feedback">
-                            Please choose a username.
-                        </div>
-                        <div class="valid-feedback">
-                            Looks fucking good bro.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationServer03">City</label>
-                    <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid city.
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="validationServer04">State</label>
-                    <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid state.
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="validationServer05">Zip</label>
-                    <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
-                    <div class="invalid-feedback">
-                        Please provide a valid zip.
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-                    <label class="form-check-label" for="invalidCheck3">
-                        Agree to terms and conditions
-                    </label>
-                    <div class="invalid-feedback">
-                        You must agree before submitting.
-                    </div>
-                </div>
-            </div>
-            <button class="btn btn-primary" type="submit">Submit form</button>
-        </form>
     </div>
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 let smoothScroll = require('smoothscroll');
 
 export default {
     name: "Contact",
+    data(){
+        return {
+            name:"",
+            email:"",
+            message:"",
+            disableSubmit:false,
+            failedSubmit:false,
+            err_msg:"无法提交，请重试"
+        }
+    },
     methods:{
         scrollToContact(){
             smoothScroll(this.$refs["contact"]);
+        },
+        checkInputOK(){
+            if(this.name.length === 0 || this.name.length > 30){
+                this.err_msg = "名字不能为空或太长！"
+            }
+            else if(this.email.length === 0 || this.email.length > 50){
+                this.err_msg = "邮箱不能为空或太长！"
+            }
+            else if(this.message.length === 0 || this.message.length > 200){
+                this.err_msg = "信息不能为空或太长！"
+            }
+            else return true;
+
+            this.failedSubmit = true;
+            return false;
+        },
+        submitWithType(type){
+            if(this.disableSubmit) return;
+
+            if(this.checkInputOK())
+            {
+                this.failedSubmit = false;
+                axios.post('api/feedback',{
+                    "author":this.name,
+                    "author_email":this.email,
+                    "issue":this.message,
+                    "importance":3,
+                    "type":type,
+                    "status":1
+                })
+                .then((res) => {
+                    this.disableSubmit = true;
+                    Swal.fire({
+                        title: `成功`,
+                        text: `受到了您的信息，我们会尽快回复~`,
+                        icon:"success",
+                        showCloseButton:true,
+                        showConfirmButton:true,
+                        confirmButtonText:"继续浏览",
+                        timer: 1500
+                    })
+                })
+                .catch((err) => {
+                    console.log(err);
+                    this.failedSubmit = true;
+                })
+            }
+
+        },
+        report(){
+            this.submitWithType(1);
+        },
+        suggest(){
+            this.submitWithType(2);
         }
     }
 }
