@@ -45,15 +45,15 @@
                             <div class="row">
                                 <div class="col-md-6" id="form_first_part">
                                     <div class="form-group">
-                                        <input class="form-control" id="name" type="text" placeholder="名字/Name" v-model="name">
+                                        <input class="form-control" id="name" type="text" placeholder="名字/Name (不超过30字)" v-model="name">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" id="email" type="email" placeholder="邮箱/Email" v-model="email">
+                                        <input class="form-control" id="email" type="email" placeholder="邮箱/Email (不超过50字)" v-model="email">
                                     </div>
 
                                 </div>
                                 <div class="col-md-6 form-group" id="message_container">
-                                    <textarea class="form-control h-100" id="message" placeholder="您的信息/Message" v-model="message"></textarea>
+                                    <textarea class="form-control h-100" id="message" placeholder="您的信息/Message (不超过200字)" v-model="message"></textarea>
                                 </div>
 
                             </div>
@@ -119,9 +119,7 @@ export default {
                     "author":this.name,
                     "author_email":this.email,
                     "issue":this.message,
-                    "importance":3,
                     "type":type,
-                    "status":1
                 })
                 .then((res) => {
                     this.disableSubmit = true;

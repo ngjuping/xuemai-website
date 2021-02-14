@@ -5109,9 +5109,7 @@ var smoothScroll = __webpack_require__(/*! smoothscroll */ "./node_modules/smoot
           "author": this.name,
           "author_email": this.email,
           "issue": this.message,
-          "importance": 3,
-          "type": type,
-          "status": 1
+          "type": type
         }).then(function (res) {
           _this.disableSubmit = true;
           sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
@@ -95576,7 +95574,7 @@ var render = function() {
                           attrs: {
                             id: "name",
                             type: "text",
-                            placeholder: "名字/Name"
+                            placeholder: "名字/Name (不超过30字)"
                           },
                           domProps: { value: _vm.name },
                           on: {
@@ -95604,7 +95602,7 @@ var render = function() {
                           attrs: {
                             id: "email",
                             type: "email",
-                            placeholder: "邮箱/Email"
+                            placeholder: "邮箱/Email (不超过50字)"
                           },
                           domProps: { value: _vm.email },
                           on: {
@@ -95639,7 +95637,7 @@ var render = function() {
                         staticClass: "form-control h-100",
                         attrs: {
                           id: "message",
-                          placeholder: "您的信息/Message"
+                          placeholder: "您的信息/Message (不超过200字)"
                         },
                         domProps: { value: _vm.message },
                         on: {

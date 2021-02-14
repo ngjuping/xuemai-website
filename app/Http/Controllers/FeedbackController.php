@@ -14,15 +14,30 @@ class FeedbackController extends Controller
 
     public function store(Request $request)
     {
+            // check feedback data length
+            $author_name_len = strlen($request->author);
+            $author_email_len = strlen($request->author_email);
+            $author_issue_len = strlen($request->issue);
+            if($author_name_len == 0 || $author_email_len == 0 || $author_issue_len == 0
+            || $author_name_len > 30 || $author_email_len > 50 || $author_issue_len > 200){
+                return response()->json([
+                    'message' => '406 Unacceptable feedback data',
+                ],406);
+            }
+
+            // get user ip
+            // dd($request->ip());
+
             $newFeedback = new Feedback;
             $newFeedback->author = $request->author;
             $newFeedback->author_email = $request->author_email;
-            $newFeedback->reviewer = $request->reviewer;
             $newFeedback->issue = $request->issue;
-            $newFeedback->importance = $request->importance;
             $newFeedback->type = $request->type;
-            $newFeedback->status = 1;
-            $newFeedback->remark = $request->remark;
+
+            // default values
+            $newFeedback->importance = 3;
+            $newFeedback->status = 1; // unviewed
+
             $newFeedback->save();
 
             return response()->json([
