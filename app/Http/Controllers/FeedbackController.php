@@ -26,13 +26,12 @@ class FeedbackController extends Controller
             }
 
             // get user ip
-            // dd($request->ip());
-
             $newFeedback = new Feedback;
             $newFeedback->author = $request->author;
             $newFeedback->author_email = $request->author_email;
             $newFeedback->issue = $request->issue;
             $newFeedback->type = $request->type;
+            $newFeedback->ip =  $request->ip();
 
             // default values
             $newFeedback->importance = 3;
