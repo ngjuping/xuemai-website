@@ -26,7 +26,7 @@ class AddFeedbackIp extends Migration
     public function down()
     {
         Schema::connection('mysql2')->table('feedbacks', function($table) {
-            $table->dropColumn('paid');
+            $table->dropColumn('ip');
         });
     }
 }
