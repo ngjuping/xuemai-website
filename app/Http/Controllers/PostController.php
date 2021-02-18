@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,6 +38,16 @@ class PostController extends Controller
             $newPost->postTitle = $request->postTitle;
             $newPost->postContent = $request->postContent;
             $newPost->save();
+
+            // save to elastic search
+            $elasticSearchURL = config('elastic.url', 'localhost').'_doc/'.$newPost->id;
+            $response = Http::withHeaders([
+                'Authorization' => config('elastic.credentials', 'defaulttoken')
+            ])
+            ->post($elasticSearchURL,[
+                'postTitle' => $request->postTitle,
+                'postContent' => $request->postContent,
+            ]);
             return response()->json([
                 'message' => '200 Create post OK',
             ],200);

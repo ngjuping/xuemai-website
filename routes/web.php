@@ -26,7 +26,7 @@ Route::get('/admin', function () {
 })->middleware(['auth'])->name('dashboard');
 
 // No auth required URLs
-// all API share the same request per minute
+// throttle protected, all API share the same request per minute
  Route::prefix('/api')->middleware('throttle:60,1')->group(function() {
 
     Route::post('/feedback', [FeedbackController::class, 'store']); // submit feedback

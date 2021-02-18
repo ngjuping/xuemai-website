@@ -7,6 +7,7 @@ use App\Models\Email;
 
 class EmailController extends Controller
 {
+
     /**
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
