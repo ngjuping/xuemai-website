@@ -40,14 +40,14 @@ class PostController extends Controller
             $newPost->save();
 
             // save to elastic search
-            $elasticSearchURL = config('elastic.url', 'localhost').'_doc/'.$newPost->id;
-            $response = Http::withHeaders([
-                'Authorization' => config('elastic.credentials', 'defaulttoken')
-            ])
-            ->post($elasticSearchURL,[
-                'postTitle' => $request->postTitle,
-                'postContent' => $request->postContent,
-            ]);
+//            $elasticSearchURL = config('elastic.url', 'localhost/').'_doc/'.$newPost->id;
+//            $response = Http::withHeaders([
+//                'Authorization' => config('elastic.credentials', 'defaulttoken')
+//            ])
+//            ->post($elasticSearchURL,[
+//                'postTitle' => $request->postTitle,
+//                'postContent' => $request->postContent,
+//            ]);
             return response()->json([
                 'message' => '200 Create post OK',
             ],200);
@@ -99,7 +99,17 @@ class PostController extends Controller
                 $existingPost->postTitle = $request->postTitle;
                 $existingPost->postContent = $request->postContent;
                 $existingPost->save();
-                dump($request->postTitle);
+
+                // save to elastic search
+//                $elasticSearchURL = config('elastic.url', 'localhost/').'_doc/'.$existingPost->id;
+//                $response = Http::withHeaders([
+//                    'Authorization' => config('elastic.credentials', 'defaulttoken')
+//                ])
+//                    ->post($elasticSearchURL,[
+//                        'postTitle' => $request->postTitle,
+//                        'postContent' => $request->postContent,
+//                    ]);
+
                 return response()->json([
                     'message' => '200 Update post OK',
                 ],200);
@@ -133,6 +143,15 @@ class PostController extends Controller
             // if post is found
             if($existingPost){
                 $existingPost->delete();
+
+                // delete post in elastic search
+//                $elasticSearchURL = config('elastic.url', 'localhost/').'_doc/'.$existingPost->id;
+//                $response = Http::withHeaders([
+//                    'Authorization' => config('elastic.credentials', 'defaulttoken')
+//                ])
+//                ->delete($elasticSearchURL);
+
+
                 return response()->json([
                     'message' => '200 Delete post OK',
                 ],200);
