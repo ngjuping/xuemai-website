@@ -23,6 +23,7 @@ export default {
     },
     methods:{
         chineseTime(fulltime){
+            if(!fulltime) return '没有创建时间'
             // Input: 2021-01-25 02:18:06
             // Output: 2021年 01月 25日 02点18分
             let date = fulltime.split(" ")[0].split("-");

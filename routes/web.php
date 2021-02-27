@@ -33,6 +33,7 @@ Route::get('/admin', function () {
     Route::post('/subscribe', [EmailController::class, 'store']); // subscribe with email
     Route::get('/posts', [PostController::class, 'index']); // get all posts
     Route::get('/faqs', [FaqController::class, 'index']); // get all FAQs
+    Route::get('/search', [PostController::class, 'search']); //search posts
 
     Route::prefix('/post')->group(function () {
 

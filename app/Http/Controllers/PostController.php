@@ -11,14 +11,62 @@ class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
         return response()->json([
             'message' => '200 Get all posts OK',
-            'posts' => Post::orderBy('created_at','DESC')->get(),
+            'posts' => Post::orderBy('created_at','DESC')->paginate(5),
+        ],200);
+    }
+
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        if(!$query){
+            return response()->json([
+                'message' => '406 Empty string not acceptable as query',
+            ],406);
+        }
+        $elasticSearchURL = config('elastic.url', 'localhost/').'_search';
+        $response = Http::withHeaders([
+            'Authorization' => config('elastic.credentials', 'defaulttoken')
+        ])
+        ->post($elasticSearchURL,[
+            'query' => [
+                'multi_match' => [
+                    "query" => $query,
+                    "fuzziness" => "AUTO",
+                    "fields"=> [ "posttitle", "postcontent" ]
+                ]
+            ]
+        ]);
+
+        // decoded data
+        $results = json_decode($response->getBody()->getContents())->hits->hits;
+        $results_len = count($results);
+        for ($x = 0; $x < $results_len; $x++) {
+            $results[$x] = [
+                'id' => $results[$x]->_source->id,
+                'user_id' => $results[$x]->_source->user_id,
+                'postTitle' => $results[$x]->_source->posttitle,
+                'postContent' => $results[$x]->_source->postcontent,
+                'created_at' => $results[$x]->_source->created_at,
+                'updated_at' => $results[$x]->_source->updated_at,
+            ];
+        }
+        return response()->json([
+            'message' => '200 Search posts OK',
+            'posts' => [
+                'data' => $results
+            ]
         ],200);
     }
 
@@ -39,15 +87,6 @@ class PostController extends Controller
             $newPost->postContent = $request->postContent;
             $newPost->save();
 
-            // save to elastic search
-//            $elasticSearchURL = config('elastic.url', 'localhost/').'_doc/'.$newPost->id;
-//            $response = Http::withHeaders([
-//                'Authorization' => config('elastic.credentials', 'defaulttoken')
-//            ])
-//            ->post($elasticSearchURL,[
-//                'postTitle' => $request->postTitle,
-//                'postContent' => $request->postContent,
-//            ]);
             return response()->json([
                 'message' => '200 Create post OK',
             ],200);
@@ -100,16 +139,6 @@ class PostController extends Controller
                 $existingPost->postContent = $request->postContent;
                 $existingPost->save();
 
-                // save to elastic search
-//                $elasticSearchURL = config('elastic.url', 'localhost/').'_doc/'.$existingPost->id;
-//                $response = Http::withHeaders([
-//                    'Authorization' => config('elastic.credentials', 'defaulttoken')
-//                ])
-//                    ->post($elasticSearchURL,[
-//                        'postTitle' => $request->postTitle,
-//                        'postContent' => $request->postContent,
-//                    ]);
-
                 return response()->json([
                     'message' => '200 Update post OK',
                 ],200);
@@ -143,14 +172,6 @@ class PostController extends Controller
             // if post is found
             if($existingPost){
                 $existingPost->delete();
-
-                // delete post in elastic search
-//                $elasticSearchURL = config('elastic.url', 'localhost/').'_doc/'.$existingPost->id;
-//                $response = Http::withHeaders([
-//                    'Authorization' => config('elastic.credentials', 'defaulttoken')
-//                ])
-//                ->delete($elasticSearchURL);
-
 
                 return response()->json([
                     'message' => '200 Delete post OK',

@@ -4070,13 +4070,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       allPosts: [],
-      filterString: ""
+      filterString: "",
+      page: 1,
+      pagination_data: {},
+      loading: false
     };
   },
   components: {
@@ -4084,21 +4110,52 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     posts: function posts() {
-      var _this = this;
+      return this.allPosts;
+    },
+    availablePages: function availablePages() {
+      var pages = [];
+      var current_page = this.pagination_data.current_page;
+      var last_page = this.pagination_data.last_page;
 
-      return this.allPosts.filter(function (post) {
-        return post.postTitle.includes(_this.filterString) || post.postContent.includes(_this.filterString);
-      });
+      for (var i = 1; i < current_page && i - current_page < 3; i++) {
+        pages.push(i);
+      }
+
+      for (var _i = current_page; _i <= last_page && _i - current_page < 3; _i++) {
+        pages.push(_i);
+      }
+
+      return pages;
     }
   },
   methods: {
+    searchPosts: function searchPosts() {
+      var _this = this;
+
+      this.loading = true;
+      axios.get("/api/search?query=".concat(this.filterString)).then(function (res) {
+        console.log(res.data);
+        _this.allPosts = res.data.posts.data;
+        _this.pagination_data = res.data.posts;
+      })["catch"](function (err) {
+        console.log(err);
+      })["finally"](function () {
+        _this.loading = false;
+      });
+    },
     getAllPosts: function getAllPosts() {
       var _this2 = this;
 
-      axios.get("/api/posts").then(function (res) {
-        _this2.allPosts = res.data.posts;
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/api/posts?page=1";
+      this.loading = true;
+      axios.get(url).then(function (res) {
+        console.log(res.data);
+        _this2.allPosts = res.data.posts.data;
+        _this2.pagination_data = res.data.posts;
       })["catch"](function (err) {
         console.log(err);
+      })["finally"](function () {
+        _this2.loading = false;
       });
     },
     goToPostDetails: function goToPostDetails(id) {
@@ -4451,8 +4508,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     chineseTime: function chineseTime(fulltime) {
-      // Input: 2021-01-25 02:18:06
+      if (!fulltime) return '没有创建时间'; // Input: 2021-01-25 02:18:06
       // Output: 2021年 01月 25日 02点18分
+
       var date = fulltime.split(" ")[0].split("-");
       var time = fulltime.split(" ")[1].split(":");
       return "".concat(date[0], "\u5E74 ").concat(date[1], "\u6708 ").concat(date[2], "\u65E5   ").concat(time[0], "\u70B9").concat(time[1], "\u5206");
@@ -94198,31 +94256,158 @@ var render = function() {
     [
       _c("h3", [_vm._v("最新动态")]),
       _vm._v(" "),
-      _c("form", { staticClass: "form-inline my-2 my-lg-0" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.filterString,
-              expression: "filterString"
-            }
-          ],
-          staticClass: "form-control mr-sm-2",
-          attrs: { type: "search", placeholder: "搜索帖子..." },
-          domProps: { value: _vm.filterString },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _c("div", { staticClass: "container-fluid px-0 mb-3 mx-0" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-8 d-flex justify-content-start" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filterString,
+                  expression: "filterString"
+                }
+              ],
+              staticClass: "form-control w-75 h-100 mr-2",
+              attrs: { type: "search", placeholder: "搜索帖子..." },
+              domProps: { value: _vm.filterString },
+              on: {
+                search: function($event) {
+                  return _vm.getAllPosts()
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.filterString = $event.target.value
+                }
               }
-              _vm.filterString = $event.target.value
-            }
-          }
-        })
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary d-inline-block",
+                on: {
+                  click: function($event) {
+                    return _vm.searchPosts()
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-search" })]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col d-flex justify-content-end align-items-end" },
+            [
+              _vm.loading
+                ? _c("div", { staticClass: "mx-3" }, [_vm._m(0)])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "ul",
+                { staticClass: "pagination" },
+                [
+                  _c(
+                    "li",
+                    {
+                      staticClass: "page-item page-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.getAllPosts()
+                        }
+                      }
+                    },
+                    [_vm._v("First")]
+                  ),
+                  _vm._v(" "),
+                  _vm.pagination_data.prev_page_url
+                    ? _c(
+                        "li",
+                        {
+                          staticClass: "page-item page-link",
+                          on: {
+                            click: function($event) {
+                              return _vm.getAllPosts(
+                                _vm.pagination_data.prev_page_url
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Previous")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm._l(_vm.availablePages, function(page) {
+                    return _c(
+                      "li",
+                      {
+                        staticClass: "page-item ",
+                        class: {
+                          active: _vm.pagination_data.current_page === page
+                        }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "page-link",
+                            on: {
+                              click: function($event) {
+                                return _vm.getAllPosts(
+                                  "/api/posts?page=" + page
+                                )
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(page))]
+                        )
+                      ]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _vm.pagination_data.next_page_url
+                    ? _c(
+                        "li",
+                        {
+                          staticClass: "page-item page-link",
+                          on: {
+                            click: function($event) {
+                              return _vm.getAllPosts(
+                                _vm.pagination_data.next_page_url
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Next")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "page-item page-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.getAllPosts(
+                            _vm.pagination_data.next_page_url
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("Last")]
+                  )
+                ],
+                2
+              )
+            ]
+          )
+        ])
       ]),
       _vm._v(" "),
-      _c("br"),
+      _c("div", { staticClass: "clearfix" }),
       _vm._v(" "),
       _vm._l(_vm.posts, function(post) {
         return _c("Post", {
@@ -94239,7 +94424,18 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
+  }
+]
 render._withStripped = true
 
 
