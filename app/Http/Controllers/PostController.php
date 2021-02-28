@@ -29,6 +29,7 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
+        $page = $request->input('page');
 
         if(!$query){
             return response()->json([
@@ -46,11 +47,17 @@ class PostController extends Controller
                     "fuzziness" => "AUTO",
                     "fields"=> [ "posttitle", "postcontent" ]
                 ]
-            ]
+            ],
+            'size' => 5,
+            'from' => (((int)$page)-1) * 5
         ]);
+//        dd(json_decode($response->getBody()->getContents())->hits->total->value);
 
-        // decoded data
-        $results = json_decode($response->getBody()->getContents())->hits->hits;
+        // decoded data from response
+        $data = json_decode($response->getBody()->getContents());
+        $results = $data->hits->hits;
+        $total = $data->hits->total->value;
+
         $results_len = count($results);
         for ($x = 0; $x < $results_len; $x++) {
             $results[$x] = [
@@ -62,11 +69,31 @@ class PostController extends Controller
                 'updated_at' => $results[$x]->_source->updated_at,
             ];
         }
+
+        // construct expected urls for frontend
+        $base_url = url('').'/api/search?';
+        $last_page = ceil($total/5);
+        $prev_page_url = null;
+        $next_page_url = null;
+        if($page < $last_page){
+            $next_page_url = $base_url.'query='.$query.'&'.'page='.($page+1);
+        }
+        if($page > 1){
+            $prev_page_url = $base_url.'query='.$query.'&'.'page='.($page-1);
+        }
+
         return response()->json([
             'message' => '200 Search posts OK',
             'posts' => [
-                'data' => $results
-            ]
+                'data' => $results,
+                'current_page' => $page,
+                'last_page' => $last_page,
+                'next_page_url' =>  $next_page_url,
+                'prev_page_url' =>  $prev_page_url,
+                'first_page_url' => $base_url.'query='.$query.'&'.'page=1',
+                'last_page_url' =>  $base_url.'query='.$query.'&'.'page='.$last_page,
+            ],
+
         ],200);
     }
 

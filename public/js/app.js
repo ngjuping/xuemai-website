@@ -4102,7 +4102,8 @@ __webpack_require__.r(__webpack_exports__);
       filterString: "",
       page: 1,
       pagination_data: {},
-      loading: false
+      loading: false,
+      mode: "posts"
     };
   },
   components: {
@@ -4132,8 +4133,9 @@ __webpack_require__.r(__webpack_exports__);
     searchPosts: function searchPosts() {
       var _this = this;
 
+      this.mode = "search";
       this.loading = true;
-      axios.get("/api/search?query=".concat(this.filterString)).then(function (res) {
+      axios.get("/api/search?page=1&query=".concat(this.filterString)).then(function (res) {
         console.log(res.data);
         _this.allPosts = res.data.posts.data;
         _this.pagination_data = res.data.posts;
@@ -4147,6 +4149,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/api/posts?page=1";
+
+      if (this.mode === 'search') {
+        url += "&query=".concat(this.filterString);
+      }
+
       this.loading = true;
       axios.get(url).then(function (res) {
         console.log(res.data);
@@ -94273,7 +94280,8 @@ var render = function() {
               domProps: { value: _vm.filterString },
               on: {
                 search: function($event) {
-                  return _vm.getAllPosts()
+                  _vm.getAllPosts()
+                  _vm.mode = "posts"
                 },
                 input: function($event) {
                   if ($event.target.composing) {
@@ -94316,7 +94324,9 @@ var render = function() {
                       staticClass: "page-item page-link",
                       on: {
                         click: function($event) {
-                          return _vm.getAllPosts()
+                          return _vm.getAllPosts(
+                            _vm.pagination_data.first_page_url
+                          )
                         }
                       }
                     },
@@ -94357,7 +94367,7 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 return _vm.getAllPosts(
-                                  "/api/posts?page=" + page
+                                  "/api/" + _vm.mode + "?page=" + page
                                 )
                               }
                             }
@@ -94392,7 +94402,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           return _vm.getAllPosts(
-                            _vm.pagination_data.next_page_url
+                            _vm.pagination_data.last_page_url
                           )
                         }
                       }
