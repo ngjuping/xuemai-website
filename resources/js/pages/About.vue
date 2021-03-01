@@ -1,17 +1,12 @@
 <template>
 <div>
     <div class="jumbotron d-flex justify-content-center align-items-center" id="motto">
-        <div class="display-4 p-5">一个专注为学术打造的社交平台</div>
+        <div class="display-4 p-5">{{ __('i18n.about.title')}}</div>
     </div>
     <div class="container">
         <div class="jumbotron bg-white">
 
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            {{ __('i18n.about.description') }}
 
         </div>
     </div>
@@ -19,7 +14,7 @@
         <div class="container">
             <div class="row">
 
-                <h2>产品</h2>
+                <h2>{{ __(`i18n.about.product.title`) }}</h2>
 
             </div>
             <div class="row">
@@ -32,17 +27,11 @@
         <hr>
         <div class="container px-0">
             <div class="row no-gutters">
-                <h2>团队</h2>
+                <h2>{{ __(`i18n.about.members.title`) }}</h2>
             </div>
             <div class="row no-gutters">
-                <div class="col-12 col-md-4">
-                    <Member></Member>
-                </div>
-                <div class="col-12 col-md-4">
-                    <Member></Member>
-                </div>
-                <div class="col-12 col-md-4">
-                    <Member></Member>
+                <div class="col-12 col-md-4" v-for="i in 3">
+                    <Member :name="__(`i18n.about.members.${i}.name`)" :info="__(`i18n.about.members.${i}.info`)"></Member>
                 </div>
             </div>
 
@@ -56,7 +45,10 @@ import Member from "../components/Member";
 import Product from "../components/Product";
 export default {
 name: "About",
-    components:{Member,Product}
+    components:{Member,Product},
+    mounted(){
+        console.log(this.lang.getLocale());
+    }
 }
 </script>
 

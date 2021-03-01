@@ -1,12 +1,12 @@
 <template>
     <div ref="app_top">
 
-        <VisitorHeader></VisitorHeader>
-        <router-view/>
+        <VisitorHeader @i18n="updateChildComponents()"></VisitorHeader>
+        <router-view :key="'body' + reload"/>
         <div id="gotoTop" class="shadow d-flex justify-content-center align-items-center" @click="scrollToTop()">
             <i class="fa fa-angle-up"></i>
         </div>
-        <VisitorFooter></VisitorFooter>
+        <VisitorFooter :key="'footer'+reload"></VisitorFooter>
     </div>
 </template>
 <script>
@@ -16,9 +16,17 @@ let smoothScroll = require('smoothscroll');
 
 export default {
     components:{VisitorHeader,VisitorFooter},
+    data(){
+        return {
+            reload:false
+        }
+    },
     methods:{
         scrollToTop(){
             smoothScroll(this.$refs["app_top"]);
+        },
+        updateChildComponents(){
+            this.reload = !this.reload;
         }
     }
 }

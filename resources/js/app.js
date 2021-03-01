@@ -17,6 +17,21 @@ import App from './App.vue';
 import Admin from './Admin.vue';
 import 'v-markdown-editor/dist/v-markdown-editor.css';
 import Editor from 'v-markdown-editor';
+import Lang from 'Lang.js';
+import source from './i18n';
+Vue.prototype.lang = new Lang({
+    messages: source,
+    locale: localStorage.getItem('xuemai-locale'),
+    fallback: 'en'
+});
+
+Vue.prototype.__ = function(string){
+    return Vue.prototype.lang.get(string);
+}
+
+window.__ = function(string){
+    return Vue.prototype.lang.get(string);
+}
 
 // global register markdown editor
 Vue.use(Editor);

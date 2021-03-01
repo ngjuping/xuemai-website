@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
-        <a class="navbar-brand" href="/">学脉</a>
+        <a class="navbar-brand" href="/">{{ __('i18n.header.brand') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -8,30 +8,44 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">主页 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/about">{{ __('i18n.header.about_us') }}</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/about">关于我们</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/contact">联络我们</a>
+                    <a class="nav-link" href="/contact">{{__('i18n.header.contact_us') }}</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/faq">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">敬请期待</a>
+                    <a class="nav-link disabled" href="#">{{ __('i18n.header.incoming') }}</a>
                 </li>
             </ul>
+        </div>
+        <div class="btn-group ">
+            <div class="btn btn-light" @click="setLang('en')">English</div>
+            <div class="btn btn-light" @click="setLang('zh')">简体中文</div>
         </div>
     </nav>
 </template>
 
 <script>
 export default {
-name: "VisitorHeader"
+name: "VisitorHeader",
+    methods:{
+        setLang(locale){
+            this.lang.setLocale(locale);
+            localStorage.setItem('xuemai-locale',locale),
+            this.$emit('i18n');
+            this.$forceUpdate();
+        }
+    }
 }
 </script>
 
 <style scoped>
+nav{
+    position:sticky;
+    top:0px;
+    z-index:100;
+}
 </style>

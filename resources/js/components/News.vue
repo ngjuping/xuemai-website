@@ -9,8 +9,8 @@
             <div class="carousel-item active">
                 <img class="d-block w-100" src="https://www.timeshighereducation.com/sites/default/files/institution/header_image/profile_2017_-_header_-_tsinghua_uni.jpg" alt="First slide">
                 <div class="carousel-caption">
-                    <div class="display-3 carousel_title">2021年产品发布会</div>
-                    <div class="display-5 carousel_content">WebApp等你来</div>
+                    <div class="display-3 carousel_title">{{ __('i18n.main.news.1.title')}}</div>
+                    <div class="display-5 carousel_content">{{ __('i18n.main.news.1.description')}}</div>
                 </div>
             </div>
             <div class="carousel-item">

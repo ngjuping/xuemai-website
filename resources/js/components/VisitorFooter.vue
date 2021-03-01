@@ -4,14 +4,14 @@
         <div class="row jumbotron mb-0">
             <div class="col">
                 <div id="discord">
-                    <div>Community Vibes</div>
+                    <div>{{ __('i18n.footer.vibes') }}</div>
                     <div class="text-primary">discord.gg/xuemai</div>
                 </div>
             </div>
             <div class="col d-flex align-items-center">
                 <div class="row w-100">
                     <div class="col-12">
-                        <input type="email" placeholder="Email" v-model="subscriber_email">
+                        <input type="email" :placeholder="__('i18n.footer.email')" v-model="subscriber_email">
 
                         <div :class="{'btn-success':success,'btn-danger':failed, 'btn-dark':!(success || failed)}"
                              class="btn d-inline-flex justify-content-center align-items-center"  @click="subscribe" >
@@ -30,14 +30,14 @@
             </div>
         </div>
         <div class="row bg-secondary jumbotron mb-0 rounded-0">
-            <div class="col text-white">
+            <div class="col-12 col-md text-white">
                 Designed by Xuemai
             </div>
-            <div class="col">
-                <i class="fab fa-discord mx-3"></i>
-                <i class="fab fa-youtube mx-3"></i>
-                <i class="fab fa-weixin mx-3"></i>
-                <i class="fab fa-github mx-3"></i>
+            <div class="col-12 col-md">
+                <i class="fab fa-discord mx-2"></i>
+                <i class="fab fa-youtube mx-2"></i>
+                <i class="fab fa-weixin mx-2"></i>
+                <i class="fab fa-github mx-2"></i>
             </div>
             <div class="col text-center">
                 <a href="/contact" class="text-white">Contact us</a>
@@ -101,7 +101,7 @@ export default {
                 return 'Try again';
             }
             else{
-                return 'Sign up';
+                return __('i18n.footer.signup');
             }
         }
     }
