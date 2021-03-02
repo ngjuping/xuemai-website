@@ -19,6 +19,15 @@
                     </div>
                 </div>
             </div>
+            <ul class="pagination">
+                <li class="page-item page-link" @click="getAllPosts(pagination_data.first_page_url)">First</li>
+                <li class="page-item page-link" @click="getAllPosts(pagination_data.prev_page_url)" v-if="pagination_data.prev_page_url">上一页</li>
+                <li class="page-item " v-for="page in availablePages" :class="{'active':pagination_data.current_page===page}">
+                    <a class="page-link" @click="getAllPosts(`/api/${mode}?page=${page}`)">{{page}}</a>
+                </li>
+                <li class="page-item page-link" @click="getAllPosts(pagination_data.next_page_url)" v-if="pagination_data.next_page_url">下一页</li>
+                <li class="page-item page-link" @click="getAllPosts(pagination_data.last_page_url)">Last</li>
+            </ul>
             <div class="bg-light">
                 <Post v-for="post in posts" :key="post.id" :post="post"
                       :readonly="false"
@@ -50,19 +59,32 @@ export default {
             allPosts:[],
             postToUpdate: null, // post to be updated
             postToShowDetail: null,
-            filterString:""
+            filterString:"",
+            page:1,
+            pagination_data:{},
+            mode:'posts'
         }
     },
     computed:{
         posts(){
             return this.allPosts.filter((post) => {return post.postTitle.includes(this.filterString) || post.postContent.includes(this.filterString)});
+        },
+        availablePages(){
+            let pages = [];
+            let current_page = this.pagination_data.current_page;
+            let last_page = this.pagination_data.last_page;
+            for(let i=1 ; i<current_page && i-current_page<3 ; i++) pages.push(i);
+            for(let i=current_page ; i<=last_page && i-current_page<3 ; i++) pages.push(i);
+            return pages;
         }
     },
     methods:{
-        getAllPosts(){
-            axios.get("/api/posts")
+        getAllPosts(url="/api/posts?page=1"){
+            axios.get(url)
                 .then((res) => {
-                    this.allPosts = res.data.posts;
+                    console.log(res.data);
+                    this.allPosts = res.data.posts.data;
+                    this.pagination_data = res.data.posts;
                 })
                 .catch((err) => {
                     console.log(err);

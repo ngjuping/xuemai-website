@@ -2,13 +2,13 @@
 <div>
     <div class="container-fluid ">
         <div class="row jumbotron mb-0">
-            <div class="col">
+            <div class="col-12 col-md">
                 <div id="discord">
                     <div>{{ __('i18n.footer.vibes') }}</div>
                     <div class="text-primary">discord.gg/xuemai</div>
                 </div>
             </div>
-            <div class="col d-flex align-items-center">
+            <div class="col-12 col-md d-flex align-items-center">
                 <div class="row w-100">
                     <div class="col-12">
                         <input type="email" :placeholder="__('i18n.footer.email')" v-model="subscriber_email">
@@ -30,16 +30,16 @@
             </div>
         </div>
         <div class="row bg-secondary jumbotron mb-0 rounded-0">
-            <div class="col-12 col-md text-white">
+            <div class="col-12 col-md mb-3 text-white">
                 Designed by Xuemai
             </div>
-            <div class="col-12 col-md">
+            <div class="col-12 col-md mb-3">
                 <i class="fab fa-discord mx-2"></i>
                 <i class="fab fa-youtube mx-2"></i>
                 <i class="fab fa-weixin mx-2"></i>
                 <i class="fab fa-github mx-2"></i>
             </div>
-            <div class="col text-center">
+            <div class="col">
                 <a href="/contact" class="text-white">Contact us</a>
             </div>
         </div>

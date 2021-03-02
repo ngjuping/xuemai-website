@@ -4,7 +4,11 @@
         <div class="container-fluid px-0 mb-3 mx-0">
             <div class="row">
                 <div class="col-12 col-md-8 mb-3 d-flex justify-content-start">
-                    <input class="form-control w-75 h-100 mr-2" type="search" :placeholder="__('i18n.main.search')" v-model="filterString" @search="getAllPosts();mode = 'posts';">
+                    <input class="form-control w-75 h-100 mr-2" type="search"
+                           :placeholder="__('i18n.main.search')"
+                           v-model="filterString"
+                           @search="getAllPosts();mode = 'posts';"
+                           @input="checkIfQueryIsEmpty">
                     <button class="btn btn-primary d-inline-block" @click="searchPosts()">
                         <i class="fas fa-search"></i>
                     </button>
@@ -21,7 +25,7 @@
                         <li class="page-item " v-for="page in availablePages" :class="{'active':pagination_data.current_page===page}">
                             <a class="page-link" @click="getAllPosts(`/api/${mode}?page=${page}`)">{{page}}</a>
                         </li>
-                        <li class="page-item page-link" @click="getAllPosts(pagination_data.next_page_url)" v-if="pagination_data.next_page_url">__('pagination.next')</li>
+                        <li class="page-item page-link" @click="getAllPosts(pagination_data.next_page_url)" v-if="pagination_data.next_page_url">Next</li>
                         <li class="page-item page-link" @click="getAllPosts(pagination_data.last_page_url)">Last</li>
                     </ul>
                 </div>
@@ -63,6 +67,12 @@ export default {
         }
     },
     methods:{
+        checkIfQueryIsEmpty(){
+              if(!this.filterString) {
+                  this.getAllPosts();
+                  this.mode = 'posts';
+              }
+        },
         searchPosts(){
             this.mode = "search";
             this.loading = true;

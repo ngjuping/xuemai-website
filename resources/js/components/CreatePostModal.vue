@@ -17,6 +17,7 @@
 
                         <h3>内容</h3>
                         <markdown-editor v-model="postContent" toolbar="bold italic strikethrough heading numlist bullist code quote uploadimage newlink redo undo"
+                                         id="md-editor"
                                          @command:uploadimage="uploadimage"
                                          @command:newlink="newlink"
                                          :extend="custom" autofocus></markdown-editor>
@@ -119,7 +120,7 @@ export default {
         vertical-align: top;
         box-sizing: border-box;
         padding: 0 20px;
-        min-height: 400px;
+        min-height: 400px !important;
     }
 
     textarea {
@@ -160,9 +161,10 @@ export default {
         max-width:100%;
     }
 
-    .v-md-toolbar{
-        overflow-x:scroll !important;
+    #editor >>> .btn-group{
+        flex-wrap:wrap !important;
     }
+
     #preview >>> td, #preview >>> th{
         border: 1px solid grey !important;
     }

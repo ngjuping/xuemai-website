@@ -1,8 +1,8 @@
 <template>
     <div class="jumbotron bg-light p-3 post shadow" @click="$emit('post-clicked')">
-        <h3>{{ post.postTitle.slice(0,30) }}</h3>
-        <p> 发布于{{ chineseTime(post.created_at) }}</p>
-        <small>{{ relativeTime(post.created_at) }}</small>
+        <h3>{{ post.postTitle.slice(0,50) }}</h3>
+        <p> {{ __('i18n.main.published_at') }} {{ parseTime(post.created_at) }}</p>
+        <small>{{ post.postContent.slice(0,50) }}... </small>
         <div v-if="!readonly" class="my-2">
             <div class="btn btn-primary" @click.stop="$emit('update-post',post)">
                 修改
@@ -24,19 +24,13 @@ export default {
         localTime(utc){
             return moment.utc(utc).local();
         },
-        relativeTime(time){
-            // Input: 2021-01-24 09:26:20
-            // Output: 4 minutes ago
-            // moment.utc(String) parses your string as UTC, moment(date).utc() converts your moment instance to UTC mode
-            return this.localTime(time).fromNow();
-        },
-        chineseTime(input){
+        parseTime(input){
             // Input: 2021-01-25 02:18:06
             // Output: 2021年 01月 25日 02点18分
             let localtime = this.localTime(input).format("YYYY-MM-DD hh:mm");
             let date = localtime.split(" ")[0].split("-");
             let time = localtime.split(" ")[1].split(":")
-            return `${date[0]}年 ${date[1]}月 ${date[2]}日   ${time[0]}点${time[1]}分`
+            return `${date[0]}-${date[1]}-${date[2]}   ${time[0]}:${time[1]}`
         },
     }
 }

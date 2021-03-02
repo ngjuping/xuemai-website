@@ -1,6 +1,6 @@
 <template>
     <div class="p-5">
-        <h1>快速解决您的问题</h1>
+        <h1>{{ __('i18n.FAQ.title') }}</h1>
         <FAQList :faqs="faqs"></FAQList>
     </div>
 </template>

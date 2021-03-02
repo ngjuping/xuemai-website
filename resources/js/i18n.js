@@ -1,9 +1,9 @@
 export default {
     'en.i18n': {
         'header':{
-            'brand': 'xuemai',
-            'about_us': 'about us',
-            'contact_us': 'contact us',
+            'brand': 'XueMai',
+            'about_us': 'About',
+            'contact_us': 'Contact us',
             'incoming': 'Stay tuned'
         },
         'main':{
@@ -16,7 +16,8 @@ export default {
                     'title':'2021 product release',
                     'description':'Come join our BETA WebApp'
                 }
-            }
+            },
+            'published_at': 'Published at'
         },
         'about':{
             'title':'A superb platform',
@@ -42,6 +43,17 @@ export default {
                 }
             }
         },
+        'contact':{
+            'title':'We are willing to listen',
+            'description':'Regardless of any problem, we are always ready to listen and help.',
+            'goToForm':'GET IN TOUCH',
+            'contact_us':'Contact us',
+            'report':'report',
+            'suggest':'suggest'
+        },
+        'FAQ':{
+            'title':'Quickly solve your problem'
+        },
         'footer':{
             'vibes':'Community Vibes',
             'signup':'Sign up',
@@ -65,7 +77,8 @@ export default {
                     'title':'2021年产品发布会',
                     'description':'WebApp等你来'
                 }
-            }
+            },
+            'published_at': '发布于'
         },
         'about':{
             'title':'一个为学术打造的平台',
@@ -90,6 +103,17 @@ export default {
                     'info':'CMO...'
                 }
             }
+        },
+        'contact':{
+            'title':'我们十分愿意聆听。',
+            'description':'不论你有什么问题，需要任何关于产品，价钱，技术上帮助，我们的队伍随时待命。',
+            'goToForm':'开始对话',
+            'contact_us':'联络我们',
+            'report':'吐槽',
+            'suggest':'提议'
+        },
+        'FAQ':{
+            'title':'快速解决您的问题'
         },
         'footer':{
             'vibes':'加入社区',

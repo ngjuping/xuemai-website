@@ -4537,6 +4537,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4560,7 +4569,10 @@ __webpack_require__.r(__webpack_exports__);
       postToUpdate: null,
       // post to be updated
       postToShowDetail: null,
-      filterString: ""
+      filterString: "",
+      page: 1,
+      pagination_data: {},
+      mode: 'posts'
     };
   },
   computed: {
@@ -4570,14 +4582,32 @@ __webpack_require__.r(__webpack_exports__);
       return this.allPosts.filter(function (post) {
         return post.postTitle.includes(_this.filterString) || post.postContent.includes(_this.filterString);
       });
+    },
+    availablePages: function availablePages() {
+      var pages = [];
+      var current_page = this.pagination_data.current_page;
+      var last_page = this.pagination_data.last_page;
+
+      for (var i = 1; i < current_page && i - current_page < 3; i++) {
+        pages.push(i);
+      }
+
+      for (var _i = current_page; _i <= last_page && _i - current_page < 3; _i++) {
+        pages.push(_i);
+      }
+
+      return pages;
     }
   },
   methods: {
     getAllPosts: function getAllPosts() {
       var _this2 = this;
 
-      axios.get("/api/posts").then(function (res) {
-        _this2.allPosts = res.data.posts;
+      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/api/posts?page=1";
+      axios.get(url).then(function (res) {
+        console.log(res.data);
+        _this2.allPosts = res.data.posts.data;
+        _this2.pagination_data = res.data.posts;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -4799,6 +4829,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4836,6 +4870,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    checkIfQueryIsEmpty: function checkIfQueryIsEmpty() {
+      if (!this.filterString) {
+        this.getAllPosts();
+        this.mode = 'posts';
+      }
+    },
     searchPosts: function searchPosts() {
       var _this = this;
 
@@ -4906,6 +4946,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var v_markdown_editor_dist_v_markdown_editor_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! v-markdown-editor/dist/v-markdown-editor.css */ "./node_modules/v-markdown-editor/dist/v-markdown-editor.css");
 /* harmony import */ var v_markdown_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! v-markdown-editor */ "./node_modules/v-markdown-editor/dist/v-markdown-editor.js");
 /* harmony import */ var v_markdown_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(v_markdown_editor__WEBPACK_IMPORTED_MODULE_3__);
+//
 //
 //
 //
@@ -5166,19 +5207,13 @@ __webpack_require__.r(__webpack_exports__);
     localTime: function localTime(utc) {
       return moment__WEBPACK_IMPORTED_MODULE_0___default().utc(utc).local();
     },
-    relativeTime: function relativeTime(time) {
-      // Input: 2021-01-24 09:26:20
-      // Output: 4 minutes ago
-      // moment.utc(String) parses your string as UTC, moment(date).utc() converts your moment instance to UTC mode
-      return this.localTime(time).fromNow();
-    },
-    chineseTime: function chineseTime(input) {
+    parseTime: function parseTime(input) {
       // Input: 2021-01-25 02:18:06
       // Output: 2021年 01月 25日 02点18分
       var localtime = this.localTime(input).format("YYYY-MM-DD hh:mm");
       var date = localtime.split(" ")[0].split("-");
       var time = localtime.split(" ")[1].split(":");
-      return "".concat(date[0], "\u5E74 ").concat(date[1], "\u6708 ").concat(date[2], "\u65E5   ").concat(time[0], "\u70B9").concat(time[1], "\u5206");
+      return "".concat(date[0], "-").concat(date[1], "-").concat(date[2], "   ").concat(time[0], ":").concat(time[1]);
     }
   }
 });
@@ -6063,9 +6098,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   'en.i18n': {
     'header': {
-      'brand': 'xuemai',
-      'about_us': 'about us',
-      'contact_us': 'contact us',
+      'brand': 'XueMai',
+      'about_us': 'About',
+      'contact_us': 'Contact us',
       'incoming': 'Stay tuned'
     },
     'main': {
@@ -6078,7 +6113,8 @@ __webpack_require__.r(__webpack_exports__);
           'title': '2021 product release',
           'description': 'Come join our BETA WebApp'
         }
-      }
+      },
+      'published_at': 'Published at'
     },
     'about': {
       'title': 'A superb platform',
@@ -6104,6 +6140,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     },
+    'contact': {
+      'title': 'We are willing to listen',
+      'description': 'Regardless of any problem, we are always ready to listen and help.',
+      'goToForm': 'GET IN TOUCH',
+      'contact_us': 'Contact us',
+      'report': 'report',
+      'suggest': 'suggest'
+    },
+    'FAQ': {
+      'title': 'Quickly solve your problem'
+    },
     'footer': {
       'vibes': 'Community Vibes',
       'signup': 'Sign up',
@@ -6127,7 +6174,8 @@ __webpack_require__.r(__webpack_exports__);
           'title': '2021年产品发布会',
           'description': 'WebApp等你来'
         }
-      }
+      },
+      'published_at': '发布于'
     },
     'about': {
       'title': '一个为学术打造的平台',
@@ -6152,6 +6200,17 @@ __webpack_require__.r(__webpack_exports__);
           'info': 'CMO...'
         }
       }
+    },
+    'contact': {
+      'title': '我们十分愿意聆听。',
+      'description': '不论你有什么问题，需要任何关于产品，价钱，技术上帮助，我们的队伍随时待命。',
+      'goToForm': '开始对话',
+      'contact_us': '联络我们',
+      'report': '吐槽',
+      'suggest': '提议'
+    },
+    'FAQ': {
+      'title': '快速解决您的问题'
     },
     'footer': {
       'vibes': '加入社区',
@@ -10711,7 +10770,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#editor[data-v-4c482c36] {\n    margin: 0;\n    height: 100%;\n    font-family: \"Helvetica Neue\", Arial, sans-serif;\n    color: #333;\n}\ntextarea[data-v-4c482c36],\n#editor div[data-v-4c482c36] {\n    display: inline-block;\n    width: 49%;\n    height: 100%;\n    vertical-align: top;\n    box-sizing: border-box;\n    padding: 0 20px;\n    min-height: 400px;\n}\ntextarea[data-v-4c482c36] {\n    border: 1px solid #ccc;\n    resize: none;\n    outline: none;\n    background-color: #f6f6f6;\n    font-size: 14px;\n    font-family: \"Monaco\", courier, monospace;\n    padding: 20px;\n}\ncode[data-v-4c482c36] {\n    color: #ff6666;\n}\n#preview[data-v-4c482c36]{\n    border: 3px solid black;\n    position:relative;\n}\n#preview[data-v-4c482c36]::after{\n    content:\"预览\";\n    position:absolute;\n    top:-20px;\n    right:-3px;\n    padding:5px;\n    background:black;\n    color:white;\n}\n#preview[data-v-4c482c36] blockquote{\n    border-left: 3px solid grey;\n    padding-left: 5px;\n}\n#preview[data-v-4c482c36] img{\n\n    max-width:100%;\n}\n.v-md-toolbar[data-v-4c482c36]{\n    overflow-x:scroll !important;\n}\n#preview[data-v-4c482c36] td, #preview[data-v-4c482c36] th{\n    border: 1px solid grey !important;\n}\n\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#editor[data-v-4c482c36] {\n    margin: 0;\n    height: 100%;\n    font-family: \"Helvetica Neue\", Arial, sans-serif;\n    color: #333;\n}\ntextarea[data-v-4c482c36],\n#editor div[data-v-4c482c36] {\n    display: inline-block;\n    width: 49%;\n    height: 100%;\n    vertical-align: top;\n    box-sizing: border-box;\n    padding: 0 20px;\n    min-height: 400px !important;\n}\ntextarea[data-v-4c482c36] {\n    border: 1px solid #ccc;\n    resize: none;\n    outline: none;\n    background-color: #f6f6f6;\n    font-size: 14px;\n    font-family: \"Monaco\", courier, monospace;\n    padding: 20px;\n}\ncode[data-v-4c482c36] {\n    color: #ff6666;\n}\n#preview[data-v-4c482c36]{\n    border: 3px solid black;\n    position:relative;\n}\n#preview[data-v-4c482c36]::after{\n    content:\"预览\";\n    position:absolute;\n    top:-20px;\n    right:-3px;\n    padding:5px;\n    background:black;\n    color:white;\n}\n#preview[data-v-4c482c36] blockquote{\n    border-left: 3px solid grey;\n    padding-left: 5px;\n}\n#preview[data-v-4c482c36] img{\n\n    max-width:100%;\n}\n#editor[data-v-4c482c36] .btn-group{\n    flex-wrap:wrap !important;\n}\n#preview[data-v-4c482c36] td, #preview[data-v-4c482c36] th{\n    border: 1px solid grey !important;\n}\n\n\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -94945,6 +95004,99 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c(
+            "ul",
+            { staticClass: "pagination" },
+            [
+              _c(
+                "li",
+                {
+                  staticClass: "page-item page-link",
+                  on: {
+                    click: function($event) {
+                      return _vm.getAllPosts(_vm.pagination_data.first_page_url)
+                    }
+                  }
+                },
+                [_vm._v("First")]
+              ),
+              _vm._v(" "),
+              _vm.pagination_data.prev_page_url
+                ? _c(
+                    "li",
+                    {
+                      staticClass: "page-item page-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.getAllPosts(
+                            _vm.pagination_data.prev_page_url
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("上一页")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._l(_vm.availablePages, function(page) {
+                return _c(
+                  "li",
+                  {
+                    staticClass: "page-item ",
+                    class: { active: _vm.pagination_data.current_page === page }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        on: {
+                          click: function($event) {
+                            return _vm.getAllPosts(
+                              "/api/" + _vm.mode + "?page=" + page
+                            )
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(page))]
+                    )
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _vm.pagination_data.next_page_url
+                ? _c(
+                    "li",
+                    {
+                      staticClass: "page-item page-link",
+                      on: {
+                        click: function($event) {
+                          return _vm.getAllPosts(
+                            _vm.pagination_data.next_page_url
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("下一页")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item page-link",
+                  on: {
+                    click: function($event) {
+                      return _vm.getAllPosts(_vm.pagination_data.last_page_url)
+                    }
+                  }
+                },
+                [_vm._v("Last")]
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
             "div",
             { staticClass: "bg-light" },
             _vm._l(_vm.posts, function(post) {
@@ -95209,12 +95361,15 @@ var render = function() {
                     _vm.getAllPosts()
                     _vm.mode = "posts"
                   },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.filterString = $event.target.value
-                  }
+                  input: [
+                    function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.filterString = $event.target.value
+                    },
+                    _vm.checkIfQueryIsEmpty
+                  ]
                 }
               }),
               _vm._v(" "),
@@ -95321,7 +95476,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("__('pagination.next')")]
+                        [_vm._v("Next")]
                       )
                     : _vm._e(),
                   _vm._v(" "),
@@ -95444,6 +95599,7 @@ var render = function() {
                     attrs: {
                       toolbar:
                         "bold italic strikethrough heading numlist bullist code quote uploadimage newlink redo undo",
+                      id: "md-editor",
                       extend: _vm.custom,
                       autofocus: ""
                     },
@@ -95821,13 +95977,18 @@ var render = function() {
       }
     },
     [
-      _c("h3", [_vm._v(_vm._s(_vm.post.postTitle.slice(0, 30)))]),
+      _c("h3", [_vm._v(_vm._s(_vm.post.postTitle.slice(0, 50)))]),
       _vm._v(" "),
       _c("p", [
-        _vm._v(" 发布于" + _vm._s(_vm.chineseTime(_vm.post.created_at)))
+        _vm._v(
+          " " +
+            _vm._s(_vm.__("i18n.main.published_at")) +
+            " " +
+            _vm._s(_vm.parseTime(_vm.post.created_at))
+        )
       ]),
       _vm._v(" "),
-      _c("small", [_vm._v(_vm._s(_vm.relativeTime(_vm.post.created_at)))]),
+      _c("small", [_vm._v(_vm._s(_vm.post.postContent.slice(0, 50)) + "... ")]),
       _vm._v(" "),
       !_vm.readonly
         ? _c("div", { staticClass: "my-2" }, [
@@ -96230,7 +96391,7 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container-fluid " }, [
       _c("div", { staticClass: "row jumbotron mb-0" }, [
-        _c("div", { staticClass: "col" }, [
+        _c("div", { staticClass: "col-12 col-md" }, [
           _c("div", { attrs: { id: "discord" } }, [
             _c("div", [_vm._v(_vm._s(_vm.__("i18n.footer.vibes")))]),
             _vm._v(" "),
@@ -96240,7 +96401,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col d-flex align-items-center" }, [
+        _c("div", { staticClass: "col-12 col-md d-flex align-items-center" }, [
           _c("div", { staticClass: "row w-100" }, [
             _c("div", { staticClass: "col-12" }, [
               _c("input", {
@@ -96334,11 +96495,11 @@ var staticRenderFns = [
       "div",
       { staticClass: "row bg-secondary jumbotron mb-0 rounded-0" },
       [
-        _c("div", { staticClass: "col-12 col-md text-white" }, [
+        _c("div", { staticClass: "col-12 col-md mb-3 text-white" }, [
           _vm._v("\n                Designed by Xuemai\n            ")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12 col-md" }, [
+        _c("div", { staticClass: "col-12 col-md mb-3" }, [
           _c("i", { staticClass: "fab fa-discord mx-2" }),
           _vm._v(" "),
           _c("i", { staticClass: "fab fa-youtube mx-2" }),
@@ -96348,7 +96509,7 @@ var staticRenderFns = [
           _c("i", { staticClass: "fab fa-github mx-2" })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col text-center" }, [
+        _c("div", { staticClass: "col" }, [
           _c("a", { staticClass: "text-white", attrs: { href: "/contact" } }, [
             _vm._v("Contact us")
           ])
@@ -96653,9 +96814,17 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "container" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "row" }, [
+            _c("h1", { staticClass: "display-4 main_jumbo_title col-12" }, [
+              _vm._v(_vm._s(_vm.__("i18n.contact.title")))
+            ])
+          ]),
           _vm._v(" "),
-          _vm._m(1),
+          _c("div", { staticClass: "row text-center" }, [
+            _c("p", { staticClass: "main_jumbo_content col" }, [
+              _vm._v(_vm._s(_vm.__("i18n.contact.description")))
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "row spacer" }),
           _vm._v(" "),
@@ -96666,7 +96835,7 @@ var render = function() {
                 staticClass: "main_jumbo_btn scrollOnClick col",
                 on: { click: _vm.scrollToContact }
               },
-              [_vm._v("GET IN TOUCH")]
+              [_vm._v(_vm._s(_vm.__("i18n.contact.goToForm")))]
             )
           ])
         ])
@@ -96679,10 +96848,14 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "wrapper" }, [
       _c("div", { staticClass: "container", attrs: { id: "form_container" } }, [
-        _vm._m(2),
+        _c("div", { staticClass: "row px-3" }, [
+          _c("h1", [_vm._v(_vm._s(_vm.__("i18n.contact.contact_us")))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "border-top my-3 w-100" })
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
-          _vm._m(3),
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "col-12 col-sm-9" }, [
             _c(
@@ -96813,7 +96986,7 @@ var render = function() {
                           attrs: { type: "submit" },
                           on: { click: _vm.report }
                         },
-                        [_vm._v("吐槽")]
+                        [_vm._v(_vm._s(_vm.__("i18n.contact.report")))]
                       ),
                       _vm._v(" "),
                       _c(
@@ -96823,7 +96996,7 @@ var render = function() {
                           attrs: { type: "submit" },
                           on: { click: _vm.suggest }
                         },
-                        [_vm._v("提议")]
+                        [_vm._v(_vm._s(_vm.__("i18n.contact.suggest")))]
                       ),
                       _vm._v(" "),
                       _vm.failedSubmit
@@ -96844,38 +97017,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("h1", { staticClass: "display-4 main_jumbo_title col-12" }, [
-        _vm._v("我们十分愿意聆听。")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row text-center" }, [
-      _c("p", { staticClass: "main_jumbo_content col" }, [
-        _vm._v(
-          "不论你有什么问题，需要任何关于产品，价钱，技术上帮助，我们的队伍随时待命。"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row px-3" }, [
-      _c("h1", [_vm._v("联络我们")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "border-top my-3 w-100" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -96925,7 +97066,7 @@ var render = function() {
     "div",
     { staticClass: "p-5" },
     [
-      _c("h1", [_vm._v("快速解决您的问题")]),
+      _c("h1", [_vm._v(_vm._s(_vm.__("i18n.FAQ.title")))]),
       _vm._v(" "),
       _c("FAQList", { attrs: { faqs: _vm.faqs } })
     ],

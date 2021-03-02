@@ -3,16 +3,16 @@
         <div class="jumbotron d-flex align-items-center" id="main_jumbo">
             <div class="container">
                 <div class="row">
-                    <h1 class="display-4 main_jumbo_title col-12">我们十分愿意聆听。</h1>
+                    <h1 class="display-4 main_jumbo_title col-12">{{ __('i18n.contact.title') }}</h1>
                 </div>
                 <div class="row text-center">
-                    <p class="main_jumbo_content col">不论你有什么问题，需要任何关于产品，价钱，技术上帮助，我们的队伍随时待命。</p>
+                    <p class="main_jumbo_content col">{{ __('i18n.contact.description') }}</p>
                 </div>
                 <div class="row spacer">
 
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <button class="main_jumbo_btn scrollOnClick col" @click="scrollToContact">GET IN TOUCH</button>
+                    <button class="main_jumbo_btn scrollOnClick col" @click="scrollToContact">{{ __('i18n.contact.goToForm') }}</button>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <div class="wrapper">
             <div class="container" id="form_container">
                 <div class="row px-3">
-                    <h1>联络我们</h1>
+                    <h1>{{ __('i18n.contact.contact_us') }}</h1>
                     <div class="border-top my-3 w-100"></div>
                 </div>
                 <div class="row">
@@ -61,8 +61,8 @@
 
                         <div class="text-right d-flex justify-content-end w-100">
                             <div v-if="!disableSubmit">
-                                <div class="btn btn-danger btn-xl text-uppercase mx-2" type="submit" @click="report">吐槽</div>
-                                <div class="btn btn-primary btn-xl text-uppercase" type="submit" @click="suggest">提议</div>
+                                <div class="btn btn-danger btn-xl text-uppercase mx-2" type="submit" @click="report">{{ __('i18n.contact.report') }}</div>
+                                <div class="btn btn-primary btn-xl text-uppercase" type="submit" @click="suggest">{{ __('i18n.contact.suggest') }}</div>
                                 <small class="text-danger" v-if="failedSubmit">{{ err_msg }}</small>
                             </div>
                             <h3 v-else class="text-success">谢谢您的反馈!</h3>
