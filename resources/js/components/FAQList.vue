@@ -1,7 +1,7 @@
 <template>
     <div class="my-5 px-5">
         <h2 class="text-secondary mt-5">GENERAL</h2>
-        <div id="accordion bg-white" style="height:50vh;">
+        <div id="accordion bg-white">
             <div class="faq" v-for="faq in faqs" :key="faq.id">
                 <div class="card-header pl-0 d-flex justify-content-between bg-white" data-toggle="collapse" :data-target="`#ans${faq.id}`">
                     <div class="mb-0 question">
@@ -38,5 +38,17 @@ export default {
     }
     .answer{
         font-size:20px;
+    }
+
+    @media(max-width:768px){
+        .faq{
+            max-width: 100%;
+        }
+        .question{
+            font-size: 20px;
+        }
+        .answer{
+            font-size:15px;
+        }
     }
 </style>
