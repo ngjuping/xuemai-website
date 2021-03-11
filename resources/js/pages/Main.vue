@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3">
+    <div>
         <div class="container-fluid">
             <div class="row pl-3">
                 <div class="col left pl-0">
@@ -11,23 +11,12 @@
         <div class="pl-3">
             <small>{{ __('i18n.main.welcome-2') }}</small>
         </div>
-
-        <News></News>
-        <AllPosts></AllPosts>
     </div>
 </template>
 
 <script>
-import AllPosts from "../components/AllPosts";
-import VisitorHeader from "../components/VisitorHeader";
-import News from "../components/News";
-
 export default {
-    name: "BlogMain",
-    components:{AllPosts,VisitorHeader,News},
-    mounted(){
-        console.log(this.lang.getLocale());
-    }
+name: "Main"
 }
 </script>
 

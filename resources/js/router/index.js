@@ -1,8 +1,9 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import BlogMain from '../pages/BlogMain.vue';
-import PostDetail from '../components/PostDetail.vue';
+import Main from '../pages/Main.vue';
+import Blog from '../pages/Blog.vue';
+import PostDetail from '../pages/PostDetail.vue';
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import FAQ from "../pages/FAQ";
@@ -13,8 +14,13 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: '/',
-        name: 'BlogMain',
-        component: BlogMain
+        name: 'Main',
+        component: Main
+    },
+    {
+        path: '/blog',
+        name: 'Blog',
+        component: Blog
     },
     {
         path: '/post/:id',

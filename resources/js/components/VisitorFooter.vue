@@ -8,9 +8,9 @@
                     <div class="text-primary">discord.gg/xuemai</div>
                 </div>
             </div>
-            <div class="col-12 col-md d-flex align-items-center">
+            <div class="col-12 col-md">
                 <div class="row w-100">
-                    <div class="col-12">
+                    <div class="col-12 d-flex align-items-stretch justify-content-around">
                         <input type="email" :placeholder="__('i18n.footer.email')" v-model="subscriber_email">
 
                         <div :class="{'btn-success':success,'btn-danger':failed, 'btn-dark':!(success || failed)}"
@@ -29,7 +29,7 @@
 
             </div>
         </div>
-        <div class="row bg-secondary jumbotron mb-0 rounded-0">
+        <div class="row bg-dark jumbotron mb-0 rounded-0">
             <div class="col-12 col-md mb-3 text-white">
                 Designed by Xuemai
             </div>
@@ -120,7 +120,6 @@ export default {
     }
 
     input{
-        height:80px;
         width:70%;
     }
 

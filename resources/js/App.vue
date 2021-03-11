@@ -46,4 +46,8 @@ export default {
     background-color:white;
     cursor:pointer;
 }
+
+#app > div{
+    background-color: white;
+}
 </style>

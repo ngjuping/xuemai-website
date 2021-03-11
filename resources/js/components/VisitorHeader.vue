@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+    <nav class="navbar navbar-expand-md navbar-light bg-white">
         <a class="navbar-brand" href="/">{{ __('i18n.header.brand') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,6 +12,9 @@
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/contact">{{__('i18n.header.contact_us') }}</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/blog">{{ __('i18n.header.blog') }}</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/faq">FAQ</a>
@@ -47,5 +50,9 @@ nav{
     position:sticky;
     top:0px;
     z-index:100;
+}
+
+a{
+    font-size:20px;
 }
 </style>

@@ -4,6 +4,7 @@ export default {
             'brand': 'XueMai',
             'about_us': 'About',
             'contact_us': 'Contact us',
+            'blog':'Blog',
             'incoming': 'Stay tuned'
         },
         'main':{
@@ -65,7 +66,8 @@ export default {
             'brand': '学脉',
             'about_us': '关于我们',
             'contact_us': '联络我们',
-            'incoming': '敬请期待'
+            'incoming': '敬请期待',
+            'blog':'部落格',
         },
         'main':{
             'latest':'最新动态',

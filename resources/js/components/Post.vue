@@ -1,8 +1,8 @@
 <template>
-    <div class="jumbotron bg-light p-3 post shadow" @click="$emit('post-clicked')">
-        <h3>{{ post.postTitle.slice(0,50) }}</h3>
-        <p> {{ __('i18n.main.published_at') }} {{ parseTime(post.created_at) }}</p>
-        <small>{{ post.postContent.slice(0,50) }}... </small>
+    <div class="jumbotron bg-white p-3 post" @click="$emit('post-clicked')">
+        <h2 class="posttitle">{{ post.postTitle.slice(0,50) }}</h2>
+        <small > {{ __('i18n.main.published_at') }} {{ parseTime(post.created_at) }}</small>
+        <p class="postcontent">{{ post.postContent.slice(0,50) }}... </p>
         <div v-if="!readonly" class="my-2">
             <div class="btn btn-primary" @click.stop="$emit('update-post',post)">
                 修改
@@ -37,7 +37,39 @@ export default {
 </script>
 
 <style scoped>
+    .post{
+        position:relative;
+        border: 3px solid transparent;
+        cursor:pointer;
+    }
     .post:hover{
-        background-color:white !important;
+        border: 3px solid black;
+    }
+    .posttitle{
+        font-size:50px;
+        font-weight: 900;
+    }
+    .postcontent{
+        font-size:20px;
+    }
+    .post:hover::after{
+        content:"";
+        border-bottom: none;
+    }
+    .post::after{
+        content:"";
+        border-bottom: 1px solid grey;
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:50%;
+        height:100%;
+    }
+
+    @media(max-width:768px){
+        .posttitle{
+            font-size:30px;
+            font-weight: 900;
+        }
     }
 </style>
