@@ -16,6 +16,7 @@ class CreateEmailsTable extends Migration
         Schema::connection('mysql3')->create('emails', function (Blueprint $table) {
             $table->id();
             $table->string('email');
+            $table->string('ip');
             $table->timestamps();
         });
     }

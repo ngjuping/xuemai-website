@@ -16,14 +16,16 @@ class CreateFeedbacksTable extends Migration
         Schema::connection('mysql2')->create('feedbacks', function (Blueprint $table) {
             $table->id();
             $table->string('author')->nullable();
-            $table->string('authorEmail')->nullable();
+            $table->string('author_email')->nullable();
             $table->string('reviewer')->nullable();
             $table->text('issue')->nullable(); # text is longer than string
             $table->integer('importance')->nullable();
             $table->enum('type', array('Suggestion','Report'))->nullable();
             $table->enum('status', array('Unviewed','In progress.','Completed'))->nullable();
             $table->string('remark')->nullable();
-            $table->timestamps();
+            $table->string('ip');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
 
         });
     }

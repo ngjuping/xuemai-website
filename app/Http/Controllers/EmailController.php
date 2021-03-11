@@ -23,6 +23,7 @@ class EmailController extends Controller
         // create subscriber email and save() to write to database
         $newEmail = new Email;
         $newEmail->email = $request->email;
+        $newEmail->ip =  $request->ip();
         $newEmail->save();
 
 
