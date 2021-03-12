@@ -17,7 +17,7 @@ import App from './App.vue';
 import Admin from './Admin.vue';
 import 'v-markdown-editor/dist/v-markdown-editor.css';
 import Editor from 'v-markdown-editor';
-import Lang from 'Lang.js';
+import Lang from 'lang.js';
 import source from './i18n';
 Vue.prototype.lang = new Lang({
     messages: source,

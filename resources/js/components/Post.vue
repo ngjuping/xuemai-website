@@ -64,6 +64,7 @@ export default {
         top:0px;
         width:50%;
         height:100%;
+        z-index: -1;
     }
 
     @media(max-width:768px){
