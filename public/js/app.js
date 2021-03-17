@@ -4745,12 +4745,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "VisitorFooter",
   data: function data() {
@@ -4853,13 +4847,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "VisitorHeader",
   methods: {
+    activeLanguage: function activeLanguage() {
+      var lang = this.activeLanguageShort();
+
+      switch (lang) {
+        case 'zh':
+          return '中文';
+
+        case 'en':
+          return 'English';
+      }
+
+      return 'English';
+    },
+    activeLanguageShort: function activeLanguageShort() {
+      return localStorage.getItem('xuemai-locale');
+    },
     setLang: function setLang(locale) {
       this.lang.setLocale(locale);
       localStorage.setItem('xuemai-locale', locale), this.$emit('i18n');
       this.$forceUpdate();
+    },
+    setActive: function setActive(panel) {
+      sessionStorage.setItem('active', panel);
+    },
+    isActive: function isActive(panel) {
+      return sessionStorage.getItem('active') == panel;
     }
   }
 });
@@ -5382,7 +5415,8 @@ __webpack_require__.r(__webpack_exports__);
       'about_us': 'About',
       'contact_us': 'Contact us',
       'blog': 'Blog',
-      'incoming': 'Stay tuned'
+      'incoming': 'Stay tuned',
+      'welcome': 'Our dearest welcome! Feel free to look around!'
     },
     'main': {
       'welcome': 'Welcome to xuemai',
@@ -5441,9 +5475,9 @@ __webpack_require__.r(__webpack_exports__);
       'title': 'Quickly solve your problem'
     },
     'footer': {
-      'vibes': 'Community Vibes',
+      'follow': 'FOLLOW OUR CHANNEL',
       'signup': 'Sign up',
-      'email': 'Email'
+      'email': 'Subscribe with email for latest news!'
     }
   },
   'zh.i18n': {
@@ -5452,7 +5486,8 @@ __webpack_require__.r(__webpack_exports__);
       'about_us': '关于我们',
       'contact_us': '联络我们',
       'incoming': '敬请期待',
-      'blog': '部落格'
+      'blog': '部落格',
+      'welcome': '欢迎来到我们的网站！走走看看吧!'
     },
     'main': {
       'welcome': '欢迎来到学脉',
@@ -5511,9 +5546,9 @@ __webpack_require__.r(__webpack_exports__);
       'title': '快速解决您的问题'
     },
     'footer': {
-      'vibes': '加入社区',
+      'follow': '欢迎多了解我们！',
       'signup': '订阅',
-      'email': '您的邮箱'
+      'email': '马上订阅，获得最新消息！'
     }
   }
 });
@@ -10050,7 +10085,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#gotoTop{\n    width:40px;\n    height:40px;\n    border-radius:15px;\n    position:fixed;\n    bottom:30px;\n    right: 30px;\n}\n#gotoTop:hover{\n    background-color:white;\n    cursor:pointer;\n}\n#app > div{\n    background-color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#gotoTop{\n    width:40px;\n    height:40px;\n    border-radius:15px;\n    position:fixed;\n    bottom:30px;\n    right: 30px;\n    z-index:100;\n    background-color:white;\n}\n#gotoTop:hover{\n    cursor:pointer;\n}\n#app > div{\n    background-color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10074,7 +10109,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.px-6[data-v-585349c6]{\n    padding-left: 10%;\n    padding-right: 10%;\n}\n.mx-6[data-v-585349c6]{\n    margin-left:10%;\n    margin-right:10%;\n}\n#latest_blogs_title[data-v-585349c6]{\n    font-size: 50px;\n    font-weight: bold;\n    font-family: 'Arial Black';\n}\n.pagination > .active > a[data-v-585349c6]\n{\n    border-color:black;\n    color: white;\n    background-color: black !Important;\n}\n@media(max-width:768px){\n.px-6[data-v-585349c6]{\n        padding-left: 5%;\n        padding-right: 5%;\n}\n.mx-6[data-v-585349c6]{\n        margin-left:5%;\n        margin-right:5%;\n}\n}\n@media(max-width:468px){\n.px-6[data-v-585349c6]{\n        padding-left: 1%;\n        padding-right: 1%;\n}\n.mx-6[data-v-585349c6]{\n        margin-left:1%;\n        margin-right:1%;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.form-control[data-v-585349c6]:focus {\n    border-color: #a664fa;\n    box-shadow: inset 0 1px 1px #a664fa, 0 0 8px #a664fa;\n}\n#search_btn[data-v-585349c6]{\n    background-color:#a664fa;\n}\n#search_icon[data-v-585349c6]{\n    color:white;\n}\n.px-6[data-v-585349c6]{\n    padding-left: 10%;\n    padding-right: 10%;\n}\n.mx-6[data-v-585349c6]{\n    margin-left:10%;\n    margin-right:10%;\n}\n#latest_blogs_title[data-v-585349c6]{\n    font-size: 50px;\n    font-weight: bold;\n    font-family: 'Arial Black';\n}\n.pagination > .active > a[data-v-585349c6]\n{\n    border-color:#a664fa;\n    color: white;\n    background-color: #a664fa !Important;\n}\n@media(max-width:768px){\n.px-6[data-v-585349c6]{\n        padding-left: 5%;\n        padding-right: 5%;\n}\n.mx-6[data-v-585349c6]{\n        margin-left:5%;\n        margin-right:5%;\n}\n}\n@media(max-width:468px){\n.px-6[data-v-585349c6]{\n        padding-left: 1%;\n        padding-right: 1%;\n}\n.mx-6[data-v-585349c6]{\n        margin-left:1%;\n        margin-right:1%;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10146,7 +10181,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.post[data-v-5e8280ea]{\n    position:relative;\n    border: 3px solid transparent;\n    cursor:pointer;\n}\n.post[data-v-5e8280ea]:hover{\n    border: 3px solid black;\n}\n.posttitle[data-v-5e8280ea]{\n    font-size:50px;\n    font-weight: 900;\n}\n.postcontent[data-v-5e8280ea]{\n    font-size:20px;\n}\n.post[data-v-5e8280ea]:hover::after{\n    content:\"\";\n    border-bottom: none;\n}\n.post[data-v-5e8280ea]::after{\n    content:\"\";\n    border-bottom: 1px solid grey;\n    position:absolute;\n    left:0px;\n    top:0px;\n    width:50%;\n    height:100%;\n    z-index: -1;\n}\n@media(max-width:768px){\n.posttitle[data-v-5e8280ea]{\n        font-size:30px;\n        font-weight: 900;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.post[data-v-5e8280ea]{\n    position:relative;\n    border: 3px solid transparent;\n    cursor:pointer;\n}\n.post[data-v-5e8280ea]:hover{\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n    transition: box-shadow 0.2s;\n}\n.post:hover .posttitle[data-v-5e8280ea] {\n    color:#a664fa;\n}\n.posttitle[data-v-5e8280ea]{\n    font-size:50px;\n    font-weight: 900;\n}\n.postcontent[data-v-5e8280ea]{\n    font-size:20px;\n}\n@media(max-width:768px){\n.posttitle[data-v-5e8280ea]{\n        font-size:30px;\n        font-weight: 900;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10242,7 +10277,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#discord[data-v-280e6ace]{\n    font-size:30px;\n}\n.btn[data-v-280e6ace]{\n    border-radius:0px;\n    border-color:transparent;\n    height:80px;\n    width:20%;\n}\ninput[data-v-280e6ace]{\n    width:70%;\n}\ni[data-v-280e6ace]{\n    color:white;\n    font-size:30px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.jumbotron[data-v-280e6ace]{\n    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);\n}\n#follow_us_titlte[data-v-280e6ace]{\n    font-size: 30px;\n    color:white;\n    font-weight: 800;\n}\n#subscribe_btn[data-v-280e6ace]{\n    border-radius: 0 10px 10px 0;\n    background-color: #a664fa;\n}\n.btn[data-v-280e6ace]{\n    border-radius:0px;\n    border-color:transparent;\n    height:80px;\n    width:20%;\n}\ninput[data-v-280e6ace]{\n    width:70%;\n    border-width: 0px;\n    border-radius: 10px 0 0 10px;\n    padding-left:20px;\n}\ninput[data-v-280e6ace]:focus{\n\n    border-width: 0px;\n}\ni[data-v-280e6ace]{\n    color:white;\n    font-size:30px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10266,7 +10301,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nnav[data-v-4940cec0]{\n    position:-webkit-sticky;\n    position:sticky;\n    top:0px;\n    z-index:100;\n}\na[data-v-4940cec0]{\n    font-size:20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#notice[data-v-4940cec0]{\n    background-color: #a664fa;\n}\nnav[data-v-4940cec0]{\n    position:-webkit-sticky;\n    position:sticky;\n    top:0px;\n    z-index:100;\n}\na[data-v-4940cec0]{\n    font-size:20px;\n}\n.nav-item[data-v-4940cec0]{\n    padding:20px;\n}\n.active[data-v-4940cec0]{\n    border-bottom: 3px solid #a664fa;\n}\n.active a[data-v-4940cec0]{\n    color: #a664fa !important;\n}\nimg[data-v-4940cec0]{\n    max-width:60px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -95594,8 +95629,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "button",
-      { staticClass: "btn btn-outline-secondary", attrs: { type: "button" } },
-      [_c("i", { staticClass: "fas fa-search" })]
+      { staticClass: "btn", attrs: { type: "button", id: "search_btn" } },
+      [_c("i", { staticClass: "fas fa-search", attrs: { id: "search_icon" } })]
     )
   },
   function() {
@@ -96269,13 +96304,21 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container-fluid " }, [
       _c("div", { staticClass: "row jumbotron mb-0" }, [
-        _c("div", { staticClass: "col-12 col-md" }, [
-          _c("div", { attrs: { id: "discord" } }, [
-            _c("div", [_vm._v(_vm._s(_vm.__("i18n.footer.vibes")))]),
+        _c("div", { staticClass: "col-12 col-md d-flex align-items-center" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-7", attrs: { id: "follow_us_titlte" } },
+              [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.__("i18n.footer.follow")) +
+                    "\n                    "
+                )
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "text-primary" }, [
-              _vm._v("discord.gg/xuemai")
-            ])
+            _vm._m(0)
           ])
         ]),
         _vm._v(" "),
@@ -96285,7 +96328,7 @@ var render = function() {
               "div",
               {
                 staticClass:
-                  "col-12 d-flex align-items-stretch justify-content-around"
+                  "col-12 d-flex align-items-stretch justify-content-center"
               },
               [
                 _c("input", {
@@ -96322,6 +96365,7 @@ var render = function() {
                       "btn-danger": _vm.failed,
                       "btn-dark": !(_vm.success || _vm.failed)
                     },
+                    attrs: { id: "subscribe_btn" },
                     on: { click: _vm.subscribe }
                   },
                   [
@@ -96365,9 +96409,7 @@ var render = function() {
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _vm._m(0)
+      ])
     ])
   ])
 }
@@ -96376,12 +96418,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row bg-dark jumbotron mb-0 rounded-0" }, [
-      _c("div", { staticClass: "col-12 col-md mb-3 text-white" }, [
-        _vm._v("\n                Designed by Xuemai\n            ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12 col-md mb-3" }, [
+    return _c(
+      "div",
+      { staticClass: "col d-flex justify-content-between align-items-center" },
+      [
         _c("i", { staticClass: "fab fa-discord mx-2" }),
         _vm._v(" "),
         _c("i", { staticClass: "fab fa-youtube mx-2" }),
@@ -96389,14 +96429,8 @@ var staticRenderFns = [
         _c("i", { staticClass: "fab fa-weixin mx-2" }),
         _vm._v(" "),
         _c("i", { staticClass: "fab fa-github mx-2" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _c("a", { staticClass: "text-white", attrs: { href: "/contact" } }, [
-          _vm._v("Contact us")
-        ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -96421,86 +96455,191 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    { staticClass: "navbar navbar-expand-md navbar-light bg-white" },
-    [
-      _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
-        _vm._v(_vm._s(_vm.__("i18n.header.brand")))
-      ]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "collapse navbar-collapse",
-          attrs: { id: "navbarSupportedContent" }
-        },
-        [
-          _c("ul", { staticClass: "navbar-nav mr-auto" }, [
-            _c("li", { staticClass: "nav-item active" }, [
-              _c("a", { staticClass: "nav-link", attrs: { href: "/about" } }, [
-                _vm._v(_vm._s(_vm.__("i18n.header.about_us")))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item active" }, [
-              _c(
-                "a",
-                { staticClass: "nav-link", attrs: { href: "/contact" } },
-                [_vm._v(_vm._s(_vm.__("i18n.header.contact_us")))]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item active" }, [
-              _c("a", { staticClass: "nav-link", attrs: { href: "/blog" } }, [
-                _vm._v(_vm._s(_vm.__("i18n.header.blog")))
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("li", { staticClass: "nav-item" }, [
-              _c(
-                "a",
-                { staticClass: "nav-link disabled", attrs: { href: "#" } },
-                [_vm._v(_vm._s(_vm.__("i18n.header.incoming")))]
-              )
-            ])
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "container-fluid py-1", attrs: { id: "notice" } },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col text-white pl-3" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.__("i18n.header.welcome")) +
+                "\n            "
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "btn-group " }, [
-            _c(
-              "div",
-              {
-                staticClass: "btn btn-light",
-                on: {
-                  click: function($event) {
-                    return _vm.setLang("en")
-                  }
-                }
-              },
-              [_vm._v("English")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "btn btn-light",
-                on: {
-                  click: function($event) {
-                    return _vm.setLang("zh")
-                  }
-                }
-              },
-              [_vm._v("简体中文")]
-            )
+          _c("div", { staticClass: "col d-flex justify-content-end pr-3" }, [
+            _c("div", { staticClass: "dropdown" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "dropdown-toggle text-white",
+                  attrs: { "data-toggle": "dropdown" }
+                },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.activeLanguage()) +
+                      "\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "dropdown-menu dropdown-menu-right" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dropdown-item",
+                    on: {
+                      click: function($event) {
+                        return _vm.setLang("en")
+                      }
+                    }
+                  },
+                  [_vm._v("English")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "dropdown-item",
+                    on: {
+                      click: function($event) {
+                        return _vm.setLang("zh")
+                      }
+                    }
+                  },
+                  [_vm._v("简体中文")]
+                )
+              ])
+            ])
           ])
-        ]
-      )
-    ]
-  )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "nav",
+      { staticClass: "navbar navbar-expand-md navbar-light bg-white" },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "navbar-brand",
+            attrs: { href: "/" },
+            on: {
+              click: function($event) {
+                return _vm.setActive(0)
+              }
+            }
+          },
+          [_c("img", { attrs: { src: "/img/logo.jpg" } })]
+        ),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "collapse navbar-collapse",
+            attrs: { id: "navbarSupportedContent" }
+          },
+          [
+            _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+              _c(
+                "li",
+                {
+                  staticClass: "nav-item",
+                  class: { active: _vm.isActive(1) },
+                  on: {
+                    click: function($event) {
+                      return _vm.setActive(1)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "/about" } },
+                    [_vm._v(_vm._s(_vm.__("i18n.header.about_us")))]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "nav-item",
+                  class: { active: _vm.isActive(2) },
+                  on: {
+                    click: function($event) {
+                      return _vm.setActive(2)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "/contact" } },
+                    [_vm._v(_vm._s(_vm.__("i18n.header.contact_us")))]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "nav-item",
+                  class: { active: _vm.isActive(3) },
+                  on: {
+                    click: function($event) {
+                      return _vm.setActive(3)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "/blog" } },
+                    [_vm._v(_vm._s(_vm.__("i18n.header.blog")))]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "nav-item",
+                  class: { active: _vm.isActive(4) },
+                  on: {
+                    click: function($event) {
+                      return _vm.setActive(4)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    { staticClass: "nav-link", attrs: { href: "/faq" } },
+                    [_vm._v("FAQ")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  { staticClass: "nav-link disabled", attrs: { href: "#" } },
+                  [_vm._v(_vm._s(_vm.__("i18n.header.incoming")))]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -96522,16 +96661,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item active" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "/faq" } }, [
-        _vm._v("FAQ")
-      ])
-    ])
   }
 ]
 render._withStripped = true

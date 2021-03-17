@@ -40,10 +40,11 @@ export default {
     position:fixed;
     bottom:30px;
     right: 30px;
+    z-index:100;
+    background-color:white;
 }
 
 #gotoTop:hover{
-    background-color:white;
     cursor:pointer;
 }
 

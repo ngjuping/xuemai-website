@@ -13,7 +13,7 @@
                                @search="getAllPosts();mode = 'posts';"
                                @input="checkIfQueryIsEmpty">
                         <div class="input-group-append" @click="searchPosts()">
-                            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+                            <button class="btn" type="button" id="search_btn"><i class="fas fa-search" id="search_icon"></i></button>
                         </div>
                     </div>
                 </div>
@@ -126,6 +126,19 @@ export default {
 </script>
 
 <style scoped>
+.form-control:focus {
+    border-color: #a664fa;
+    box-shadow: inset 0 1px 1px #a664fa, 0 0 8px #a664fa;
+}
+
+#search_btn{
+    background-color:#a664fa;
+}
+
+#search_icon{
+    color:white;
+}
+
 .px-6{
     padding-left: 10%;
     padding-right: 10%;
@@ -144,9 +157,9 @@ export default {
 
 .pagination > .active > a
 {
-    border-color:black;
+    border-color:#a664fa;
     color: white;
-    background-color: black !Important;
+    background-color: #a664fa !Important;
 }
 
 @media(max-width:768px){

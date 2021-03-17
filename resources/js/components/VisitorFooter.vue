@@ -2,24 +2,32 @@
 <div>
     <div class="container-fluid ">
         <div class="row jumbotron mb-0">
-            <div class="col-12 col-md">
-                <div id="discord">
-                    <div>{{ __('i18n.footer.vibes') }}</div>
-                    <div class="text-primary">discord.gg/xuemai</div>
+            <div class="col-12 col-md d-flex align-items-center">
+                <div class="row">
+                    <div class="col-7" id="follow_us_titlte">
+                        {{ __('i18n.footer.follow') }}
+                    </div>
+                    <div class="col d-flex justify-content-between align-items-center">
+                        <i class="fab fa-discord mx-2"></i>
+                        <i class="fab fa-youtube mx-2"></i>
+                        <i class="fab fa-weixin mx-2"></i>
+                        <i class="fab fa-github mx-2"></i>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-md">
                 <div class="row w-100">
-                    <div class="col-12 d-flex align-items-stretch justify-content-around">
+                    <div class="col-12 d-flex align-items-stretch justify-content-center">
                         <input type="email" :placeholder="__('i18n.footer.email')" v-model="subscriber_email">
 
                         <div :class="{'btn-success':success,'btn-danger':failed, 'btn-dark':!(success || failed)}"
-                             class="btn d-inline-flex justify-content-center align-items-center"  @click="subscribe" >
+                             class="btn d-inline-flex justify-content-center align-items-center"  @click="subscribe" id="subscribe_btn">
                             <div class="spinner-border " role="status" v-if="subscribing">
                                 <span class="sr-only">Loading...</span>
                             </div>
                             <div class="w-100 h-100 d-flex justify-content-center align-items-center" v-else>{{ buttonText }}</div>
                         </div>
+
                     </div>
 
                     <div class="col-12">
@@ -27,20 +35,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-        <div class="row bg-dark jumbotron mb-0 rounded-0">
-            <div class="col-12 col-md mb-3 text-white">
-                Designed by Xuemai
-            </div>
-            <div class="col-12 col-md mb-3">
-                <i class="fab fa-discord mx-2"></i>
-                <i class="fab fa-youtube mx-2"></i>
-                <i class="fab fa-weixin mx-2"></i>
-                <i class="fab fa-github mx-2"></i>
-            </div>
-            <div class="col">
-                <a href="/contact" class="text-white">Contact us</a>
             </div>
         </div>
     </div>
@@ -109,8 +103,17 @@ export default {
 </script>
 
 <style scoped>
-    #discord{
-        font-size:30px;
+    .jumbotron{
+        background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    }
+    #follow_us_titlte{
+        font-size: 30px;
+        color:white;
+        font-weight: 800;
+    }
+    #subscribe_btn{
+        border-radius: 0 10px 10px 0;
+        background-color: #a664fa;
     }
     .btn{
         border-radius:0px;
@@ -121,6 +124,14 @@ export default {
 
     input{
         width:70%;
+        border-width: 0px;
+        border-radius: 10px 0 0 10px;
+        padding-left:20px;
+
+    }
+    input:focus{
+
+        border-width: 0px;
     }
 
     i{

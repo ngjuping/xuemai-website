@@ -5,7 +5,8 @@ export default {
             'about_us': 'About',
             'contact_us': 'Contact us',
             'blog':'Blog',
-            'incoming': 'Stay tuned'
+            'incoming': 'Stay tuned',
+            'welcome' :'Our dearest welcome! Feel free to look around!'
         },
         'main':{
             'welcome':'Welcome to xuemai',
@@ -64,9 +65,9 @@ export default {
             'title':'Quickly solve your problem'
         },
         'footer':{
-            'vibes':'Community Vibes',
+            'follow':'FOLLOW OUR CHANNEL',
             'signup':'Sign up',
-            'email':'Email',
+            'email':'Subscribe with email for latest news!',
         }
     },
     'zh.i18n': {
@@ -76,6 +77,7 @@ export default {
             'contact_us': '联络我们',
             'incoming': '敬请期待',
             'blog':'部落格',
+            'welcome' :'欢迎来到我们的网站！走走看看吧!'
         },
         'main':{
             'welcome':'欢迎来到学脉',
@@ -134,9 +136,9 @@ export default {
             'title':'快速解决您的问题'
         },
         'footer':{
-            'vibes':'加入社区',
+            'follow':'欢迎多了解我们！',
             'signup':'订阅',
-            'email':'您的邮箱',
+            'email':'马上订阅，获得最新消息！',
         }
     }
 }

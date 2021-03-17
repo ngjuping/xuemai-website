@@ -43,28 +43,19 @@ export default {
         cursor:pointer;
     }
     .post:hover{
-        border: 3px solid black;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: box-shadow 0.2s;
     }
+    .post:hover .posttitle {
+        color:#a664fa;
+    }
+
     .posttitle{
         font-size:50px;
         font-weight: 900;
     }
     .postcontent{
         font-size:20px;
-    }
-    .post:hover::after{
-        content:"";
-        border-bottom: none;
-    }
-    .post::after{
-        content:"";
-        border-bottom: 1px solid grey;
-        position:absolute;
-        left:0px;
-        top:0px;
-        width:50%;
-        height:100%;
-        z-index: -1;
     }
 
     @media(max-width:768px){
