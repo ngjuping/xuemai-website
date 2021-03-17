@@ -139,15 +139,6 @@ export default {
     color:white;
 }
 
-.px-6{
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-.mx-6{
-    margin-left:10%;
-    margin-right:10%;
-}
 #latest_blogs_title{
     font-size: 50px;
     font-weight: bold;
@@ -162,28 +153,5 @@ export default {
     background-color: #a664fa !Important;
 }
 
-@media(max-width:768px){
-    .px-6{
-        padding-left: 5%;
-        padding-right: 5%;
-    }
-
-    .mx-6{
-        margin-left:5%;
-        margin-right:5%;
-    }
-}
-
-@media(max-width:468px){
-    .px-6{
-        padding-left: 1%;
-        padding-right: 1%;
-    }
-
-    .mx-6{
-        margin-left:1%;
-        margin-right:1%;
-    }
-}
 
 </style>

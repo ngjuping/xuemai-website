@@ -10085,7 +10085,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#gotoTop{\n    width:40px;\n    height:40px;\n    border-radius:15px;\n    position:fixed;\n    bottom:30px;\n    right: 30px;\n    z-index:100;\n    background-color:white;\n}\n#gotoTop:hover{\n    cursor:pointer;\n}\n#app > div{\n    background-color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#gotoTop{\n    width:40px;\n    height:40px;\n    border-radius:15px;\n    position:fixed;\n    bottom:30px;\n    right: 30px;\n    z-index:100;\n    background-color:white;\n}\n#gotoTop:hover{\n    cursor:pointer;\n}\n.px-6{\n    padding-left: 10%;\n    padding-right: 10%;\n}\n.mx-6{\n    margin-left:10%;\n    margin-right:10%;\n}\n@media(max-width:768px){\n.px-6{\n        padding-left: 5%;\n        padding-right: 5%;\n}\n.mx-6{\n        margin-left:5%;\n        margin-right:5%;\n}\n}\n@media(max-width:468px){\n.px-6{\n        padding-left: 1%;\n        padding-right: 1%;\n}\n.mx-6{\n        margin-left:1%;\n        margin-right:1%;\n}\n}\n#app > div{\n    background-color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10109,7 +10109,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.form-control[data-v-585349c6]:focus {\n    border-color: #a664fa;\n    box-shadow: inset 0 1px 1px #a664fa, 0 0 8px #a664fa;\n}\n#search_btn[data-v-585349c6]{\n    background-color:#a664fa;\n}\n#search_icon[data-v-585349c6]{\n    color:white;\n}\n.px-6[data-v-585349c6]{\n    padding-left: 10%;\n    padding-right: 10%;\n}\n.mx-6[data-v-585349c6]{\n    margin-left:10%;\n    margin-right:10%;\n}\n#latest_blogs_title[data-v-585349c6]{\n    font-size: 50px;\n    font-weight: bold;\n    font-family: 'Arial Black';\n}\n.pagination > .active > a[data-v-585349c6]\n{\n    border-color:#a664fa;\n    color: white;\n    background-color: #a664fa !Important;\n}\n@media(max-width:768px){\n.px-6[data-v-585349c6]{\n        padding-left: 5%;\n        padding-right: 5%;\n}\n.mx-6[data-v-585349c6]{\n        margin-left:5%;\n        margin-right:5%;\n}\n}\n@media(max-width:468px){\n.px-6[data-v-585349c6]{\n        padding-left: 1%;\n        padding-right: 1%;\n}\n.mx-6[data-v-585349c6]{\n        margin-left:1%;\n        margin-right:1%;\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.form-control[data-v-585349c6]:focus {\n    border-color: #a664fa;\n    box-shadow: inset 0 1px 1px #a664fa, 0 0 8px #a664fa;\n}\n#search_btn[data-v-585349c6]{\n    background-color:#a664fa;\n}\n#search_icon[data-v-585349c6]{\n    color:white;\n}\n#latest_blogs_title[data-v-585349c6]{\n    font-size: 50px;\n    font-weight: bold;\n    font-family: 'Arial Black';\n}\n.pagination > .active > a[data-v-585349c6]\n{\n    border-color:#a664fa;\n    color: white;\n    background-color: #a664fa !Important;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10277,7 +10277,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.jumbotron[data-v-280e6ace]{\n    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);\n}\n#follow_us_titlte[data-v-280e6ace]{\n    font-size: 30px;\n    color:white;\n    font-weight: 800;\n}\n#subscribe_btn[data-v-280e6ace]{\n    border-radius: 0 10px 10px 0;\n    background-color: #a664fa;\n}\n.btn[data-v-280e6ace]{\n    border-radius:0px;\n    border-color:transparent;\n    height:80px;\n    width:20%;\n}\ninput[data-v-280e6ace]{\n    width:70%;\n    border-width: 0px;\n    border-radius: 10px 0 0 10px;\n    padding-left:20px;\n}\ninput[data-v-280e6ace]:focus{\n\n    border-width: 0px;\n}\ni[data-v-280e6ace]{\n    color:white;\n    font-size:30px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#footer[data-v-280e6ace]{\n    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);\n}\n.jumbotron[data-v-280e6ace]{\n    background-color:transparent;\n}\n#follow_us_title[data-v-280e6ace]{\n    font-size: 20px;\n    color:white;\n    font-weight: 800;\n}\n#subscribe_btn[data-v-280e6ace]{\n    border-radius: 0 10px 10px 0;\n    background-color: #a664fa;\n}\n.btn[data-v-280e6ace]{\n    border-radius:0px;\n    border-color:transparent;\n    height:80px;\n    width:20%;\n}\ninput[data-v-280e6ace]{\n    width:70%;\n    border-width: 0px;\n    border-radius: 10px 0 0 10px;\n    padding-left:20px;\n}\ninput[data-v-280e6ace]:focus{\n\n    border-width: 0px;\n}\ni[data-v-280e6ace]{\n    color:white;\n    font-size:30px;\n}\n[data-v-280e6ace]::-webkit-input-placeholder { /* Chrome/Opera/Safari */\n    white-space:pre-line;\n    position:relative;\n    top:-7px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -96302,115 +96302,130 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "container-fluid " }, [
-      _c("div", { staticClass: "row jumbotron mb-0" }, [
-        _c("div", { staticClass: "col-12 col-md d-flex align-items-center" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-7", attrs: { id: "follow_us_titlte" } },
-              [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.__("i18n.footer.follow")) +
-                    "\n                    "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 col-md" }, [
-          _c("div", { staticClass: "row w-100" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-12 d-flex align-items-stretch justify-content-center"
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.subscriber_email,
-                      expression: "subscriber_email"
-                    }
-                  ],
-                  attrs: {
-                    type: "email",
-                    placeholder: _vm.__("i18n.footer.email")
-                  },
-                  domProps: { value: _vm.subscriber_email },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.subscriber_email = $event.target.value
-                    }
-                  }
-                }),
+    _c(
+      "div",
+      { staticClass: "container-fluid px-0 px-md-5", attrs: { id: "footer" } },
+      [
+        _c("div", { staticClass: "row no-gutters jumbotron mb-0  px-6 mx-6" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 col-md-5 col-lg d-flex align-items-center" },
+            [
+              _c("div", { staticClass: "row w-100 px-3" }, [
+                _c(
+                  "div",
+                  { staticClass: "col", attrs: { id: "follow_us_title" } },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm.__("i18n.footer.follow")) +
+                        "\n                    "
+                    )
+                  ]
+                ),
                 _vm._v(" "),
+                _vm._m(0)
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "col-12 col-md col-lg d-flex justify-content-center justify-content-md-end"
+            },
+            [
+              _c("div", { staticClass: "row w-100" }, [
                 _c(
                   "div",
                   {
                     staticClass:
-                      "btn d-inline-flex justify-content-center align-items-center",
-                    class: {
-                      "btn-success": _vm.success,
-                      "btn-danger": _vm.failed,
-                      "btn-dark": !(_vm.success || _vm.failed)
-                    },
-                    attrs: { id: "subscribe_btn" },
-                    on: { click: _vm.subscribe }
+                      "col-12 d-flex align-items-stretch justify-content-center justify-content-md-end"
                   },
                   [
-                    _vm.subscribing
-                      ? _c(
-                          "div",
-                          {
-                            staticClass: "spinner-border ",
-                            attrs: { role: "status" }
-                          },
-                          [
-                            _c("span", { staticClass: "sr-only" }, [
-                              _vm._v("Loading...")
-                            ])
-                          ]
-                        )
-                      : _c(
-                          "div",
-                          {
-                            staticClass:
-                              "w-100 h-100 d-flex justify-content-center align-items-center"
-                          },
-                          [_vm._v(_vm._s(_vm.buttonText))]
-                        )
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.subscriber_email,
+                          expression: "subscriber_email"
+                        }
+                      ],
+                      attrs: {
+                        type: "email",
+                        placeholder: _vm.__("i18n.footer.email")
+                      },
+                      domProps: { value: _vm.subscriber_email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.subscriber_email = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "btn d-inline-flex justify-content-center align-items-center h-100",
+                        class: {
+                          "btn-success": _vm.success,
+                          "btn-danger": _vm.failed,
+                          "btn-dark": !(_vm.success || _vm.failed)
+                        },
+                        attrs: { id: "subscribe_btn" },
+                        on: { click: _vm.subscribe }
+                      },
+                      [
+                        _vm.subscribing
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "spinner-border ",
+                                attrs: { role: "status" }
+                              },
+                              [
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("Loading...")
+                                ])
+                              ]
+                            )
+                          : _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "w-100 h-100 d-flex justify-content-center align-items-center"
+                              },
+                              [_vm._v(_vm._s(_vm.buttonText))]
+                            )
+                      ]
+                    )
                   ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-12" }, [
-              _c(
-                "small",
-                {
-                  class: {
-                    "text-success": _vm.success,
-                    "text-danger": _vm.failed
-                  }
-                },
-                [_vm._v(_vm._s(_vm.err_msg))]
-              )
-            ])
-          ])
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-12" }, [
+                  _c(
+                    "small",
+                    {
+                      class: {
+                        "text-success": _vm.success,
+                        "text-danger": _vm.failed
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.err_msg))]
+                  )
+                ])
+              ])
+            ]
+          )
         ])
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -96422,13 +96437,13 @@ var staticRenderFns = [
       "div",
       { staticClass: "col d-flex justify-content-between align-items-center" },
       [
-        _c("i", { staticClass: "fab fa-discord mx-2" }),
+        _c("i", { staticClass: "fab fa-discord mx-1" }),
         _vm._v(" "),
-        _c("i", { staticClass: "fab fa-youtube mx-2" }),
+        _c("i", { staticClass: "fab fa-youtube mx-1" }),
         _vm._v(" "),
-        _c("i", { staticClass: "fab fa-weixin mx-2" }),
+        _c("i", { staticClass: "fab fa-weixin mx-1" }),
         _vm._v(" "),
-        _c("i", { staticClass: "fab fa-github mx-2" })
+        _c("i", { staticClass: "fab fa-github mx-1" })
       ]
     )
   }
