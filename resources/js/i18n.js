@@ -8,17 +8,14 @@ export default {
             'incoming': 'Stay tuned'
         },
         'main':{
-            'latest':'Latest posts',
             'welcome':'Welcome to xuemai',
             'welcome-2':'Check out our latest news and products!',
-            'search':'Search...',
             'news':{
                 '1':{
                     'title':'2021 product release',
                     'description':'Come join our BETA WebApp'
                 }
-            },
-            'published_at': 'Published at'
+            }
         },
         'about':{
             'title':'A superb platform',
@@ -52,6 +49,17 @@ export default {
             'report':'report',
             'suggest':'suggest'
         },
+        'blog':{
+            'latest':'Latest posts',
+            'search':'Search...',
+            'published_at': 'Published at',
+            'pagination':{
+                'first':'First',
+                'prev':'Previous',
+                'next':'Next',
+                'last':'Last'
+            }
+        },
         'FAQ':{
             'title':'Quickly solve your problem'
         },
@@ -70,17 +78,14 @@ export default {
             'blog':'部落格',
         },
         'main':{
-            'latest':'最新动态',
             'welcome':'欢迎来到学脉',
             'welcome-2':'我们的进度报告，产品发布，都会在这里!',
-            'search':'查找帖子...',
             'news':{
                 '1':{
                     'title':'2021年产品发布会',
                     'description':'WebApp等你来'
                 }
-            },
-            'published_at': '发布于'
+            }
         },
         'about':{
             'title':'一个为学术打造的平台',
@@ -113,6 +118,17 @@ export default {
             'contact_us':'联络我们',
             'report':'吐槽',
             'suggest':'提议'
+        },
+        'blog':{
+            'latest':'最新动态',
+            'search':'查找帖子...',
+            'published_at': '发布于',
+            'pagination':{
+                'first':'首页',
+                'prev':'上一页',
+                'next':'下一页',
+                'last':'末页'
+            }
         },
         'FAQ':{
             'title':'快速解决您的问题'

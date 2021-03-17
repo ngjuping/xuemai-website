@@ -1,7 +1,7 @@
 <template>
     <div class="jumbotron bg-white p-3 post" @click="$emit('post-clicked')">
         <h2 class="posttitle">{{ post.postTitle.slice(0,50) }}</h2>
-        <small > {{ __('i18n.main.published_at') }} {{ parseTime(post.created_at) }}</small>
+        <small > {{ __('i18n.blog.published_at') }} {{ parseTime(post.created_at) }}</small>
         <p class="postcontent">{{ post.postContent.slice(0,50) }}... </p>
         <div v-if="!readonly" class="my-2">
             <div class="btn btn-primary" @click.stop="$emit('update-post',post)">

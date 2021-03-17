@@ -23,10 +23,11 @@
                     <a class="nav-link disabled" href="#">{{ __('i18n.header.incoming') }}</a>
                 </li>
             </ul>
-        </div>
-        <div class="btn-group ">
-            <div class="btn btn-light" @click="setLang('en')">English</div>
-            <div class="btn btn-light" @click="setLang('zh')">简体中文</div>
+
+            <div class="btn-group ">
+                <div class="btn btn-light" @click="setLang('en')">English</div>
+                <div class="btn btn-light" @click="setLang('zh')">简体中文</div>
+            </div>
         </div>
     </nav>
 </template>

@@ -4142,15 +4142,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -4861,6 +4852,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "VisitorHeader",
   methods: {
@@ -5393,17 +5385,14 @@ __webpack_require__.r(__webpack_exports__);
       'incoming': 'Stay tuned'
     },
     'main': {
-      'latest': 'Latest posts',
       'welcome': 'Welcome to xuemai',
       'welcome-2': 'Check out our latest news and products!',
-      'search': 'Search...',
       'news': {
         '1': {
           'title': '2021 product release',
           'description': 'Come join our BETA WebApp'
         }
-      },
-      'published_at': 'Published at'
+      }
     },
     'about': {
       'title': 'A superb platform',
@@ -5437,6 +5426,17 @@ __webpack_require__.r(__webpack_exports__);
       'report': 'report',
       'suggest': 'suggest'
     },
+    'blog': {
+      'latest': 'Latest posts',
+      'search': 'Search...',
+      'published_at': 'Published at',
+      'pagination': {
+        'first': 'First',
+        'prev': 'Previous',
+        'next': 'Next',
+        'last': 'Last'
+      }
+    },
     'FAQ': {
       'title': 'Quickly solve your problem'
     },
@@ -5455,17 +5455,14 @@ __webpack_require__.r(__webpack_exports__);
       'blog': '部落格'
     },
     'main': {
-      'latest': '最新动态',
       'welcome': '欢迎来到学脉',
       'welcome-2': '我们的进度报告，产品发布，都会在这里!',
-      'search': '查找帖子...',
       'news': {
         '1': {
           'title': '2021年产品发布会',
           'description': 'WebApp等你来'
         }
-      },
-      'published_at': '发布于'
+      }
     },
     'about': {
       'title': '一个为学术打造的平台',
@@ -5498,6 +5495,17 @@ __webpack_require__.r(__webpack_exports__);
       'contact_us': '联络我们',
       'report': '吐槽',
       'suggest': '提议'
+    },
+    'blog': {
+      'latest': '最新动态',
+      'search': '查找帖子...',
+      'published_at': '发布于',
+      'pagination': {
+        'first': '首页',
+        'prev': '上一页',
+        'next': '下一页',
+        'last': '末页'
+      }
     },
     'FAQ': {
       'title': '快速解决您的问题'
@@ -10066,7 +10074,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#latest_blogs_title[data-v-585349c6]{\n    font-size: 50px;\n    font-weight: bold;\n    font-family: 'Arial Black';\n}\n.pagination > .active > a[data-v-585349c6]\n{\n    border-color:black;\n    color: white;\n    background-color: black !Important;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.px-6[data-v-585349c6]{\n    padding-left: 10%;\n    padding-right: 10%;\n}\n.mx-6[data-v-585349c6]{\n    margin-left:10%;\n    margin-right:10%;\n}\n#latest_blogs_title[data-v-585349c6]{\n    font-size: 50px;\n    font-weight: bold;\n    font-family: 'Arial Black';\n}\n.pagination > .active > a[data-v-585349c6]\n{\n    border-color:black;\n    color: white;\n    background-color: black !Important;\n}\n@media(max-width:768px){\n.px-6[data-v-585349c6]{\n        padding-left: 5%;\n        padding-right: 5%;\n}\n.mx-6[data-v-585349c6]{\n        margin-left:5%;\n        margin-right:5%;\n}\n}\n@media(max-width:468px){\n.px-6[data-v-585349c6]{\n        padding-left: 1%;\n        padding-right: 1%;\n}\n.mx-6[data-v-585349c6]{\n        margin-left:1%;\n        margin-right:1%;\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -95391,176 +95399,178 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "bg-white" }, [
-    _c("div", { staticClass: "container-fluid p-5 bg-light" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12 col-md" }, [
-          _c("h3", { attrs: { id: "latest_blogs_title" } }, [
-            _vm._v(_vm._s(_vm.__("i18n.main.latest")))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 col-md" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-8" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.filterString,
-                    expression: "filterString"
-                  }
-                ],
-                staticClass: "form-control h-100 mr-2",
-                attrs: {
-                  type: "search",
-                  placeholder: _vm.__("i18n.main.search")
-                },
-                domProps: { value: _vm.filterString },
-                on: {
-                  search: function($event) {
-                    _vm.getAllPosts()
-                    _vm.mode = "posts"
-                  },
-                  input: [
-                    function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.filterString = $event.target.value
-                    },
-                    _vm.checkIfQueryIsEmpty
-                  ]
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary d-inline-block",
-                  on: {
-                    click: function($event) {
-                      return _vm.searchPosts()
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fas fa-search" })]
-              )
-            ])
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "clearfix" }),
-    _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-5" },
+      { staticClass: "container-fluid px-0 py-5 px-md-5 bg-light mb-3" },
       [
-        _c("div", { staticClass: "d-flex justify-content-end" }, [
-          _vm.loading
-            ? _c("div", { staticClass: "mx-3 col" }, [_vm._m(1)])
-            : _vm._e(),
+        _c("div", { staticClass: "row no-gutters px-6 mx-6" }, [
+          _c("div", { staticClass: "col-12 col-md" }, [
+            _c(
+              "h3",
+              { staticClass: "px-3", attrs: { id: "latest_blogs_title" } },
+              [_vm._v(_vm._s(_vm.__("i18n.blog.latest")))]
+            )
+          ]),
           _vm._v(" "),
           _c(
-            "ul",
-            { staticClass: "pagination" },
+            "div",
+            { staticClass: "col-12 col-md d-flex align-items-center" },
             [
-              _c(
-                "li",
-                {
-                  staticClass: "page-item page-link",
-                  on: {
-                    click: function($event) {
-                      return _vm.getAllPosts(_vm.pagination_data.first_page_url)
-                    }
-                  }
-                },
-                [_vm._v("First")]
-              ),
-              _vm._v(" "),
-              _vm.pagination_data.prev_page_url
-                ? _c(
-                    "li",
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  directives: [
                     {
-                      staticClass: "page-item page-link",
-                      on: {
-                        click: function($event) {
-                          return _vm.getAllPosts(
-                            _vm.pagination_data.prev_page_url
-                          )
-                        }
-                      }
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.filterString,
+                      expression: "filterString"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: _vm.__("i18n.blog.search")
+                  },
+                  domProps: { value: _vm.filterString },
+                  on: {
+                    search: function($event) {
+                      _vm.getAllPosts()
+                      _vm.mode = "posts"
                     },
-                    [_vm._v("Previous")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm._l(_vm.availablePages, function(page) {
-                return _c(
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.filterString = $event.target.value
+                      },
+                      _vm.checkIfQueryIsEmpty
+                    ]
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "input-group-append",
+                    on: {
+                      click: function($event) {
+                        return _vm.searchPosts()
+                      }
+                    }
+                  },
+                  [_vm._m(0)]
+                )
+              ])
+            ]
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "px-0 px-md-5" }, [
+      _c("div", { staticClass: "d-flex justify-content-end px-6 mx-6" }, [
+        _vm.loading
+          ? _c("div", { staticClass: "mx-3 col" }, [_vm._m(1)])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "pagination" },
+          [
+            _c(
+              "li",
+              {
+                staticClass: "page-item page-link text-dark",
+                on: {
+                  click: function($event) {
+                    return _vm.getAllPosts(_vm.pagination_data.first_page_url)
+                  }
+                }
+              },
+              [_vm._v(_vm._s(_vm.__("i18n.blog.pagination.first")))]
+            ),
+            _vm._v(" "),
+            _vm.pagination_data.prev_page_url
+              ? _c(
                   "li",
                   {
-                    staticClass: "page-item ",
-                    class: { active: _vm.pagination_data.current_page === page }
+                    staticClass: "page-item page-link text-dark",
+                    on: {
+                      click: function($event) {
+                        return _vm.getAllPosts(
+                          _vm.pagination_data.prev_page_url
+                        )
+                      }
+                    }
                   },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "page-link",
-                        on: {
-                          click: function($event) {
-                            return _vm.getAllPosts(
-                              "/api/" + _vm.mode + "?page=" + page
-                            )
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(page))]
-                    )
-                  ]
+                  [_vm._v(_vm._s(_vm.__("i18n.blog.pagination.prev")))]
                 )
-              }),
-              _vm._v(" "),
-              _vm.pagination_data.next_page_url
-                ? _c(
-                    "li",
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._l(_vm.availablePages, function(page) {
+              return _c(
+                "li",
+                {
+                  staticClass: "page-item ",
+                  class: { active: _vm.pagination_data.current_page === page }
+                },
+                [
+                  _c(
+                    "a",
                     {
-                      staticClass: "page-item page-link",
+                      staticClass: "page-link",
                       on: {
                         click: function($event) {
                           return _vm.getAllPosts(
-                            _vm.pagination_data.next_page_url
+                            "/api/" + _vm.mode + "?page=" + page
                           )
                         }
                       }
                     },
-                    [_vm._v("Next")]
+                    [_vm._v(_vm._s(page))]
                   )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item page-link",
-                  on: {
-                    click: function($event) {
-                      return _vm.getAllPosts(_vm.pagination_data.last_page_url)
-                    }
-                  }
-                },
-                [_vm._v("Last")]
+                ]
               )
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
+            }),
+            _vm._v(" "),
+            _vm.pagination_data.next_page_url
+              ? _c(
+                  "li",
+                  {
+                    staticClass: "page-item page-link text-dark",
+                    on: {
+                      click: function($event) {
+                        return _vm.getAllPosts(
+                          _vm.pagination_data.next_page_url
+                        )
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.__("i18n.blog.pagination.next")))]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "page-item page-link text-dark",
+                on: {
+                  click: function($event) {
+                    return _vm.getAllPosts(_vm.pagination_data.last_page_url)
+                  }
+                }
+              },
+              [_vm._v(_vm._s(_vm.__("i18n.blog.pagination.last")))]
+            )
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mx-6 px-6" },
         _vm._l(_vm.posts, function(post) {
           return _c("Post", {
             key: post.id,
@@ -95571,10 +95581,10 @@ var render = function() {
               }
             }
           })
-        })
-      ],
-      2
-    )
+        }),
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -95582,9 +95592,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid px-0 mb-3 mx-0" }, [
-      _c("div", { staticClass: "row" })
-    ])
+    return _c(
+      "button",
+      { staticClass: "btn btn-outline-secondary", attrs: { type: "button" } },
+      [_c("i", { staticClass: "fas fa-search" })]
+    )
   },
   function() {
     var _vm = this
@@ -95903,7 +95915,7 @@ var render = function() {
       _c("small", [
         _vm._v(
           " " +
-            _vm._s(_vm.__("i18n.main.published_at")) +
+            _vm._s(_vm.__("i18n.blog.published_at")) +
             " " +
             _vm._s(_vm.parseTime(_vm.post.created_at))
         )
@@ -96456,37 +96468,37 @@ var render = function() {
                 [_vm._v(_vm._s(_vm.__("i18n.header.incoming")))]
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "btn-group " }, [
+            _c(
+              "div",
+              {
+                staticClass: "btn btn-light",
+                on: {
+                  click: function($event) {
+                    return _vm.setLang("en")
+                  }
+                }
+              },
+              [_vm._v("English")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "btn btn-light",
+                on: {
+                  click: function($event) {
+                    return _vm.setLang("zh")
+                  }
+                }
+              },
+              [_vm._v("简体中文")]
+            )
           ])
         ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "btn-group " }, [
-        _c(
-          "div",
-          {
-            staticClass: "btn btn-light",
-            on: {
-              click: function($event) {
-                return _vm.setLang("en")
-              }
-            }
-          },
-          [_vm._v("English")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "btn btn-light",
-            on: {
-              click: function($event) {
-                return _vm.setLang("zh")
-              }
-            }
-          },
-          [_vm._v("简体中文")]
-        )
-      ])
+      )
     ]
   )
 }
