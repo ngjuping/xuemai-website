@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white" >
         <div class="container-fluid px-0 py-5 px-md-5 bg-light mb-3">
-            <div class="row no-gutters px-6 mx-6"   >
+            <div class="row no-gutters btstrp-custom-px-6 btstrp-custom-mx-6"   >
                 <div class="col-12 col-md">
                     <h3 id="latest_blogs_title" class="px-3">{{ __('i18n.blog.latest') }}</h3>
                 </div>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="px-0 px-md-5">
-            <div class="d-flex justify-content-end px-6 mx-6">
+            <div class="d-flex justify-content-end btstrp-custom-px-6 btstrp-custom-mx-6">
                 <div class="mx-3 col" v-if="loading">
                     <div class="spinner-border" role="status">
                         <span class="sr-only">Loading...</span>
@@ -37,7 +37,7 @@
                     <li class="page-item page-link text-dark" @click="getAllPosts(pagination_data.last_page_url)">{{ __('i18n.blog.pagination.last') }}</li>
                 </ul>
             </div>
-            <div class="mx-6 px-6">
+            <div class="btstrp-custom-mx-6 btstrp-custom-px-6">
                 <Post v-for="post in posts" :key="post.id" :post="post" :readonly="true" @post-clicked="goToPostDetails(post.id)"></Post>
             </div>
         </div>

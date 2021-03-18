@@ -29,6 +29,8 @@ Vue.prototype.__ = function(string){
     return Vue.prototype.lang.get(string);
 }
 
+Vue.prototype.window = window;
+
 window.__ = function(string){
     return Vue.prototype.lang.get(string);
 }

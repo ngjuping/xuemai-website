@@ -1,12 +1,28 @@
 <template>
-    <div class="p-3">
+    <div class="btstrp-custom-px-6 btstrp-custom-mx-6 mb-3">
         <div v-if="post">
-            <h1 ><span class="btn btn-danger" @click="$router.go(-1)">返回</span> {{ this.post.postTitle }} </h1>
-            <small>发布于 {{ chineseTime(this.post.created_at) }}</small>
+            <div class="text-center">
+                <span class="btn float-left return my-3" @click="$router.go(-1)"><i class="fas fa-home"></i></span>
+                <div class="clearfix showBelowMD"></div>
+                <h1 class="posttitle">{{ this.post.postTitle }}</h1>
+             </div>
+            <div class="clearfix"></div>
+            <div class="jumbotron px-0 py-2 bg-light">
+                <div class="container-fluid">
+                    <div class="row no-gutters">
+                        <div class="col">
+                            <i class="fas fa-link mr-2"></i><b>{{ window.location.href }}</b>
+                        </div>
+                        <div class="col text-right">
+                            <small>{{ __('i18n.post.published_at') }} {{ chineseTime(this.post.created_at) }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <h2 v-else> Loading... </h2>
-        <hr>
-        <div class="bg-white p-3 shadow" v-html="compiledMarkdown" id="display"></div>
+        <div class="bg-white p-3" v-html="compiledMarkdown" id="display"></div>
+        <div class="jumbotron px-0 py-1" style="background-color:#a664fa;opacity:0.2;"></div>
     </div>
 </template>
 
@@ -51,19 +67,44 @@ export default {
 </script>
 
 <style scoped>
-
+.return{
+    background-color: #a664fa;
+    color:white;
+    vertical-align: middle;
+}
+.posttitle{
+    font-weight: bold;
+    font-size: 50px;
+}
 #display >>> blockquote{
     border-left: 3px solid grey;
     padding-left: 5px;
 }
 
-#display >>> img{
+#display >>> p{
 
-    max-width:100%;
+    font-size: 15px;
+}
+#display >>> li{
+
+    font-size: 20px;
+}
+#display >>> table *{
+
+    font-size: 20px;
 }
 
 #display >>> td, #display >>> th{
     border: 1px solid grey !important;
 }
 
+.showBelowMD{
+    display:none;
+}
+
+@media(max-width:768px){
+    .showBelowMD{
+        display:block;
+    }
+}
 </style>

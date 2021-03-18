@@ -61,6 +61,9 @@ export default {
                 'last':'Last'
             }
         },
+        'post':{
+            'published_at': 'Published at',
+        },
         'FAQ':{
             'title':'Quickly solve your problem'
         },
@@ -131,6 +134,9 @@ export default {
                 'next':'下一页',
                 'last':'末页'
             }
+        },
+        'post':{
+            'published_at': '发布于',
         },
         'FAQ':{
             'title':'快速解决您的问题'

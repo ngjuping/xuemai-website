@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="container-fluid px-0 px-md-5" id="footer">
-        <div class="row no-gutters jumbotron mb-0  px-6 mx-6">
+        <div class="row no-gutters jumbotron mb-0  btstrp-custom-px-6 btstrp-custom-mx-6">
             <div class="col-12 col-md-5 col-lg d-flex align-items-center">
                 <div class="row w-100 px-3">
                     <div class="col" id="follow_us_title">
@@ -146,6 +146,5 @@ export default {
     ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         white-space:pre-line;
         position:relative;
-        top:-7px;
     }
 </style>
