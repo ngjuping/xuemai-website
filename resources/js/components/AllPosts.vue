@@ -11,7 +11,7 @@
                                :placeholder="__('i18n.blog.search')"
                                v-model="filterString"
                                @search="getAllPosts();mode = 'posts';"
-                               @input="checkIfQueryIsEmpty">
+                               @keydown="checkIfQueryIsEmpty">
                         <div class="input-group-append" @click="searchPosts()">
                             <button class="btn" type="button" id="search_btn"><i class="fas fa-search" id="search_icon"></i></button>
                         </div>
